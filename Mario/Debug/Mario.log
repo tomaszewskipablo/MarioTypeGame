@@ -1,0 +1,6 @@
+﻿  Entity.cpp
+P:\_study\pk4\project\Mario\Mario_4semProject\Mario\Entity.cpp(24): warning C4244: 'argument': conversion from 'const int' to 'float', possible loss of data
+  main.cpp
+  tileMap.cpp
+  Generating Code...
+  Mario.vcxproj -> P:\_study\pk4\project\Mario\Mario_4semProject\Debug\Mario.exe
