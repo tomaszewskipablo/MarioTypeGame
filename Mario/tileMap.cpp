@@ -2,11 +2,3 @@
 
 
 
-tileMap::tileMap()
-{
-}
-
-
-tileMap::~tileMap()
-{
-}

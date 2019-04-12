@@ -134,11 +134,9 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
-    <ClInclude Include="Entity.h" />
     <ClInclude Include="tileMap.h" />
   </ItemGroup>
   <ItemGroup>
-    <ClCompile Include="Entity.cpp" />
     <ClCompile Include="main.cpp" />
     <ClCompile Include="tileMap.cpp" />
   </ItemGroup>

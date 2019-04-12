@@ -1,28 +1,35 @@
 #include<SFML/Graphics.hpp>
 #include<SFML/Window.hpp>
-#include"Entity.h"
+
 #include "tileMap.h"
+
 
 int main()
 {
+	// create the window
+	sf::RenderWindow window(sf::VideoMode(1024, 512), "Tilemap");
 
-	RenderWindow window{ VideoMode{800,600},"my window" };
-	window.setFramerateLimit(60);
+	// create the tilemap 
+	TileMap map;
+	if (!map.load("../assets/map1.png", sf::Vector2u(64,64), 16, 8))
+		return -1;
 
-
-	Event event;
-	while (true)
+	// run the main loop
+	while (window.isOpen())
 	{
-
-
-		window.clear(Color::Black);
-		window.pollEvent(event);
-
-		if (event.type == Event::Closed)
+		// handle events
+		sf::Event event;
+		while (window.pollEvent(event))
 		{
-			window.close();
-			break;
+			if (event.type == sf::Event::Closed)
+				window.close();
 		}
+
+		// draw the map
+		window.clear();
+		window.draw(map);
+		window.display();
 	}
+
 	return 0;
 }
