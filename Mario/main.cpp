@@ -10,7 +10,7 @@
 int main()
 {
 	// create the window
-	sf::RenderWindow window(sf::VideoMode(WINDOW_WIDTH, WINDOW_HIGHT), "Tilemap");
+	sf::RenderWindow window(sf::VideoMode(WINDOW_WIDTH, WINDOW_HIGHT), "Mario Boss");
 
 	// create the tilemap 
 	TileMap map;
@@ -35,6 +35,8 @@ int main()
 		window.draw(mario);
 		mario.update();
 		window.display();
+
+		/*map.upadte(mario);*/
 	}
 
 	return 0;

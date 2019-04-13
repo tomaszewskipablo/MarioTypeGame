@@ -9,7 +9,7 @@ using namespace sf;
 class Mario : public Drawable // Drawable makes possible to use window.draw(Ball)
 {
 private:
-	RectangleShape shape;
+
 	Texture texture;
 	Sprite sprite;
 	const float MarioWidth{ 80.0f };
