@@ -1,16 +1,14 @@
 #include "Mario.h"
 
-Mario::Mario(float t_X, float t_Y)
+Mario::Mario()
 {
-	// load a 32x32 rectangle that starts at (10, 10)
 	if (!texture.loadFromFile("../assets/mario.png", sf::IntRect(0, 0, 64, 64)))
 	{
 		// error...
 	}
 	sprite.setTexture(texture);
-	sprite.setPosition(t_X, t_Y);
+	sprite.setPosition(62,128);
 	sprite.setOrigin(MarioWidth / 2.f, MarioHeight / 2.f);
-
 }
 void Mario::draw(RenderTarget & target, RenderStates state)const {
 	target.draw(this->sprite, state);

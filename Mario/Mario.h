@@ -18,8 +18,8 @@ private:
 	Vector2f velocity{ MarioVelocity, 0.f };
 	void draw(RenderTarget& target, RenderStates state) const override; // to use window.draw(Ball)
 public:
-	Mario(float t_X, float t_Y);
-	Mario() = delete;;
+	Mario();
+	
 	~Mario() = default;
 
 	Vector2f getPosition();

@@ -1,4 +1,6 @@
-﻿  main.cpp
+﻿  Game.cpp
+  main.cpp
+  Mario.cpp
   tileMap.cpp
 P:\_study\pk4\project\Mario\Mario_4semProject\Mario\tileMap.cpp(41): warning C4244: 'argument': conversion from 'unsigned int' to 'T', possible loss of data
           with

@@ -7,5 +7,12 @@ class GameInfo
 public:
 	GameInfo();
 	~GameInfo();
+
+	void reset()
+	{
+		coins = 0;
+		time = 0;
+		score = 0;
+	}
 };
 
