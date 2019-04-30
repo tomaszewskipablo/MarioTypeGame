@@ -3,6 +3,8 @@
 #include"tileMap.h"
 #include"Mario.h"
 #include"GameInfo.h"
+#include "Menu.h"
+
 
 #include<SFML/Graphics.hpp>
 #include<SFML/Window.hpp>
@@ -15,6 +17,7 @@ class Game
 	Mario mario;
 	TileMap map;
 	GameInfo gameInfo;
+	Menu menu;
 
 	sf::RenderWindow * window;
 	sf::Event sfEvent;
@@ -29,5 +32,6 @@ public:
 	void update();
 	void render();
 	void run();
+	void Menu();
 };
 

@@ -1,62 +1,12 @@
-﻿  Game.cpp
-  main.cpp
-  Mario.cpp
-  tileMap.cpp
-P:\_study\pk4\project\Mario\Mario_4semProject\Mario\tileMap.cpp(41): warning C4244: 'argument': conversion from 'unsigned int' to 'T', possible loss of data
+﻿  Menu.cpp
+P:\_study\pk4\project\Mario\Mario_4semProject\Mario\Menu.cpp(20): warning C4305: 'argument': truncation from 'double' to 'T'
           with
           [
               T=float
           ]
-P:\_study\pk4\project\Mario\Mario_4semProject\Mario\tileMap.cpp(42): warning C4244: 'argument': conversion from 'unsigned int' to 'T', possible loss of data
+P:\_study\pk4\project\Mario\Mario_4semProject\Mario\Menu.cpp(25): warning C4305: 'argument': truncation from 'double' to 'T'
           with
           [
               T=float
           ]
-P:\_study\pk4\project\Mario\Mario_4semProject\Mario\tileMap.cpp(43): warning C4244: 'argument': conversion from 'unsigned int' to 'T', possible loss of data
-          with
-          [
-              T=float
-          ]
-P:\_study\pk4\project\Mario\Mario_4semProject\Mario\tileMap.cpp(44): warning C4244: 'argument': conversion from 'unsigned int' to 'T', possible loss of data
-          with
-          [
-              T=float
-          ]
-P:\_study\pk4\project\Mario\Mario_4semProject\Mario\tileMap.cpp(47): warning C4244: 'argument': conversion from 'T' to 'T', possible loss of data
-          with
-          [
-              T=unsigned int
-          ]
-          and
-          [
-              T=float
-          ]
-P:\_study\pk4\project\Mario\Mario_4semProject\Mario\tileMap.cpp(48): warning C4244: 'argument': conversion from 'T' to 'T', possible loss of data
-          with
-          [
-              T=unsigned int
-          ]
-          and
-          [
-              T=float
-          ]
-P:\_study\pk4\project\Mario\Mario_4semProject\Mario\tileMap.cpp(49): warning C4244: 'argument': conversion from 'T' to 'T', possible loss of data
-          with
-          [
-              T=unsigned int
-          ]
-          and
-          [
-              T=float
-          ]
-P:\_study\pk4\project\Mario\Mario_4semProject\Mario\tileMap.cpp(50): warning C4244: 'argument': conversion from 'T' to 'T', possible loss of data
-          with
-          [
-              T=unsigned int
-          ]
-          and
-          [
-              T=float
-          ]
-  Generating Code...
   Mario.vcxproj -> P:\_study\pk4\project\Mario\Mario_4semProject\Debug\Mario.exe

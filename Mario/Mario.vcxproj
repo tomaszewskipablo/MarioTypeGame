@@ -137,6 +137,7 @@
     <ClInclude Include="Game.h" />
     <ClInclude Include="GameInfo.h" />
     <ClInclude Include="Mario.h" />
+    <ClInclude Include="Menu.h" />
     <ClInclude Include="Music.h" />
     <ClInclude Include="tileMap.h" />
   </ItemGroup>
@@ -145,6 +146,7 @@
     <ClCompile Include="GameInfo.cpp" />
     <ClCompile Include="main.cpp" />
     <ClCompile Include="Mario.cpp" />
+    <ClCompile Include="Menu.cpp" />
     <ClCompile Include="Music.cpp" />
     <ClCompile Include="tileMap.cpp" />
   </ItemGroup>

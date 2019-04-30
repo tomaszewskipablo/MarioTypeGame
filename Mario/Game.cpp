@@ -1,11 +1,11 @@
 #include "Game.h"
-
+#include<iostream>
 
 
 Game::Game()
 {
 	// window initialization
-	this->window = new sf::RenderWindow(sf::VideoMode(WINDOW_WIDTH, WINDOW_HIGHT), "BACKYARD GAME");
+	this->window = new sf::RenderWindow(sf::VideoMode(WINDOW_WIDTH, WINDOW_HIGHT), "SUPER MARIO");
 
 	map.load("../assets/map1.png", sf::Vector2u(64, 64), 16, 8);
 
@@ -27,6 +27,19 @@ void Game::updateSFMLEvents()
 	{
 		if (this->sfEvent.type == sf::Event::Closed)
 			this->window->close();
+		if (this->sfEvent.type == sf::Event::KeyReleased)
+		{
+			if (sfEvent.key.code == Keyboard::Escape)
+			{
+				std::cout << "ESCAPE()" << std::endl;
+				menu.setIsON(true);
+			}
+			/*if (sfEvent.key.code == Keyboard::Escape)
+			{
+				sf::Image Screen = window->capture();
+				Screen.saveToFile("screenshot.jpg");
+			}*/
+		}
 	}
 }
 
@@ -34,7 +47,7 @@ void Game::update()
 {
 	this->updateSFMLEvents();
 
-	
+
 	mario.update();
 }
 
@@ -48,12 +61,57 @@ void Game::render()
 
 	this->window->display();
 }
+void Game::Menu()
+{
+	
+	menu.draw(*window);
+	this->window->display();
+		while (window->pollEvent(sfEvent))
+		{
+			if (sfEvent.type == Event::Closed)
+				window->close();
+
+			if (sfEvent.type == Event::KeyReleased)
+			{
+				if (sfEvent.key.code == Keyboard::Up)
+				{
+					menu.MoveUp();
+					std::cout << "MoveUp()" << std::endl;
+				}
+				if (sfEvent.key.code == Keyboard::Down)
+				{
+					menu.MoveDown();
+					std::cout << "MoveDown()" << std::endl;
+				}
+				if (sfEvent.key.code == Keyboard::Enter)
+				{
+					std::cout << "Enter()" << std::endl;
+					if (menu.GetPressedItem() == 0)
+						menu.setIsON(false);
+					if (menu.GetPressedItem() == 1)
+						std::cout << "BEST restult smlksadnlsan102" << std::endl;
+					if (menu.GetPressedItem() == 2)
+					{
+						window->close();
+						delete this->window;
+						exit(0);
+					}
+				}
+			}
+	}
+}
+
 
 void Game::run()
 {
+
 	while (this->window->isOpen())
 	{
-		this->update();
-		this->render();
+		if (menu.isON())
+			Menu();
+		else {
+			this->update();
+			this->render();
+		}
 	}
 }
