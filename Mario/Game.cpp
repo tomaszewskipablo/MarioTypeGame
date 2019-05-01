@@ -37,13 +37,7 @@ void Game::updateSFMLEvents()
 			// screen shots
 			if (sfEvent.key.code == Keyboard::F1)
 			{
-				sf::Vector2u windowSize = window->getSize();
-				sf::Texture texture;
-				texture.create(windowSize.x, windowSize.y);
-				texture.update(*window);
-				sf::Image screenshot = texture.copyToImage();
-				screenshot.saveToFile("screenshot.png");
-				std::cout << "SceenSHot" << std::endl;
+				screenshot.create(window);
 			}
 		}
 	}

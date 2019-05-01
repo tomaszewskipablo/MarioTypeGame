@@ -4,6 +4,7 @@
 #include"Mario.h"
 #include"GameInfo.h"
 #include "Menu.h"
+#include"Screenshot.h"
 
 
 #include<SFML/Graphics.hpp>
@@ -18,6 +19,7 @@ class Game
 	TileMap map;
 	GameInfo gameInfo;
 	Menu menu;
+	Screenshot screenshot;
 
 	sf::RenderWindow * window;
 	sf::Event sfEvent;
