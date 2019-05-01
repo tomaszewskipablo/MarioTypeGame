@@ -1,12 +1,2 @@
-﻿  Menu.cpp
-P:\_study\pk4\project\Mario\Mario_4semProject\Mario\Menu.cpp(20): warning C4305: 'argument': truncation from 'double' to 'T'
-          with
-          [
-              T=float
-          ]
-P:\_study\pk4\project\Mario\Mario_4semProject\Mario\Menu.cpp(25): warning C4305: 'argument': truncation from 'double' to 'T'
-          with
-          [
-              T=float
-          ]
+﻿  Game.cpp
   Mario.vcxproj -> P:\_study\pk4\project\Mario\Mario_4semProject\Debug\Mario.exe
