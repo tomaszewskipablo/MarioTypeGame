@@ -1,4 +1,4 @@
-#include "tileMap.h"
+﻿#include "tileMap.h"
 
 void TileMap::draw(sf::RenderTarget& target, sf::RenderStates states) const
 {
@@ -15,6 +15,10 @@ void TileMap::draw(sf::RenderTarget& target, sf::RenderStates states) const
 
 bool TileMap::load(const std::string& tileset, sf::Vector2u tileSize, unsigned int width, unsigned int height)
 {
+	this->tileSize = tileSize;
+	this->width = width;
+	this->height = height;
+
 	// load the tileset texture
 	if (!m_tileset.loadFromFile(tileset))	// load tileset to m_tileset texture
 		return false;
@@ -52,4 +56,59 @@ bool TileMap::load(const std::string& tileset, sf::Vector2u tileSize, unsigned i
 
 	return true;
 }
+void TileMap::collison(Mario &mario)
+{
+	float bottom, top, right, left;
+	for (unsigned int i = 0; i < height; ++i)
+		for (unsigned int j = 0; j < width; ++j)
+		{
+			if (tiles[i * width + j] == 1)
+			{
+				bottom = i * tileSize.y + tileSize.y;
+				top = i * tileSize.y;
+				left = j * tileSize.x;
+				right = j * tileSize.x + tileSize.x;
 
+				if ((mario.top() > bottom || mario.bottom() < top) || (mario.left() > right || mario.right() < left)) // mario doesn't intersect
+					;
+				else {
+					float tab[4] = { abs(mario.top() - bottom) , abs(mario.bottom() - top),  abs(mario.right() - left),abs(mario.left() - right) };
+
+				//	std::cout << "Bottom " << aBottom << "  " << "aTop " << aTop << " left " << aLeft << " right " << aRight << std::endl;
+					// znajdziemy minimum i w tą strone ruszymy maria
+					//std::cout << std::endl << min4(aTop, aBottom, aLeft, aRight);
+					int minumum = min4(tab);
+					switch (minumum)
+					{
+					case BOTTOM:
+						mario.moveBottom();
+						break;
+					case TOP:
+						mario.moveTop();
+						break;
+
+					case LEFT:
+						mario.moveLeft();
+						break;
+					case RIGHT:
+						mario.moveRight();
+						break;
+					}
+				//	std::cout << "Collison";
+					break;
+				}
+			}
+		}
+}
+
+float TileMap::min4(float tab[])
+{
+	int min=0;
+	for (int i = 1; i < 4; i++)
+	{
+		if (tab[min] > tab[i])
+			min = i;
+	}
+
+	return min;
+}

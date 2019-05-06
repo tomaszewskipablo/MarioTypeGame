@@ -42,18 +42,34 @@ void Mario::update()
 }
 float Mario::left()
 {
-	return this->sprite.getPosition().x - 32 / 2.f;
+	return this->sprite.getPosition().x - MarioWidth / 2.f;
 }
 float Mario::right()
 {
-	return this->sprite.getPosition().x + 32/ 2.f;
+	return this->sprite.getPosition().x + MarioWidth / 2.f;
 }
 float Mario::top()
 {
-	return this->sprite.getPosition().y - 64 / 2.f;
+	return this->sprite.getPosition().y - MarioHeight / 2.f;
 }
 float Mario::bottom()
 {
-	return this->sprite.getPosition().y + 64 / 2.f;
+	return this->sprite.getPosition().y + MarioHeight / 2.f;
 }
 
+void Mario::moveLeft() 
+{
+	this->sprite.move(sf::Vector2f( -1,0 ));
+}
+void Mario::moveRight()
+{
+	this->sprite.move({ 1,0 });
+}
+void Mario::moveTop() 
+{
+	this->sprite.move({ 0,-1 });
+}
+void Mario::moveBottom()
+{
+	this->sprite.move({ 0,1 });
+}

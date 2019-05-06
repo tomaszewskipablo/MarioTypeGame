@@ -47,7 +47,7 @@ void Game::update()
 {
 	this->updateSFMLEvents();
 
-
+	map.collison(mario);
 	mario.update();
 }
 

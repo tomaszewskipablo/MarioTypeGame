@@ -12,10 +12,10 @@ private:
 
 	Texture texture;
 	Sprite sprite;
-	const float MarioWidth{ 80.0f };
-	const float MarioHeight{ 20.0f };
-	const float MarioVelocity{ 2.0f };
-	Vector2f velocity{ MarioVelocity, 0.f };
+	const float MarioWidth{ 32.0f };
+	const float MarioHeight{ 64.0f };
+	const float MarioVelocity{ 1.0f };
+	Vector2f velocity{ MarioVelocity, MarioVelocity };
 	void draw(RenderTarget& target, RenderStates state) const override; // to use window.draw(Ball)
 public:
 	Mario();
@@ -31,5 +31,10 @@ public:
 	float right();
 	float top();
 	float bottom();
+
+	void moveLeft();
+	void moveRight();
+	void moveTop();
+	void moveBottom();
 };
 
