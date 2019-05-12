@@ -47,7 +47,11 @@ void Game::update()
 {
 	this->updateSFMLEvents();
 
-	map.collison(mario);
+	if (map.collison(mario))
+		mario.setCanJump(true);
+	//if (map.onGround(mario))
+		
+
 	mario.update();
 }
 

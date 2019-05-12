@@ -56,7 +56,7 @@ bool TileMap::load(const std::string& tileset, sf::Vector2u tileSize, unsigned i
 
 	return true;
 }
-void TileMap::collison(Mario &mario)
+bool TileMap::collison(Mario & mario)
 {
 	float bottom, top, right, left;
 	for (unsigned int i = 0; i < height; ++i)
@@ -74,9 +74,9 @@ void TileMap::collison(Mario &mario)
 				else {
 					float tab[4] = { abs(mario.top() - bottom) , abs(mario.bottom() - top),  abs(mario.right() - left),abs(mario.left() - right) };
 
-				//	std::cout << "Bottom " << aBottom << "  " << "aTop " << aTop << " left " << aLeft << " right " << aRight << std::endl;
-					// znajdziemy minimum i w tą strone ruszymy maria
-					//std::cout << std::endl << min4(aTop, aBottom, aLeft, aRight);
+					//	std::cout << "Bottom " << aBottom << "  " << "aTop " << aTop << " left " << aLeft << " right " << aRight << std::endl;
+						// znajdziemy minimum i w tą strone ruszymy maria
+						//std::cout << std::endl << min4(aTop, aBottom, aLeft, aRight);
 					int minumum = min4(tab);
 					switch (minumum)
 					{
@@ -85,8 +85,7 @@ void TileMap::collison(Mario &mario)
 						break;
 					case TOP:
 						mario.moveTop();
-						break;
-
+						return true; // mario touched the ground
 					case LEFT:
 						mario.moveLeft();
 						break;
@@ -94,16 +93,17 @@ void TileMap::collison(Mario &mario)
 						mario.moveRight();
 						break;
 					}
-				//	std::cout << "Collison";
+					//	std::cout << "Collison";
 					break;
 				}
 			}
 		}
+	return false;
 }
 
 float TileMap::min4(float tab[])
 {
-	int min=0;
+	int min = 0;
 	for (int i = 1; i < 4; i++)
 	{
 		if (tab[min] > tab[i])
@@ -111,4 +111,21 @@ float TileMap::min4(float tab[])
 	}
 
 	return min;
+}
+bool TileMap::onGround(Mario mario)
+{
+	float top, left, right;
+	for (unsigned int i = 0; i < height; ++i)
+		for (unsigned int j = 0; j < width; ++j)
+		{
+			if (tiles[i * width + j] == 1) {
+				top = i * tileSize.y;
+				left = j * tileSize.x;
+				right = j * tileSize.x + tileSize.x;
+
+				if (abs(mario.bottom() - top) <2 && abs(left - mario.left()) > tileSize.x-10)	// mario touch the ground
+					return true;
+			}
+		}
+	return false;
 }

@@ -22,7 +22,7 @@ Vector2f Mario::getPosition()
 
 void Mario::update()
 {
-	this->sprite.move(this->velocity); // gets vector vector(x,y) 
+	this->sprite.move(this->velocity); 
 
 
 	if (Keyboard::isKeyPressed(Keyboard::Key::Left) && this->left() > 0)
@@ -32,13 +32,19 @@ void Mario::update()
 	else
 		velocity.x = 0;
 
-	if (Keyboard::isKeyPressed(Keyboard::Key::Up) && this->top() > 0)
+	if (Keyboard::isKeyPressed(Keyboard::Key::Up) && this->top() > 0 && canJump)
+	{
+		if (jumpCurrentPossition > jumpHight)
+		{
+			jumpCurrentPossition = 0;
+			canJump = false;
+		}
+		jumpCurrentPossition++;
 		velocity.y = -MarioVelocity;
-	else if (Keyboard::isKeyPressed(Keyboard::Key::Down) && this->bottom() < WINDOW_HIGHT)
-		velocity.y = MarioVelocity;
+	}
 	else
-		velocity.y = 0;
-
+		velocity.y = 0.3;
+	//
 }
 float Mario::left()
 {

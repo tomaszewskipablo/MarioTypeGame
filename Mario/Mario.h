@@ -14,8 +14,13 @@ private:
 	Sprite sprite;
 	const float MarioWidth{ 32.0f };
 	const float MarioHeight{ 64.0f };
-	const float MarioVelocity{ 1.0f };
+	const float MarioVelocity{ 0.7f };
 	Vector2f velocity{ MarioVelocity, MarioVelocity };
+
+	bool canJump=1;
+	float jumpHight=200;
+	float jumpCurrentPossition = 0;
+
 	void draw(RenderTarget& target, RenderStates state) const override; // to use window.draw(Ball)
 public:
 	Mario();
@@ -36,5 +41,7 @@ public:
 	void moveRight();
 	void moveTop();
 	void moveBottom();
+
+	void setCanJump(bool canJump) { this->canJump = canJump; }
 };
 

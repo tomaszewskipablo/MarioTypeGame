@@ -20,8 +20,8 @@ class TileMap : public sf::Drawable, public sf::Transformable
 		0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0,
 		0, 0, 4, 0, 0, 2, 2, 2, 0, 0, 4, 0, 0, 0, 0, 0,
 		0, 0, 0, 0, 0, 2, 2, 2, 0, 0, 0, 0, 2, 0, 0, 0,
-		0, 0, 0, 0, 0, 1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0,
-		0, 0, 0, 0, 0, 0, 1, 3, 1, 0, 0, 1, 1, 0, 0, 0,
+		0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0,
+		0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0,
 		0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1, 1, 1, 1, 0, 0,
 		1, 1, 1, 1, 0, 0, 0, 0, 0, 0, 1, 1, 1, 1, 1, 1,
 		1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1,
@@ -36,6 +36,7 @@ class TileMap : public sf::Drawable, public sf::Transformable
 public:
 
 	bool load(const std::string& tileset, sf::Vector2u tileSize, unsigned int width, unsigned int height);
-	void collison(Mario &mario);
+	bool collison(Mario &mario);
 	float min4(float tab[]);
+	bool onGround(Mario mario);
 };

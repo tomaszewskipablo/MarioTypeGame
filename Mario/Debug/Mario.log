@@ -1,6 +1,4 @@
-﻿  Game.cpp
-  main.cpp
-  tileMap.cpp
+﻿  tileMap.cpp
 P:\_study\pk4\project\Mario\Mario_4semProject\Mario\tileMap.cpp(45): warning C4244: 'argument': conversion from 'unsigned int' to 'T', possible loss of data
           with
           [
@@ -63,5 +61,7 @@ P:\_study\pk4\project\Mario\Mario_4semProject\Mario\tileMap.cpp(69): warning C42
 P:\_study\pk4\project\Mario\Mario_4semProject\Mario\tileMap.cpp(70): warning C4244: '=': conversion from 'unsigned int' to 'float', possible loss of data
 P:\_study\pk4\project\Mario\Mario_4semProject\Mario\tileMap.cpp(80): warning C4244: 'initializing': conversion from 'float' to 'int', possible loss of data
 P:\_study\pk4\project\Mario\Mario_4semProject\Mario\tileMap.cpp(113): warning C4244: 'return': conversion from 'int' to 'float', possible loss of data
-  Generating Code...
+P:\_study\pk4\project\Mario\Mario_4semProject\Mario\tileMap.cpp(122): warning C4244: '=': conversion from 'unsigned int' to 'float', possible loss of data
+P:\_study\pk4\project\Mario\Mario_4semProject\Mario\tileMap.cpp(123): warning C4244: '=': conversion from 'unsigned int' to 'float', possible loss of data
+P:\_study\pk4\project\Mario\Mario_4semProject\Mario\tileMap.cpp(124): warning C4244: '=': conversion from 'unsigned int' to 'float', possible loss of data
   Mario.vcxproj -> P:\_study\pk4\project\Mario\Mario_4semProject\Debug\Mario.exe
