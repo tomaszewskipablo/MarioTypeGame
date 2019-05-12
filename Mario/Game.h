@@ -1,6 +1,7 @@
 #pragma once
 
 #include"tileMap.h"
+#include"Entity.h"
 #include"Mario.h"
 #include"GameInfo.h"
 #include "Menu.h"

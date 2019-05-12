@@ -7,28 +7,20 @@ Mario::Mario()
 		// error...
 	}
 	sprite.setTexture(texture);
-	sprite.setPosition(62,128);
-	sprite.setOrigin(MarioWidth / 2.f, MarioHeight / 2.f);
-}
-void Mario::draw(RenderTarget & target, RenderStates state)const {
-	target.draw(this->sprite, state);
-}
-
-Vector2f Mario::getPosition()
-{
-	return sprite.getPosition();
+	sprite.setPosition(62, 128);
+	sprite.setOrigin(Width / 2.f, Height / 2.f);
 }
 
 
 void Mario::update()
 {
-	this->sprite.move(this->velocity); 
+	this->sprite.move(this->velocity);
 
 
 	if (Keyboard::isKeyPressed(Keyboard::Key::Left) && this->left() > 0)
-		velocity.x = -MarioVelocity;
+		velocity.x = -Velocity;
 	else if (Keyboard::isKeyPressed(Keyboard::Key::Right) && this->right() < WINDOW_WIDTH)
-		velocity.x = MarioVelocity;
+		velocity.x = Velocity;
 	else
 		velocity.x = 0;
 
@@ -40,42 +32,9 @@ void Mario::update()
 			canJump = false;
 		}
 		jumpCurrentPossition++;
-		velocity.y = -MarioVelocity;
+		velocity.y = -Velocity;
 	}
 	else
 		velocity.y = 0.3;
 	//
-}
-float Mario::left()
-{
-	return this->sprite.getPosition().x - MarioWidth / 2.f;
-}
-float Mario::right()
-{
-	return this->sprite.getPosition().x + MarioWidth / 2.f;
-}
-float Mario::top()
-{
-	return this->sprite.getPosition().y - MarioHeight / 2.f;
-}
-float Mario::bottom()
-{
-	return this->sprite.getPosition().y + MarioHeight / 2.f;
-}
-
-void Mario::moveLeft() 
-{
-	this->sprite.move(sf::Vector2f( -1,0 ));
-}
-void Mario::moveRight()
-{
-	this->sprite.move({ 1,0 });
-}
-void Mario::moveTop() 
-{
-	this->sprite.move({ 0,-1 });
-}
-void Mario::moveBottom()
-{
-	this->sprite.move({ 0,1 });
 }

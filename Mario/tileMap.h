@@ -4,7 +4,7 @@
 #include<SFML/Graphics.hpp>
 #include<SFML/Window.hpp>
 
-#include"Mario.h"
+#include"Entity.h"
 #include<iostream>
 #include <algorithm>
 
@@ -36,7 +36,7 @@ class TileMap : public sf::Drawable, public sf::Transformable
 public:
 
 	bool load(const std::string& tileset, sf::Vector2u tileSize, unsigned int width, unsigned int height);
-	bool collison(Mario &mario);
+	bool collison(Entity &Entity);
 	float min4(float tab[]);
-	bool onGround(Mario mario);
+	bool onGround(Entity Entity);
 };

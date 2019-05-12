@@ -56,7 +56,7 @@ bool TileMap::load(const std::string& tileset, sf::Vector2u tileSize, unsigned i
 
 	return true;
 }
-bool TileMap::collison(Mario & mario)
+bool TileMap::collison(Entity & Entity)
 {
 	float bottom, top, right, left;
 	for (unsigned int i = 0; i < height; ++i)
@@ -69,10 +69,10 @@ bool TileMap::collison(Mario & mario)
 				left = j * tileSize.x;
 				right = j * tileSize.x + tileSize.x;
 
-				if ((mario.top() > bottom || mario.bottom() < top) || (mario.left() > right || mario.right() < left)) // mario doesn't intersect
+				if ((Entity.top() > bottom || Entity.bottom() < top) || (Entity.left() > right || Entity.right() < left)) // Entity doesn't intersect
 					;
 				else {
-					float tab[4] = { abs(mario.top() - bottom) , abs(mario.bottom() - top),  abs(mario.right() - left),abs(mario.left() - right) };
+					float tab[4] = { abs(Entity.top() - bottom) , abs(Entity.bottom() - top),  abs(Entity.right() - left),abs(Entity.left() - right) };
 
 					//	std::cout << "Bottom " << aBottom << "  " << "aTop " << aTop << " left " << aLeft << " right " << aRight << std::endl;
 						// znajdziemy minimum i w tą strone ruszymy maria
@@ -81,16 +81,16 @@ bool TileMap::collison(Mario & mario)
 					switch (minumum)
 					{
 					case BOTTOM:
-						mario.moveBottom();
+						Entity.moveBottom();
 						break;
 					case TOP:
-						mario.moveTop();
-						return true; // mario touched the ground
+						Entity.moveTop();
+						return true; // Entity touched the ground
 					case LEFT:
-						mario.moveLeft();
+						Entity.moveLeft();
 						break;
 					case RIGHT:
-						mario.moveRight();
+						Entity.moveRight();
 						break;
 					}
 					//	std::cout << "Collison";
@@ -112,7 +112,7 @@ float TileMap::min4(float tab[])
 
 	return min;
 }
-bool TileMap::onGround(Mario mario)
+bool TileMap::onGround(Entity Entity)
 {
 	float top, left, right;
 	for (unsigned int i = 0; i < height; ++i)
@@ -123,7 +123,7 @@ bool TileMap::onGround(Mario mario)
 				left = j * tileSize.x;
 				right = j * tileSize.x + tileSize.x;
 
-				if (abs(mario.bottom() - top) <2 && abs(left - mario.left()) > tileSize.x-10)	// mario touch the ground
+				if (abs(Entity.bottom() - top) <2 && abs(left - Entity.left()) > tileSize.x-10)	// Entity touch the ground
 					return true;
 			}
 		}

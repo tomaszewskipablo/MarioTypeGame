@@ -1,4 +1,18 @@
-﻿  tileMap.cpp
+﻿  Game.cpp
+  Mario.cpp
+P:\_study\pk4\project\Mario\Mario_4semProject\Mario\Mario.cpp(38): warning C4305: '=': truncation from 'double' to 'T'
+          with
+          [
+              T=float
+          ]
+  entity.cpp
+P:\_study\pk4\project\Mario\Mario_4semProject\Mario\entity.cpp(20): warning C4305: '=': truncation from 'double' to 'T'
+          with
+          [
+              T=float
+          ]
+  main.cpp
+  tileMap.cpp
 P:\_study\pk4\project\Mario\Mario_4semProject\Mario\tileMap.cpp(45): warning C4244: 'argument': conversion from 'unsigned int' to 'T', possible loss of data
           with
           [
@@ -64,4 +78,5 @@ P:\_study\pk4\project\Mario\Mario_4semProject\Mario\tileMap.cpp(113): warning C4
 P:\_study\pk4\project\Mario\Mario_4semProject\Mario\tileMap.cpp(122): warning C4244: '=': conversion from 'unsigned int' to 'float', possible loss of data
 P:\_study\pk4\project\Mario\Mario_4semProject\Mario\tileMap.cpp(123): warning C4244: '=': conversion from 'unsigned int' to 'float', possible loss of data
 P:\_study\pk4\project\Mario\Mario_4semProject\Mario\tileMap.cpp(124): warning C4244: '=': conversion from 'unsigned int' to 'float', possible loss of data
+  Generating Code...
   Mario.vcxproj -> P:\_study\pk4\project\Mario\Mario_4semProject\Debug\Mario.exe

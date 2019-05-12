@@ -5,7 +5,7 @@
 Game::Game()
 {
 	// window initialization
-	this->window = new sf::RenderWindow(sf::VideoMode(WINDOW_WIDTH, WINDOW_HIGHT), "SUPER MARIO");
+	this->window = new sf::RenderWindow(sf::VideoMode(WINDOW_WIDTH, WINDOW_HIGHT), "SUPER Entity");
 
 	map.load("../assets/map1.png", sf::Vector2u(64, 64), 16, 8);
 
@@ -49,7 +49,7 @@ void Game::update()
 
 	if (map.collison(mario))
 		mario.setCanJump(true);
-	//if (map.onGround(mario))
+	//if (map.onGround(Entity))
 		
 
 	mario.update();
