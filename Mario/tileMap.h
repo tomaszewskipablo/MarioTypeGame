@@ -23,7 +23,7 @@ class TileMap : public sf::Drawable, public sf::Transformable
 		0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0,
 		0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0,
 		0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1, 1, 1, 1, 0, 0,
-		1, 1, 1, 1, 0, 0, 0, 0, 0, 0, 1, 1, 1, 1, 1, 1,
+		1, 1, 1, 0, 0, 0, 0, 0, 0, 0, 1, 1, 1, 1, 1, 1,
 		1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1,
 	};
 
@@ -36,7 +36,7 @@ class TileMap : public sf::Drawable, public sf::Transformable
 public:
 
 	bool load(const std::string& tileset, sf::Vector2u tileSize, unsigned int width, unsigned int height);
-	bool collison(Entity &Entity);
+	int collison(Entity &Entity);	// function returns from what side collision comes from and move object to the opposit side
 	float min4(float tab[]);
 	bool onGround(Entity Entity);
 };

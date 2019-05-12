@@ -8,6 +8,9 @@ Mario::Mario()
 	}
 	sprite.setTexture(texture);
 	sprite.setPosition(62, 128);
+	Width = 32;
+	Height = 64;
+	Velocity = 0.7;
 	sprite.setOrigin(Width / 2.f, Height / 2.f);
 }
 

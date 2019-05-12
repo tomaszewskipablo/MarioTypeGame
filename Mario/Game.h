@@ -3,6 +3,7 @@
 #include"tileMap.h"
 #include"Entity.h"
 #include"Mario.h"
+#include"Turtle.h"
 #include"GameInfo.h"
 #include "Menu.h"
 #include"Screenshot.h"
@@ -13,10 +14,14 @@
 
 #define WINDOW_WIDTH 1024
 #define WINDOW_HIGHT 512
+#define BOTTOM 1
+#define LEFT 2
+#define RIGHT 3
 
 class Game
 {
 	Mario mario;
+	Turtle turtle;
 	TileMap map;
 	GameInfo gameInfo;
 	Menu menu;

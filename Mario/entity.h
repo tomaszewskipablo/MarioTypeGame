@@ -12,14 +12,12 @@ protected:
 
 	Texture texture;
 	Sprite sprite;
-	const float Width{ 32.0f };
-	const float Height{ 64.0f };
-	const float Velocity{ 0.7f };
+	float Width;
+	float Height;
+	float Velocity;
 
 	Vector2f startingPosition;
 	Vector2f velocity{ Velocity, Velocity };
-
-	bool canJump = false;
 
 	void draw(RenderTarget& target, RenderStates state) const override; // to use window.draw(Ball)
 public:
@@ -42,6 +40,8 @@ public:
 	void moveTop();
 	void moveBottom();
 
-	void setCanJump(bool canJump) { this->canJump = canJump; }
+	void MovingDirectiongLeft() { velocity.x = -Velocity; }
+	void MovingDirectiongRight() { velocity.x = Velocity; }
 };
+
 

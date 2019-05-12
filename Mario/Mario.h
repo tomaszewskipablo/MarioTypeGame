@@ -11,7 +11,7 @@ class Mario : public Entity
 {
 private:
 
-	bool canJump = 1;
+	bool canJump = 0;
 	float jumpHight = 200;
 	float jumpCurrentPossition = 0;
 

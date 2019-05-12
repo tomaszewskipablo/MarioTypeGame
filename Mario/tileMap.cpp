@@ -56,7 +56,7 @@ bool TileMap::load(const std::string& tileset, sf::Vector2u tileSize, unsigned i
 
 	return true;
 }
-bool TileMap::collison(Entity & Entity)
+int TileMap::collison(Entity & Entity)
 {
 	float bottom, top, right, left;
 	for (unsigned int i = 0; i < height; ++i)
@@ -82,23 +82,21 @@ bool TileMap::collison(Entity & Entity)
 					{
 					case BOTTOM:
 						Entity.moveBottom();
-						break;
+						return 0;
 					case TOP:
 						Entity.moveTop();
-						return true; // Entity touched the ground
+						return 1; // Entity touched the ground
 					case LEFT:
 						Entity.moveLeft();
-						break;
+						return 2;
 					case RIGHT:
 						Entity.moveRight();
-						break;
+						return 3;
 					}
-					//	std::cout << "Collison";
-					break;
 				}
 			}
 		}
-	return false;
+
 }
 
 float TileMap::min4(float tab[])

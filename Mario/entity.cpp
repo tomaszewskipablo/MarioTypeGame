@@ -14,11 +14,6 @@ Vector2f Entity::getPosition()
 void Entity::update()
 {
 	this->sprite.move(this->velocity);
-
-
-	
-		velocity.y = 0.3;
-	//
 }
 float Entity::left()
 {

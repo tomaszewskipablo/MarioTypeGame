@@ -47,12 +47,18 @@ void Game::update()
 {
 	this->updateSFMLEvents();
 
-	if (map.collison(mario))
+	if (map.collison(mario)==BOTTOM)
 		mario.setCanJump(true);
-	//if (map.onGround(Entity))
-		
+
+	int movingSide = map.collison(turtle);
+
+	if (movingSide == LEFT)
+		turtle.MovingDirectiongLeft();
+	else if (movingSide == RIGHT)
+		turtle.MovingDirectiongRight();
 
 	mario.update();
+	turtle.update();
 }
 
 void Game::render()
@@ -61,6 +67,7 @@ void Game::render()
 	// render items
 	window->draw(map);
 	window->draw(mario);
+	window->draw(turtle);
 
 
 	this->window->display();

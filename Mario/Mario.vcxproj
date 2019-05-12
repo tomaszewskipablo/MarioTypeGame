@@ -142,6 +142,7 @@
     <ClInclude Include="Music.h" />
     <ClInclude Include="Screenshot.h" />
     <ClInclude Include="tileMap.h" />
+    <ClInclude Include="Turtle.h" />
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="entity.cpp" />
@@ -153,6 +154,7 @@
     <ClCompile Include="Music.cpp" />
     <ClCompile Include="Screenshot.cpp" />
     <ClCompile Include="tileMap.cpp" />
+    <ClCompile Include="Turtle.cpp" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">
