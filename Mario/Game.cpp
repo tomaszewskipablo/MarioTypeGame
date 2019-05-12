@@ -47,8 +47,7 @@ void Game::update()
 {
 	this->updateSFMLEvents();
 
-	if (map.collison(mario)==BOTTOM)
-		mario.setCanJump(true);
+
 
 	int movingSide = map.collison(turtle);
 
@@ -57,8 +56,18 @@ void Game::update()
 	else if (movingSide == RIGHT)
 		turtle.MovingDirectiongRight();
 
-	mario.update();
 	turtle.update();
+	if (mario.getIsAlive())
+	{
+		mario.update();
+
+		if (map.collison(mario) == BOTTOM)
+			mario.setCanJump(true);
+
+		if (mario.getSprite().getGlobalBounds().intersects(turtle.getSprite().getGlobalBounds()))
+			mario.dead();
+			//std::cout << " INtersect " << std::endl;
+	}
 }
 
 void Game::render()
@@ -66,7 +75,8 @@ void Game::render()
 	this->window->clear();
 	// render items
 	window->draw(map);
-	window->draw(mario);
+	if (mario.getIsAlive())
+		window->draw(mario);
 	window->draw(turtle);
 
 
@@ -74,41 +84,41 @@ void Game::render()
 }
 void Game::Menu()
 {
-	
+
 	menu.draw(*window);
 	this->window->display();
-		while (window->pollEvent(sfEvent))
-		{
-			if (sfEvent.type == Event::Closed)
-				window->close();
+	while (window->pollEvent(sfEvent))
+	{
+		if (sfEvent.type == Event::Closed)
+			window->close();
 
-			if (sfEvent.type == Event::KeyReleased)
+		if (sfEvent.type == Event::KeyReleased)
+		{
+			if (sfEvent.key.code == Keyboard::Up)
 			{
-				if (sfEvent.key.code == Keyboard::Up)
+				menu.MoveUp();
+				std::cout << "MoveUp()" << std::endl;
+			}
+			if (sfEvent.key.code == Keyboard::Down)
+			{
+				menu.MoveDown();
+				std::cout << "MoveDown()" << std::endl;
+			}
+			if (sfEvent.key.code == Keyboard::Enter)
+			{
+				std::cout << "Enter()" << std::endl;
+				if (menu.GetPressedItem() == 0)
+					menu.setIsON(false);
+				if (menu.GetPressedItem() == 1)
+					std::cout << "BEST restult smlksadnlsan102" << std::endl;
+				if (menu.GetPressedItem() == 2)
 				{
-					menu.MoveUp();
-					std::cout << "MoveUp()" << std::endl;
-				}
-				if (sfEvent.key.code == Keyboard::Down)
-				{
-					menu.MoveDown();
-					std::cout << "MoveDown()" << std::endl;
-				}
-				if (sfEvent.key.code == Keyboard::Enter)
-				{
-					std::cout << "Enter()" << std::endl;
-					if (menu.GetPressedItem() == 0)
-						menu.setIsON(false);
-					if (menu.GetPressedItem() == 1)
-						std::cout << "BEST restult smlksadnlsan102" << std::endl;
-					if (menu.GetPressedItem() == 2)
-					{
-						window->close();
-						delete this->window;
-						exit(0);
-					}
+					window->close();
+					delete this->window;
+					exit(0);
 				}
 			}
+		}
 	}
 }
 

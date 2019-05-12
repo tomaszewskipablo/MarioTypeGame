@@ -1,8 +1,4 @@
 ﻿  Game.cpp
 P:\_study\pk4\project\Mario\Mario_4semProject\Mario\Game.h(17): warning C4005: 'BOTTOM': macro redefinition
   P:\_study\pk4\project\Mario\Mario_4semProject\Mario\tileMap.h(11): note: see previous definition of 'BOTTOM'
-  main.cpp
-P:\_study\pk4\project\Mario\Mario_4semProject\Mario\Game.h(17): warning C4005: 'BOTTOM': macro redefinition
-  P:\_study\pk4\project\Mario\Mario_4semProject\Mario\tileMap.h(11): note: see previous definition of 'BOTTOM'
-  Generating Code...
   Mario.vcxproj -> P:\_study\pk4\project\Mario\Mario_4semProject\Debug\Mario.exe

@@ -42,6 +42,8 @@ public:
 
 	void MovingDirectiongLeft() { velocity.x = -Velocity; }
 	void MovingDirectiongRight() { velocity.x = Velocity; }
+
+	Sprite getSprite() { return sprite; }
 };
 
 
