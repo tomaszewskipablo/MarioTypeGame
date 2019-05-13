@@ -7,7 +7,8 @@ Mario::Mario()
 		// error...
 	}
 	sprite.setTexture(texture);
-	sprite.setPosition(62, 128);
+	startingPosition = { 62,128 };
+	sprite.setPosition(startingPosition);
 	Width = 32;
 	Height = 64;
 	Velocity = 0.7;

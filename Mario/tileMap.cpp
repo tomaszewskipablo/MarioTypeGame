@@ -1,4 +1,9 @@
 ﻿#include "tileMap.h"
+					
+TileMap::TileMap()
+{
+	loadArrayFromArray("../assets/array.txt");
+}
 
 void TileMap::draw(sf::RenderTarget& target, sf::RenderStates states) const
 {
@@ -56,13 +61,13 @@ bool TileMap::load(const std::string& tileset, sf::Vector2u tileSize, unsigned i
 
 	return true;
 }
-int TileMap::collison(Entity & Entity)
+int TileMap::collison(Entity & Entity, GameInfo & gameInfo)
 {
 	float bottom, top, right, left;
 	for (unsigned int i = 0; i < height; ++i)
 		for (unsigned int j = 0; j < width; ++j)
 		{
-			if (tiles[i * width + j] == 1)
+			if (tiles[i * width + j] == 1 || tiles[i * width + j] == 2)
 			{
 				bottom = i * tileSize.y + tileSize.y;
 				top = i * tileSize.y;
@@ -72,31 +77,37 @@ int TileMap::collison(Entity & Entity)
 				if ((Entity.top() > bottom || Entity.bottom() < top) || (Entity.left() > right || Entity.right() < left)) // Entity doesn't intersect
 					;
 				else {
-					float tab[4] = { abs(Entity.top() - bottom) , abs(Entity.bottom() - top),  abs(Entity.right() - left),abs(Entity.left() - right) };
+					if (tiles[i * width + j] == 1) { // if brick
+						float tab[4] = { abs(Entity.top() - bottom) , abs(Entity.bottom() - top),  abs(Entity.right() - left),abs(Entity.left() - right) };
 
-					//	std::cout << "Bottom " << aBottom << "  " << "aTop " << aTop << " left " << aLeft << " right " << aRight << std::endl;
-						// znajdziemy minimum i w tą strone ruszymy maria
-						//std::cout << std::endl << min4(aTop, aBottom, aLeft, aRight);
-					int minumum = min4(tab);
-					switch (minumum)
+						int minumum = min4(tab);
+						switch (minumum)
+						{
+						case BOTTOM:
+							Entity.moveBottom();
+							return 0;
+						case TOP:
+							Entity.moveTop();
+							return 1; // Entity touched the ground
+						case LEFT:
+							Entity.moveLeft();
+							return 2;
+						case RIGHT:
+							Entity.moveRight();
+							return 3;
+						}
+					}
+					else if (tiles[i * width + j] == 2)
 					{
-					case BOTTOM:
-						Entity.moveBottom();
-						return 0;
-					case TOP:
-						Entity.moveTop();
-						return 1; // Entity touched the ground
-					case LEFT:
-						Entity.moveLeft();
-						return 2;
-					case RIGHT:
-						Entity.moveRight();
-						return 3;
+						tiles[i * width + j] = 0;	// change coin to heaven
+						std::cout << "COINS" << std::endl;
+						load("../assets/map1.png", sf::Vector2u(64, 64), 16, 8);
+						gameInfo.increseCoins();
+						
 					}
 				}
 			}
 		}
-
 }
 
 float TileMap::min4(float tab[])
@@ -110,6 +121,31 @@ float TileMap::min4(float tab[])
 
 	return min;
 }
+void TileMap::loadArrayFromArray(std::string fileName)
+{
+	std::fstream input;
+	std::string line;
+	int counter = 0;
+
+	input.open(fileName, std::ios::in);
+	if (input.good() == true)
+	{
+		while (!input.eof())
+		{
+			std::getline(input, line);
+
+			for (int i = 0; i < 16; i++) 
+			{
+				tiles[counter] = line[counter%16] - '0';
+				counter++;
+			}
+
+		}
+		input.close();
+	}
+	else
+		std::cout << "can not open file " << fileName << std::endl;
+}
 bool TileMap::onGround(Entity Entity)
 {
 	float top, left, right;
@@ -121,7 +157,7 @@ bool TileMap::onGround(Entity Entity)
 				left = j * tileSize.x;
 				right = j * tileSize.x + tileSize.x;
 
-				if (abs(Entity.bottom() - top) <2 && abs(left - Entity.left()) > tileSize.x-10)	// Entity touch the ground
+				if (abs(Entity.bottom() - top) < 2 && abs(left - Entity.left()) > tileSize.x - 10)	// Entity touch the ground
 					return true;
 			}
 		}

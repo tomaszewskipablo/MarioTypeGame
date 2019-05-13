@@ -48,3 +48,9 @@ void Entity::moveBottom()
 {
 	this->sprite.move({ 0,1 });
 }
+
+void Entity::reset()
+{
+	sprite.setPosition(startingPosition);
+	isAlive = true;
+}

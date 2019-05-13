@@ -9,7 +9,8 @@ Turtle::Turtle()
 		// error...
 	}
 	sprite.setTexture(texture);
-	sprite.setPosition(300, 320);
+	startingPosition = { 300,400 };
+	sprite.setPosition(startingPosition);
 
 	Height = 46;
 	Width = 32;

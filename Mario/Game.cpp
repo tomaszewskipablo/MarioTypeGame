@@ -20,7 +20,7 @@ Game::~Game()
 }
 
 
-void Game::intersection(Mario &mario, Entity &entity)
+void Game::intersection(Mario& mario, Entity& entity)
 {
 	if (mario.getSprite().getGlobalBounds().intersects(entity.getSprite().getGlobalBounds()))
 		if (abs(mario.bottom() - entity.top()) < 2 && abs(mario.left() - entity.left()) < 54)	// mario jumped on the turtle
@@ -28,11 +28,14 @@ void Game::intersection(Mario &mario, Entity &entity)
 			if (mario.getIsAlive())
 				entity.dead();
 		}
-			else
+		else
+		{
+			if (entity.getIsAlive())
 			{
-				if (entity.getIsAlive())
-					mario.dead();
+				mario.dead();
+				menu.setIsON(true);
 			}
+		}
 }
 void Game::updateSFMLEvents()
 {
@@ -64,7 +67,7 @@ void Game::update()
 
 	if (turtle.getIsAlive())
 	{
-		int movingSide = map.collison(turtle);
+		int movingSide = map.collison(turtle, gameInfo);
 
 		if (movingSide == LEFT)
 			turtle.MovingDirectiongLeft();
@@ -74,7 +77,7 @@ void Game::update()
 		turtle.update();
 	}
 	if (mario.getIsAlive()) {
-		if (map.collison(mario) == BOTTOM)
+		if (map.collison(mario, gameInfo) == BOTTOM)
 			mario.setCanJump(true);
 		mario.update();
 	}
@@ -99,6 +102,10 @@ void Game::Menu()
 {
 
 	menu.draw(*window);
+	if (menu.GetPressedItem() == 2)
+	{
+		menu.drawBestResults(*window);
+	}
 	this->window->display();
 	while (window->pollEvent(sfEvent))
 	{
@@ -123,8 +130,18 @@ void Game::Menu()
 				if (menu.GetPressedItem() == 0)
 					menu.setIsON(false);
 				if (menu.GetPressedItem() == 1)
-					std::cout << "BEST restult smlksadnlsan102" << std::endl;
+				{
+					mario.reset();
+					turtle.reset();
+					map.loadArrayFromArray("../assets/array.txt");
+					map.load("../assets/map1.png", sf::Vector2u(64, 64), 16, 8);
+					menu.setIsON(false);
+				}
 				if (menu.GetPressedItem() == 2)
+				{
+					std::cout << "BEST restult smlksadnlsan102" << std::endl;
+				}
+				if (menu.GetPressedItem() == 3)
 				{
 					window->close();
 					delete this->window;

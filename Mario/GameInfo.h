@@ -1,7 +1,7 @@
 #pragma once
 class GameInfo
 {
-	int coins;
+	int coins=0;
 	int time;
 	int score;
 public:
@@ -14,5 +14,6 @@ public:
 		time = 0;
 		score = 0;
 	}
+	void increseCoins() { coins++; }
 };
 
