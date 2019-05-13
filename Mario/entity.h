@@ -40,10 +40,15 @@ public:
 	void moveTop();
 	void moveBottom();
 
+	bool isAlive = true;
+
 	void MovingDirectiongLeft() { velocity.x = -Velocity; }
 	void MovingDirectiongRight() { velocity.x = Velocity; }
 
 	Sprite getSprite() { return sprite; }
+
+	void dead() { isAlive = false; }
+	bool getIsAlive() { return isAlive; }
 };
 
 

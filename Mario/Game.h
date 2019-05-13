@@ -36,6 +36,7 @@ public:
 	virtual ~Game();
 
 	// functions
+	void intersection(Mario &mario, Entity &entity);
 	void updateSFMLEvents();
 	void update();
 	void render();

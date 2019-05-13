@@ -14,7 +14,6 @@ private:
 	bool canJump = 0;
 	float jumpHight = 200;
 	float jumpCurrentPossition = 0;
-	bool isAlive = true;
 
 public:
 	Mario();
@@ -22,6 +21,4 @@ public:
 	void update();
 
 	void setCanJump(bool canJump) { this->canJump = canJump; }
-	void dead() { isAlive = false; }
-	bool getIsAlive() { return isAlive; }
 };

@@ -20,7 +20,20 @@ Game::~Game()
 }
 
 
-
+void Game::intersection(Mario &mario, Entity &entity)
+{
+	if (mario.getSprite().getGlobalBounds().intersects(entity.getSprite().getGlobalBounds()))
+		if (abs(mario.bottom() - entity.top()) < 2 && abs(mario.left() - entity.left()) < 54)	// mario jumped on the turtle
+		{
+			if (mario.getIsAlive())
+				entity.dead();
+		}
+			else
+			{
+				if (entity.getIsAlive())
+					mario.dead();
+			}
+}
 void Game::updateSFMLEvents()
 {
 	while (this->window->pollEvent(this->sfEvent))
@@ -47,27 +60,25 @@ void Game::update()
 {
 	this->updateSFMLEvents();
 
+	intersection(mario, turtle);
 
-
-	int movingSide = map.collison(turtle);
-
-	if (movingSide == LEFT)
-		turtle.MovingDirectiongLeft();
-	else if (movingSide == RIGHT)
-		turtle.MovingDirectiongRight();
-
-	turtle.update();
-	if (mario.getIsAlive())
+	if (turtle.getIsAlive())
 	{
-		mario.update();
+		int movingSide = map.collison(turtle);
 
+		if (movingSide == LEFT)
+			turtle.MovingDirectiongLeft();
+		else if (movingSide == RIGHT)
+			turtle.MovingDirectiongRight();
+
+		turtle.update();
+	}
+	if (mario.getIsAlive()) {
 		if (map.collison(mario) == BOTTOM)
 			mario.setCanJump(true);
-
-		if (mario.getSprite().getGlobalBounds().intersects(turtle.getSprite().getGlobalBounds()))
-			mario.dead();
-			//std::cout << " INtersect " << std::endl;
+		mario.update();
 	}
+
 }
 
 void Game::render()
@@ -75,9 +86,11 @@ void Game::render()
 	this->window->clear();
 	// render items
 	window->draw(map);
+
 	if (mario.getIsAlive())
 		window->draw(mario);
-	window->draw(turtle);
+	if (turtle.getIsAlive())
+		window->draw(turtle);
 
 
 	this->window->display();
