@@ -18,7 +18,7 @@ private:
 public:
 	Mario();
 
-	void update();
+	void update(int mapWidth);
 	void killingMove();
 
 	void setCanJump(bool canJump) { this->canJump = canJump; }

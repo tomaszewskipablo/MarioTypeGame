@@ -2,8 +2,9 @@
 					
 TileMap::TileMap()
 {
-	width = 21;
+	width = 30;
 	height = 8;
+	mapWidth = width * 64;
 	loadArrayFromArray("../assets/array.txt");
 }
 

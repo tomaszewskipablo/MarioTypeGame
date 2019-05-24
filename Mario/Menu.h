@@ -11,6 +11,7 @@ public:
 	Menu();
 	~Menu();
 
+
 	void draw(sf::RenderWindow& window);
 	void drawBestResults(sf::RenderWindow& window);
 	void MoveUp();

@@ -86,7 +86,7 @@ void Game::update()
 	if (mario.getIsAlive()) {
 		if (map.collison(mario, gameInfo) == BOTTOM)
 			mario.setCanJump(true);
-		mario.update();
+		mario.update(map.getMapWidth());
 	}
 
 }
@@ -142,6 +142,7 @@ void Game::Menu()
 				{
 					mario.reset();
 					turtle.reset();
+					view.reset(sf::FloatRect(0.f, 0.f, WINDOW_WIDTH, WINDOW_HIGHT));
 					map.loadArrayFromArray("../assets/array.txt");
 					map.load("../assets/map1.png", sf::Vector2u(64, 64));
 					menu.setIsON(false);

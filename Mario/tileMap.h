@@ -18,7 +18,7 @@
 
 class TileMap : public sf::Drawable, public sf::Transformable
 {
-	int tiles[168]; 
+	int tiles[240]; 
 
 
 	sf::VertexArray m_vertices;
@@ -26,6 +26,7 @@ class TileMap : public sf::Drawable, public sf::Transformable
 	sf::Vector2u tileSize;
 	unsigned int width;
 	unsigned int height;
+	unsigned int mapWidth;
 	void draw(sf::RenderTarget& target, sf::RenderStates states) const;
 public:
 	TileMap();
@@ -34,4 +35,5 @@ public:
 	float min4(float tab[]);
 	void loadArrayFromArray(std::string fileName);
 	bool onGround(Entity Entity);
+	int getMapWidth() { return mapWidth; }
 };

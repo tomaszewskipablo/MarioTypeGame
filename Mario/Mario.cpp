@@ -16,14 +16,14 @@ Mario::Mario()
 }
 
 
-void Mario::update()
+void Mario::update(int mapWidth)
 {
 	this->sprite.move(this->velocity);
 
 
 	if (Keyboard::isKeyPressed(Keyboard::Key::Left) && this->left() > 0)
 		velocity.x = -Velocity;
-	else if (Keyboard::isKeyPressed(Keyboard::Key::Right) && this->right() < WINDOW_WIDTH)
+	else if (Keyboard::isKeyPressed(Keyboard::Key::Right) && this->right() < mapWidth)
 		velocity.x = Velocity;
 	else
 		velocity.x = 0;
