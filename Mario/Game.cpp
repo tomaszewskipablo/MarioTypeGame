@@ -7,7 +7,9 @@ Game::Game()
 	// window initialization
 	this->window = new sf::RenderWindow(sf::VideoMode(WINDOW_WIDTH, WINDOW_HIGHT), "SUPER Entity");
 
-	map.load("../assets/map1.png", sf::Vector2u(64, 64), 16, 8);
+	map.load("../assets/map1.png", sf::Vector2u(64, 64));
+
+	view.reset(sf::FloatRect(0.f, 0.f, WINDOW_WIDTH, WINDOW_HIGHT));
 
 	gameInfo.reset();
 
@@ -100,7 +102,9 @@ void Game::render()
 	if (turtle.getIsAlive())
 		window->draw(turtle);
 
+	cameraMovement();
 
+	window->setView(view);
 	this->window->display();
 }
 void Game::Menu()
@@ -139,7 +143,7 @@ void Game::Menu()
 					mario.reset();
 					turtle.reset();
 					map.loadArrayFromArray("../assets/array.txt");
-					map.load("../assets/map1.png", sf::Vector2u(64, 64), 16, 8);
+					map.load("../assets/map1.png", sf::Vector2u(64, 64));
 					menu.setIsON(false);
 				}
 				if (menu.GetPressedItem() == 2)
@@ -170,4 +174,8 @@ void Game::run()
 			this->render();
 		}
 	}
+}
+void Game::cameraMovement() {
+	if(mario.getPosition().x > WINDOW_WIDTH/2)
+		view.setCenter({mario.getPosition().x, WINDOW_HIGHT/2});
 }

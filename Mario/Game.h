@@ -26,6 +26,7 @@ class Game
 	GameInfo gameInfo;
 	Menu menu;
 	Screenshot screenshot;
+	sf::View view;
 
 	sf::RenderWindow * window;
 	sf::Event sfEvent;
@@ -42,5 +43,6 @@ public:
 	void render();
 	void run();
 	void Menu();
+	void cameraMovement();
 };
 

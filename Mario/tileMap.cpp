@@ -2,6 +2,8 @@
 					
 TileMap::TileMap()
 {
+	width = 21;
+	height = 8;
 	loadArrayFromArray("../assets/array.txt");
 }
 
@@ -18,11 +20,9 @@ void TileMap::draw(sf::RenderTarget& target, sf::RenderStates states) const
 }
 
 
-bool TileMap::load(const std::string& tileset, sf::Vector2u tileSize, unsigned int width, unsigned int height)
+bool TileMap::load(const std::string& tileset, sf::Vector2u tileSize)
 {
 	this->tileSize = tileSize;
-	this->width = width;
-	this->height = height;
 
 	// load the tileset texture
 	if (!m_tileset.loadFromFile(tileset))	// load tileset to m_tileset texture
@@ -101,7 +101,7 @@ int TileMap::collison(Entity & Entity, GameInfo & gameInfo)
 					{
 						tiles[i * width + j] = 0;	// change coin to heaven
 						std::cout << "COINS" << std::endl;
-						load("../assets/map1.png", sf::Vector2u(64, 64), 16, 8);
+						load("../assets/map1.png", sf::Vector2u(64, 64));
 						gameInfo.increseCoins();
 						
 					}
@@ -121,8 +121,7 @@ float TileMap::min4(float tab[])
 
 	return min;
 }
-void TileMap::loadArrayFromArray(std::string fileName)
-{
+void TileMap::loadArrayFromArray(std::string fileName){
 	std::fstream input;
 	std::string line;
 	int counter = 0;
@@ -134,9 +133,9 @@ void TileMap::loadArrayFromArray(std::string fileName)
 		{
 			std::getline(input, line);
 
-			for (int i = 0; i < 16; i++) 
+			for (int i = 0; i < width; i++) 
 			{
-				tiles[counter] = line[counter%16] - '0';
+				tiles[counter] = line[counter% width] - '0';
 				counter++;
 			}
 
