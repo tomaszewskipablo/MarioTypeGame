@@ -12,13 +12,14 @@ class Mario : public Entity
 private:
 
 	bool canJump = 0;
-	float jumpHight = 200;
+	float jumpHight = 400;
 	float jumpCurrentPossition = 0;
 
 public:
 	Mario();
 
 	void update();
+	void killingMove();
 
 	void setCanJump(bool canJump) { this->canJump = canJump; }
 };

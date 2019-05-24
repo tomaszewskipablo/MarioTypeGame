@@ -22,20 +22,25 @@ Game::~Game()
 
 void Game::intersection(Mario& mario, Entity& entity)
 {
-	if (mario.getSprite().getGlobalBounds().intersects(entity.getSprite().getGlobalBounds()))
-		if (abs(mario.bottom() - entity.top()) < 2 && abs(mario.left() - entity.left()) < 54)	// mario jumped on the turtle
-		{
-			if (mario.getIsAlive())
-				entity.dead();
-		}
-		else
-		{
-			if (entity.getIsAlive())
+	if (entity.getIsAlive()) {
+		if (mario.getSprite().getGlobalBounds().intersects(entity.getSprite().getGlobalBounds()))
+			if (abs(mario.bottom() - entity.top()) < 10 && abs(mario.left() - entity.left()) < 54)	// mario jumped on the turtle
 			{
-				mario.dead();
-				menu.setIsON(true);
+				if (mario.getIsAlive())
+				{
+					mario.killingMove();
+					entity.dead();
+				}
 			}
-		}
+			else
+			{
+				if (entity.getIsAlive())
+				{
+					mario.dead();
+					menu.setIsON(true);
+				}
+			}
+	}
 }
 void Game::updateSFMLEvents()
 {

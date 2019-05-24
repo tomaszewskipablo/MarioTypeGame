@@ -36,9 +36,13 @@ void Mario::update()
 			canJump = false;
 		}
 		jumpCurrentPossition++;
-		velocity.y = -Velocity;
+		velocity.y = -Velocity * (1 - jumpCurrentPossition / jumpHight);
 	}
 	else
 		velocity.y = 0.3;
 	//
+}
+
+void Mario::killingMove() {
+	this->sprite.move({ 0,-40 });
 }
