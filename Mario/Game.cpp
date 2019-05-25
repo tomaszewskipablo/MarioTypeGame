@@ -107,13 +107,16 @@ void Game::render()
 	window->setView(view);
 	this->window->display();
 }
-void Game::Menu()
+void Game::Menu(int center)
 {
+	if (center < WINDOW_WIDTH / 2)
+		center = WINDOW_WIDTH / 2;
 
-	menu.draw(*window);
+	menu.followMario(center);
+	menu.draw(*window, center);
 	if (menu.GetPressedItem() == 2)
 	{
-		menu.drawBestResults(*window);
+		menu.drawBestResults(*window, center);
 	}
 	this->window->display();
 	while (window->pollEvent(sfEvent))
@@ -169,7 +172,7 @@ void Game::run()
 	while (this->window->isOpen())
 	{
 		if (menu.isON())
-			Menu();
+			Menu(mario.getPosition().x);
 		else {
 			this->update();
 			this->render();

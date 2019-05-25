@@ -42,7 +42,7 @@ public:
 	void update();
 	void render();
 	void run();
-	void Menu();
+	void Menu(int center);
 	void cameraMovement();
 };
 

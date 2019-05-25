@@ -1,12 +1,44 @@
-﻿  Menu.cpp
-P:\_study\pk4\project\Mario\Mario_4semProject\Mario\Menu.cpp(20): warning C4305: 'argument': truncation from 'double' to 'T'
+﻿  Game.cpp
+P:\_study\pk4\project\Mario\Mario_4semProject\Mario\Game.h(17): warning C4005: 'BOTTOM': macro redefinition
+  P:\_study\pk4\project\Mario\Mario_4semProject\Mario\tileMap.h(14): note: see previous definition of 'BOTTOM'
+P:\_study\pk4\project\Mario\Mario_4semProject\Mario\Game.cpp(175): warning C4244: 'argument': conversion from 'T' to 'int', possible loss of data
           with
           [
               T=float
           ]
-P:\_study\pk4\project\Mario\Mario_4semProject\Mario\Menu.cpp(30): warning C4305: 'argument': truncation from 'double' to 'T'
+  Menu.cpp
+P:\_study\pk4\project\Mario\Mario_4semProject\Mario\Menu.cpp(32): warning C4244: 'argument': conversion from 'int' to 'T', possible loss of data
           with
           [
               T=float
           ]
+P:\_study\pk4\project\Mario\Mario_4semProject\Mario\Menu.cpp(33): warning C4305: 'argument': truncation from 'double' to 'T'
+          with
+          [
+              T=float
+          ]
+P:\_study\pk4\project\Mario\Mario_4semProject\Mario\Menu.cpp(33): warning C4244: 'argument': conversion from 'int' to 'T', possible loss of data
+          with
+          [
+              T=float
+          ]
+P:\_study\pk4\project\Mario\Mario_4semProject\Mario\Menu.cpp(34): warning C4244: 'argument': conversion from 'int' to 'T', possible loss of data
+          with
+          [
+              T=float
+          ]
+P:\_study\pk4\project\Mario\Mario_4semProject\Mario\Menu.cpp(35): warning C4305: 'argument': truncation from 'double' to 'T'
+          with
+          [
+              T=float
+          ]
+P:\_study\pk4\project\Mario\Mario_4semProject\Mario\Menu.cpp(35): warning C4244: 'argument': conversion from 'int' to 'T', possible loss of data
+          with
+          [
+              T=float
+          ]
+  main.cpp
+P:\_study\pk4\project\Mario\Mario_4semProject\Mario\Game.h(17): warning C4005: 'BOTTOM': macro redefinition
+  P:\_study\pk4\project\Mario\Mario_4semProject\Mario\tileMap.h(14): note: see previous definition of 'BOTTOM'
+  Generating Code...
   Mario.vcxproj -> P:\_study\pk4\project\Mario\Mario_4semProject\Debug\Mario.exe

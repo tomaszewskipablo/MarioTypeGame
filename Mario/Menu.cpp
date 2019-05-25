@@ -7,29 +7,32 @@ Menu::Menu()
 	{
 		// handle error
 	}
-
-
 	menu[0].setFont(font);
 	menu[0].setFillColor(sf::Color::Red);
 	menu[0].setString("Play");
-	menu[0].setPosition(sf::Vector2f(WINDOW_WIDTH / 2 - 26, WINDOW_HIGHT/ (MAX_NUMBER_OF_ITEMS + 1) * 1.25 +45));
+	
 
 	menu[1].setFont(font);
 	menu[1].setFillColor(sf::Color::Black);
 	menu[1].setString("Restart");
-	menu[1].setPosition(sf::Vector2f(WINDOW_WIDTH / 2 - 45, WINDOW_HIGHT / (MAX_NUMBER_OF_ITEMS + 1) * 1.6 + 45));
+	
 
 	menu[2].setFont(font);
 	menu[2].setFillColor(sf::Color::Black);
 	menu[2].setString("Options");
-	menu[2].setPosition(sf::Vector2f(WINDOW_WIDTH / 2 - 45, WINDOW_HIGHT / (MAX_NUMBER_OF_ITEMS + 1) * 2 + 45));
+	
 
 	menu[3].setFont(font);
 	menu[3].setFillColor(sf::Color::Black);
 	menu[3].setString("Exit");
-	menu[3].setPosition(sf::Vector2f(WINDOW_WIDTH / 2 -20, WINDOW_HIGHT / (MAX_NUMBER_OF_ITEMS + 1) * 2.4 + 45));
-
+	
 	selectedItemIndex = 0;
+}
+void Menu::followMario(int center) {
+	menu[0].setPosition(sf::Vector2f(center - 26, WINDOW_HIGHT / (MAX_NUMBER_OF_ITEMS + 1) * 1.25 + 45));
+	menu[1].setPosition(sf::Vector2f(center - 45, WINDOW_HIGHT / (MAX_NUMBER_OF_ITEMS + 1) * 1.6 + 45));
+	menu[2].setPosition(sf::Vector2f(center - 45, WINDOW_HIGHT / (MAX_NUMBER_OF_ITEMS + 1) * 2 + 45));
+	menu[3].setPosition(sf::Vector2f(center - 20, WINDOW_HIGHT / (MAX_NUMBER_OF_ITEMS + 1) * 2.4 + 45));
 }
 
 
@@ -37,7 +40,7 @@ Menu::~Menu()
 {
 }
 
-void Menu::draw(sf::RenderWindow & window)
+void Menu::draw(sf::RenderWindow & window, int center)
 {
 	sf::Texture texture;
 	texture.loadFromFile("../assets/menuBack.png");
@@ -45,17 +48,17 @@ void Menu::draw(sf::RenderWindow & window)
 	sf::Sprite sprite;
 	sprite.setTexture(texture);
 	sprite.setOrigin({ 190,101 });
-	sprite.setPosition({ WINDOW_WIDTH / 2,WINDOW_HIGHT / 2 });
+	sprite.setPosition({ (float)center,WINDOW_HIGHT / 2 });
 	window.draw(sprite);
 
-	//display oprion to choose
+	//display option to choose
 	for (int i = 0; i < MAX_NUMBER_OF_ITEMS; i++)
 	{
 		window.draw(menu[i]);
 	}
 	
 }
-void Menu::drawBestResults(sf::RenderWindow& window)
+void Menu::drawBestResults(sf::RenderWindow& window, int center)
 {
 	sf::Texture texture;
 	texture.loadFromFile("../assets/bestResultsWindow.png");
@@ -63,7 +66,7 @@ void Menu::drawBestResults(sf::RenderWindow& window)
 	sf::Sprite sprite;
 	sprite.setTexture(texture);
 	sprite.setOrigin(747/2, 103/2);
-	sprite.setPosition({ WINDOW_WIDTH / 2,WINDOW_HIGHT /6});
+	sprite.setPosition({ (float)center,WINDOW_HIGHT /6});
 	window.draw(sprite);
 }
 
