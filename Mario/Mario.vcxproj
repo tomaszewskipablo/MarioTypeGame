@@ -134,6 +134,7 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
+    <ClInclude Include="Bonus.h" />
     <ClInclude Include="entity.h" />
     <ClInclude Include="Game.h" />
     <ClInclude Include="GameInfo.h" />
@@ -145,6 +146,7 @@
     <ClInclude Include="Turtle.h" />
   </ItemGroup>
   <ItemGroup>
+    <ClCompile Include="Bonus.cpp" />
     <ClCompile Include="entity.cpp" />
     <ClCompile Include="Game.cpp" />
     <ClCompile Include="GameInfo.cpp" />

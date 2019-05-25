@@ -29,6 +29,7 @@ class TileMap : public sf::Drawable, public sf::Transformable
 	unsigned int height;
 	unsigned int mapWidth;
 	void draw(sf::RenderTarget& target, sf::RenderStates states) const;
+	bool bonus;
 public:
 	TileMap();
 	bool load(const std::string& tileset, sf::Vector2u tileSize);
@@ -37,4 +38,6 @@ public:
 	void loadArrayFromArray(std::string fileName);
 	bool onGround(Entity Entity);
 	int getMapWidth() { return mapWidth; }
+	bool getBonus() { return bonus; }
+	void setBonus(bool bonus) { this->bonus = bonus; }
 };

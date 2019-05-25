@@ -4,7 +4,8 @@
 
 Turtle::Turtle(sf::Vector2f startingPosition)
 {
-	if (!texture.loadFromFile("../assets/turtle.png", sf::IntRect(0, 0, Height, Width)))
+	file = "turtle.png";
+	if (!texture.loadFromFile("../assets/"+file, sf::IntRect(0, 0, Height, Width)))
 	{
 		std::cout << "Texture did not load " << std::endl;
 	}
@@ -18,17 +19,11 @@ Turtle::Turtle(sf::Vector2f startingPosition)
 	Velocity = 0.2;
 	velocity = { Velocity ,Velocity };
 	sprite.setOrigin(Width / 2.f, Height / 2.f);
+
+	isFrendly = false;
 }
 
 
 Turtle::~Turtle()
 {
-}
-void Turtle::repair() {
-	if (!texture.loadFromFile("../assets/turtle.png", sf::IntRect(0, 0, Height, Width)))
-	{
-		std::cout << "Texture did not load " << std::endl;
-	}
-
-	sprite.setTexture(texture);
 }

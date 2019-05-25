@@ -55,7 +55,7 @@ void Entity::reset()
 	isAlive = true;
 }
 void Entity::repair() {
-	if (!texture.loadFromFile("../assets/turtle.png", sf::IntRect(0, 0, Height, Width)))
+	if (!texture.loadFromFile("../assets/"+file, sf::IntRect(0, 0, Height, Width)))
 	{
 		std::cout << "Texture did not load " << std::endl;
 	}

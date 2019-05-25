@@ -13,15 +13,8 @@ Game::Game()
 
 	gameInfo.reset();
 
-	// ------------------- ADD MOBS HERE ----------------------
-	Turtle turtle1({ 400,400 });
-	Turtle turtle2({ 1400,100 });
+	addMobs();
 
-	mobs.push_back(turtle1);
-	mobs.push_back(turtle2);
-
-	repairSFMLTextures();
-	// ---------------------------------------------------------
 }
 
 
@@ -33,22 +26,31 @@ Game::~Game()
 
 void Game::intersection(Mario& mario, Entity& entity)
 {
+	Bonus b;
 	if (entity.getIsAlive()) {
 		if (mario.getSprite().getGlobalBounds().intersects(entity.getSprite().getGlobalBounds()))
-			if (abs(mario.bottom() - entity.top()) < 10 && abs(mario.left() - entity.left()) < 54)	// mario jumped on the turtle
+			if (entity.getIsFrendly())
 			{
-				if (mario.getIsAlive())
-				{
-					mario.killingMove();
-					entity.dead();
-				}
+				entity.dead();
+				// bonus dla mario, wiekszy czy cos
 			}
 			else
 			{
-				if (entity.getIsAlive())
+				if (abs(mario.bottom() - entity.top()) < 10 && abs(mario.left() - entity.left()) < 54)	// mario jumped on the entity
 				{
-					mario.dead();
-					menu.setIsON(true);
+					if (mario.getIsAlive())
+					{
+						mario.killingMove();
+						entity.dead();
+					}
+				}
+				else
+				{
+					if (entity.getIsAlive())
+					{
+						mario.dead();
+						menu.setIsON(true);
+					}
 				}
 			}
 	}
@@ -79,20 +81,20 @@ void Game::update()
 {
 	this->updateSFMLEvents();
 
-	for (int i = 0; i < 2; i++)
+	for (int i = 0; i < mobs.size(); i++)
 	{
-		intersection(mario, mobs[i]);
+		intersection(mario, mobs.at(i));
 
-		if (mobs[i].getIsAlive())
+		if (mobs.at(i).getIsAlive())
 		{
-			int movingSide = map.collison(mobs[i], gameInfo);
+			int movingSide = map.collison(mobs.at(i), gameInfo);
 
 			if (movingSide == LEFT)
-				mobs[i].MovingDirectiongLeft();
+				mobs.at(i).MovingDirectiongLeft();
 			else if (movingSide == RIGHT)
-				mobs[i].MovingDirectiongRight();
+				mobs.at(i).MovingDirectiongRight();
 
-			mobs[i].update();
+			mobs.at(i).update();
 		}
 	}
 	if (mario.getIsAlive()) {
@@ -101,6 +103,7 @@ void Game::update()
 		mario.update(map.getMapWidth());
 	}
 
+	Bonuses();
 }
 
 void Game::render()
@@ -111,11 +114,8 @@ void Game::render()
 
 	if (mario.getIsAlive())
 		window->draw(mario);
-	for (int i = 0; i < 2; i++)
-	{
-		if (mobs[i].getIsAlive())
-			window->draw(mobs[i]);
-	}
+
+	drawMobs();
 
 	cameraMovement();
 
@@ -159,8 +159,7 @@ void Game::Menu(int center)
 				if (menu.GetPressedItem() == 1)
 				{
 					mario.reset();
-					for (int i = 0; i < 2; i++)
-						mobs[i].reset();
+					addMobs();
 
 					view.reset(sf::FloatRect(0.f, 0.f, WINDOW_WIDTH, WINDOW_HIGHT));
 					map.loadArrayFromArray("../assets/array.txt");
@@ -204,7 +203,40 @@ void Game::repairSFMLTextures()
 {
 	for (int i = 0; i < mobs.size(); i++)
 	{
-		mobs[0].repair();
-		mobs[1].repair();
+		mobs.at(i).repair();
 	}
+}
+void Game::drawMobs()
+{
+	for (int i = 0; i < mobs.size(); i++)
+	{
+		if (mobs[i].getIsAlive())
+			window->draw(mobs.at(i));
+	}
+}
+void Game::Bonuses()
+{
+	if (map.getBonus() == true)
+	{
+		Bonus bonus({ mario.getPosition().x - 100, mario.getPosition().y - 128 });
+		mobs.push_back(bonus);
+
+		repairSFMLTextures();
+		map.setBonus(false);
+	}
+}
+void Game::addMobs()
+{
+	mobs.clear();
+	// ------------------- ADD MOBS HERE ----------------------
+	Turtle turtle1({ 400,400 });
+	Turtle turtle2({ 1400,100 });
+
+
+	mobs.push_back(turtle1);
+	mobs.push_back(turtle2);
+
+
+	repairSFMLTextures();
+	// ---------------------------------------------------------
 }

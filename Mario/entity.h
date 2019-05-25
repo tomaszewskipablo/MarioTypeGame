@@ -22,10 +22,13 @@ protected:
 	void draw(RenderTarget& target, RenderStates state) const; // to use window.draw(Ball)
 
 	bool distroyMode = 0;
+	bool isFrendly=0;
 	
 
 	sf::VertexArray m_vertices;
 	sf::Texture m_texture;
+
+	std::string file;
 public:
 	Entity() {};
 
@@ -57,6 +60,7 @@ public:
 	bool getIsAlive() { return isAlive; }
 	bool getDestroyMode() { return distroyMode; }
 	void reset();
+	bool getIsFrendly() { return isFrendly; }
 
 	void repair();
 };

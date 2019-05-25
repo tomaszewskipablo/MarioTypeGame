@@ -1,14 +1,23 @@
 ﻿  Game.cpp
-P:\_study\pk4\project\Mario\Mario_4semProject\Mario\Game.h(17): warning C4005: 'BOTTOM': macro redefinition
+P:\_study\pk4\project\Mario\Mario_4semProject\Mario\Game.h(19): warning C4005: 'BOTTOM': macro redefinition
   P:\_study\pk4\project\Mario\Mario_4semProject\Mario\tileMap.h(15): note: see previous definition of 'BOTTOM'
-P:\_study\pk4\project\Mario\Mario_4semProject\Mario\Game.cpp(192): warning C4244: 'argument': conversion from 'T' to 'int', possible loss of data
+P:\_study\pk4\project\Mario\Mario_4semProject\Mario\Game.cpp(84): warning C4018: '<': signed/unsigned mismatch
+P:\_study\pk4\project\Mario\Mario_4semProject\Mario\Game.cpp(191): warning C4244: 'argument': conversion from 'T' to 'int', possible loss of data
           with
           [
               T=float
           ]
-P:\_study\pk4\project\Mario\Mario_4semProject\Mario\Game.cpp(205): warning C4018: '<': signed/unsigned mismatch
+P:\_study\pk4\project\Mario\Mario_4semProject\Mario\Game.cpp(204): warning C4018: '<': signed/unsigned mismatch
+P:\_study\pk4\project\Mario\Mario_4semProject\Mario\Game.cpp(211): warning C4018: '<': signed/unsigned mismatch
   main.cpp
-P:\_study\pk4\project\Mario\Mario_4semProject\Mario\Game.h(17): warning C4005: 'BOTTOM': macro redefinition
+P:\_study\pk4\project\Mario\Mario_4semProject\Mario\Game.h(19): warning C4005: 'BOTTOM': macro redefinition
   P:\_study\pk4\project\Mario\Mario_4semProject\Mario\tileMap.h(15): note: see previous definition of 'BOTTOM'
+  Turtle.cpp
+P:\_study\pk4\project\Mario\Mario_4semProject\Mario\Turtle.cpp(8): warning C4244: 'argument': conversion from 'float' to 'T', possible loss of data
+          with
+          [
+              T=int
+          ]
+P:\_study\pk4\project\Mario\Mario_4semProject\Mario\Turtle.cpp(19): warning C4305: '=': truncation from 'double' to 'float'
   Generating Code...
   Mario.vcxproj -> P:\_study\pk4\project\Mario\Mario_4semProject\Debug\Mario.exe

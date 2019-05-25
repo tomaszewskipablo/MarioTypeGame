@@ -19,7 +19,6 @@ public:
 	Turtle(sf::Vector2f startingPosition);
 	~Turtle();
 
-	void repair();
 
 //	void update();
 };

@@ -7,8 +7,10 @@
 #include"GameInfo.h"
 #include "Menu.h"
 #include"Screenshot.h"
+#include"Bonus.h"
 
 
+#include<typeinfo>
 #include<SFML/Graphics.hpp>
 #include<SFML/Window.hpp>
 
@@ -22,6 +24,7 @@ class Game
 {
 	Mario mario;
 	std::vector<Entity> mobs;
+	//Bonus bonus;
 	TileMap map;
 	GameInfo gameInfo;
 	Menu menu;
@@ -45,5 +48,8 @@ public:
 	void Menu(int center);
 	void cameraMovement();
 	void repairSFMLTextures();
+	void drawMobs();
+	void Bonuses();
+	void addMobs();
 };
 

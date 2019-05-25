@@ -85,6 +85,8 @@ int TileMap::collison(Entity & Entity, GameInfo & gameInfo)
 							if (tiles[i * width + j] == 3) {	// BONUS
 								tiles[i * width + j] = 0;
 								load("../assets/map1.png", sf::Vector2u(64, 64));
+								bonus = true;
+
 							}
 								
 							if (Entity.getDestroyMode())
