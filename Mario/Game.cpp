@@ -84,7 +84,7 @@ void Game::update()
 		turtle.update();
 	}
 	if (mario.getIsAlive()) {
-		if (map.collison(mario, gameInfo) == BOTTOM)
+		if (map.collison(mario, gameInfo) == BOTTOM)	// if mario on the ground he can jump
 			mario.setCanJump(true);
 		mario.update(map.getMapWidth());
 	}

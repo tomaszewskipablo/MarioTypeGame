@@ -19,6 +19,8 @@ protected:
 	Vector2f velocity{ Velocity, Velocity };
 
 	void draw(RenderTarget& target, RenderStates state) const override; // to use window.draw(Ball)
+
+	bool distroyMode = 0;
 public:
 	Entity() {};
 
@@ -48,6 +50,7 @@ public:
 
 	void dead() { isAlive = false; }
 	bool getIsAlive() { return isAlive; }
+	bool getDestroyMode() { return distroyMode; }
 	void reset();
 };
 

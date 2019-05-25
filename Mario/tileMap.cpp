@@ -1,10 +1,7 @@
 ﻿#include "tileMap.h"
 					
 TileMap::TileMap()
-{
-	width = 30;
-	height = 8;
-	mapWidth = width * 64;
+{	
 	loadArrayFromArray("../assets/array.txt");
 }
 
@@ -78,13 +75,18 @@ int TileMap::collison(Entity & Entity, GameInfo & gameInfo)
 				if ((Entity.top() > bottom || Entity.bottom() < top) || (Entity.left() > right || Entity.right() < left)) // Entity doesn't intersect
 					;
 				else {
-					if (tiles[i * width + j] == 1) { // if brick
+					if (tiles[i * width + j] == 1) { // if BRICK
 						float tab[4] = { abs(Entity.top() - bottom) , abs(Entity.bottom() - top),  abs(Entity.right() - left),abs(Entity.left() - right) };
 
 						int minumum = min4(tab);
 						switch (minumum)
 						{
 						case BOTTOM:
+							if (Entity.getDestroyMode())
+							{
+								tiles[i * width + j] = 0;
+								load("../assets/map1.png", sf::Vector2u(64, 64));
+							}
 							Entity.moveBottom();
 							return 0;
 						case TOP:
@@ -98,14 +100,14 @@ int TileMap::collison(Entity & Entity, GameInfo & gameInfo)
 							return 3;
 						}
 					}
-					else if (tiles[i * width + j] == 2)
+					else if (tiles[i * width + j] == 2)		// if COIN
 					{
 						tiles[i * width + j] = 0;	// change coin to heaven
 						std::cout << "COINS" << std::endl;
 						load("../assets/map1.png", sf::Vector2u(64, 64));
 						gameInfo.increseCoins();
-						
 					}
+
 				}
 			}
 		}
@@ -126,25 +128,28 @@ void TileMap::loadArrayFromArray(std::string fileName){
 	std::fstream input;
 	std::string line;
 	int counter = 0;
+	int numberOfLines = 0;
 
 	input.open(fileName, std::ios::in);
 	if (input.good() == true)
 	{
 		while (!input.eof())
 		{
+			numberOfLines++;
 			std::getline(input, line);
+			width = line.length();
 
 			for (int i = 0; i < width; i++) 
-			{
-				tiles[counter] = line[counter% width] - '0';
-				counter++;
-			}
+				tiles.push_back(line[i] - '0');
 
 		}
 		input.close();
 	}
 	else
 		std::cout << "can not open file " << fileName << std::endl;
+
+	mapWidth = width * 64;
+	height = numberOfLines;
 }
 bool TileMap::onGround(Entity Entity)
 {

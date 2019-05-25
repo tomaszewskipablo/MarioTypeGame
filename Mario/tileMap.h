@@ -9,6 +9,7 @@
 #include<fstream>
 #include<iostream>
 #include <stdio.h>
+#include<vector>
 
 
 #define BOTTOM 0
@@ -18,7 +19,7 @@
 
 class TileMap : public sf::Drawable, public sf::Transformable
 {
-	int tiles[240]; 
+	std::vector<int> tiles; 
 
 
 	sf::VertexArray m_vertices;
