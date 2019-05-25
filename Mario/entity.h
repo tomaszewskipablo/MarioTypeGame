@@ -1,6 +1,7 @@
 #pragma once
 #include<SFML/Graphics.hpp>
 #include<SFML/Window.hpp>
+#include<iostream>
 
 #define WINDOW_WIDTH 1024
 #define WINDOW_HIGHT 512
@@ -18,9 +19,13 @@ protected:
 	Vector2f startingPosition;
 	Vector2f velocity{ Velocity, Velocity };
 
-	void draw(RenderTarget& target, RenderStates state) const override; // to use window.draw(Ball)
+	void draw(RenderTarget& target, RenderStates state) const; // to use window.draw(Ball)
 
 	bool distroyMode = 0;
+	
+
+	sf::VertexArray m_vertices;
+	sf::Texture m_texture;
 public:
 	Entity() {};
 
@@ -52,6 +57,8 @@ public:
 	bool getIsAlive() { return isAlive; }
 	bool getDestroyMode() { return distroyMode; }
 	void reset();
+
+	void repair();
 };
 
 

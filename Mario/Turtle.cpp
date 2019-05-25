@@ -2,14 +2,15 @@
 
 
 
-Turtle::Turtle()
+Turtle::Turtle(sf::Vector2f startingPosition)
 {
 	if (!texture.loadFromFile("../assets/turtle.png", sf::IntRect(0, 0, Height, Width)))
 	{
-		// error...
+		std::cout << "Texture did not load " << std::endl;
 	}
+	
 	sprite.setTexture(texture);
-	startingPosition = { 300,400 };
+	this->startingPosition = startingPosition;
 	sprite.setPosition(startingPosition);
 
 	Height = 46;
@@ -22,4 +23,12 @@ Turtle::Turtle()
 
 Turtle::~Turtle()
 {
+}
+void Turtle::repair() {
+	if (!texture.loadFromFile("../assets/turtle.png", sf::IntRect(0, 0, Height, Width)))
+	{
+		std::cout << "Texture did not load " << std::endl;
+	}
+
+	sprite.setTexture(texture);
 }

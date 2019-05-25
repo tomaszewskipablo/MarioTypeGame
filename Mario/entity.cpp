@@ -54,3 +54,11 @@ void Entity::reset()
 	sprite.setPosition(startingPosition);
 	isAlive = true;
 }
+void Entity::repair() {
+	if (!texture.loadFromFile("../assets/turtle.png", sf::IntRect(0, 0, Height, Width)))
+	{
+		std::cout << "Texture did not load " << std::endl;
+	}
+
+	sprite.setTexture(texture);
+}

@@ -13,6 +13,15 @@ Game::Game()
 
 	gameInfo.reset();
 
+	// ------------------- ADD MOBS HERE ----------------------
+	Turtle turtle1({ 400,400 });
+	Turtle turtle2({ 1400,100 });
+
+	mobs.push_back(turtle1);
+	mobs.push_back(turtle2);
+
+	repairSFMLTextures();
+	// ---------------------------------------------------------
 }
 
 
@@ -70,18 +79,21 @@ void Game::update()
 {
 	this->updateSFMLEvents();
 
-	intersection(mario, turtle);
-
-	if (turtle.getIsAlive())
+	for (int i = 0; i < 2; i++)
 	{
-		int movingSide = map.collison(turtle, gameInfo);
+		intersection(mario, mobs[i]);
 
-		if (movingSide == LEFT)
-			turtle.MovingDirectiongLeft();
-		else if (movingSide == RIGHT)
-			turtle.MovingDirectiongRight();
+		if (mobs[i].getIsAlive())
+		{
+			int movingSide = map.collison(mobs[i], gameInfo);
 
-		turtle.update();
+			if (movingSide == LEFT)
+				mobs[i].MovingDirectiongLeft();
+			else if (movingSide == RIGHT)
+				mobs[i].MovingDirectiongRight();
+
+			mobs[i].update();
+		}
 	}
 	if (mario.getIsAlive()) {
 		if (map.collison(mario, gameInfo) == BOTTOM)	// if mario on the ground he can jump
@@ -99,8 +111,11 @@ void Game::render()
 
 	if (mario.getIsAlive())
 		window->draw(mario);
-	if (turtle.getIsAlive())
-		window->draw(turtle);
+	for (int i = 0; i < 2; i++)
+	{
+		if (mobs[i].getIsAlive())
+			window->draw(mobs[i]);
+	}
 
 	cameraMovement();
 
@@ -144,7 +159,9 @@ void Game::Menu(int center)
 				if (menu.GetPressedItem() == 1)
 				{
 					mario.reset();
-					turtle.reset();
+					for (int i = 0; i < 2; i++)
+						mobs[i].reset();
+
 					view.reset(sf::FloatRect(0.f, 0.f, WINDOW_WIDTH, WINDOW_HIGHT));
 					map.loadArrayFromArray("../assets/array.txt");
 					map.load("../assets/map1.png", sf::Vector2u(64, 64));
@@ -180,6 +197,14 @@ void Game::run()
 	}
 }
 void Game::cameraMovement() {
-	if(mario.getPosition().x > WINDOW_WIDTH/2)
-		view.setCenter({mario.getPosition().x, WINDOW_HIGHT/2});
+	if (mario.getPosition().x > WINDOW_WIDTH / 2)
+		view.setCenter({ mario.getPosition().x, WINDOW_HIGHT / 2 });
+}
+void Game::repairSFMLTextures()
+{
+	for (int i = 0; i < mobs.size(); i++)
+	{
+		mobs[0].repair();
+		mobs[1].repair();
+	}
 }

@@ -1,69 +1,14 @@
-﻿  tileMap.cpp
-P:\_study\pk4\project\Mario\Mario_4semProject\Mario\tileMap.cpp(48): warning C4244: 'argument': conversion from 'unsigned int' to 'T', possible loss of data
+﻿  Game.cpp
+P:\_study\pk4\project\Mario\Mario_4semProject\Mario\Game.h(17): warning C4005: 'BOTTOM': macro redefinition
+  P:\_study\pk4\project\Mario\Mario_4semProject\Mario\tileMap.h(15): note: see previous definition of 'BOTTOM'
+P:\_study\pk4\project\Mario\Mario_4semProject\Mario\Game.cpp(192): warning C4244: 'argument': conversion from 'T' to 'int', possible loss of data
           with
           [
               T=float
           ]
-P:\_study\pk4\project\Mario\Mario_4semProject\Mario\tileMap.cpp(49): warning C4244: 'argument': conversion from 'unsigned int' to 'T', possible loss of data
-          with
-          [
-              T=float
-          ]
-P:\_study\pk4\project\Mario\Mario_4semProject\Mario\tileMap.cpp(50): warning C4244: 'argument': conversion from 'unsigned int' to 'T', possible loss of data
-          with
-          [
-              T=float
-          ]
-P:\_study\pk4\project\Mario\Mario_4semProject\Mario\tileMap.cpp(51): warning C4244: 'argument': conversion from 'unsigned int' to 'T', possible loss of data
-          with
-          [
-              T=float
-          ]
-P:\_study\pk4\project\Mario\Mario_4semProject\Mario\tileMap.cpp(54): warning C4244: 'argument': conversion from 'T' to 'T', possible loss of data
-          with
-          [
-              T=unsigned int
-          ]
-          and
-          [
-              T=float
-          ]
-P:\_study\pk4\project\Mario\Mario_4semProject\Mario\tileMap.cpp(55): warning C4244: 'argument': conversion from 'T' to 'T', possible loss of data
-          with
-          [
-              T=unsigned int
-          ]
-          and
-          [
-              T=float
-          ]
-P:\_study\pk4\project\Mario\Mario_4semProject\Mario\tileMap.cpp(56): warning C4244: 'argument': conversion from 'T' to 'T', possible loss of data
-          with
-          [
-              T=unsigned int
-          ]
-          and
-          [
-              T=float
-          ]
-P:\_study\pk4\project\Mario\Mario_4semProject\Mario\tileMap.cpp(57): warning C4244: 'argument': conversion from 'T' to 'T', possible loss of data
-          with
-          [
-              T=unsigned int
-          ]
-          and
-          [
-              T=float
-          ]
-P:\_study\pk4\project\Mario\Mario_4semProject\Mario\tileMap.cpp(70): warning C4244: '=': conversion from 'unsigned int' to 'float', possible loss of data
-P:\_study\pk4\project\Mario\Mario_4semProject\Mario\tileMap.cpp(71): warning C4244: '=': conversion from 'unsigned int' to 'float', possible loss of data
-P:\_study\pk4\project\Mario\Mario_4semProject\Mario\tileMap.cpp(72): warning C4244: '=': conversion from 'unsigned int' to 'float', possible loss of data
-P:\_study\pk4\project\Mario\Mario_4semProject\Mario\tileMap.cpp(73): warning C4244: '=': conversion from 'unsigned int' to 'float', possible loss of data
-P:\_study\pk4\project\Mario\Mario_4semProject\Mario\tileMap.cpp(81): warning C4244: 'initializing': conversion from 'float' to 'int', possible loss of data
-P:\_study\pk4\project\Mario\Mario_4semProject\Mario\tileMap.cpp(129): warning C4244: 'return': conversion from 'int' to 'float', possible loss of data
-P:\_study\pk4\project\Mario\Mario_4semProject\Mario\tileMap.cpp(148): warning C4018: '<': signed/unsigned mismatch
-P:\_study\pk4\project\Mario\Mario_4semProject\Mario\tileMap.cpp(167): warning C4244: '=': conversion from 'unsigned int' to 'float', possible loss of data
-P:\_study\pk4\project\Mario\Mario_4semProject\Mario\tileMap.cpp(168): warning C4244: '=': conversion from 'unsigned int' to 'float', possible loss of data
-P:\_study\pk4\project\Mario\Mario_4semProject\Mario\tileMap.cpp(169): warning C4244: '=': conversion from 'unsigned int' to 'float', possible loss of data
-P:\_study\pk4\project\Mario\Mario_4semProject\Mario\tileMap.cpp(118): warning C4715: 'TileMap::collison': not all control paths return a value
+P:\_study\pk4\project\Mario\Mario_4semProject\Mario\Game.cpp(205): warning C4018: '<': signed/unsigned mismatch
+  main.cpp
+P:\_study\pk4\project\Mario\Mario_4semProject\Mario\Game.h(17): warning C4005: 'BOTTOM': macro redefinition
+  P:\_study\pk4\project\Mario\Mario_4semProject\Mario\tileMap.h(15): note: see previous definition of 'BOTTOM'
+  Generating Code...
   Mario.vcxproj -> P:\_study\pk4\project\Mario\Mario_4semProject\Debug\Mario.exe

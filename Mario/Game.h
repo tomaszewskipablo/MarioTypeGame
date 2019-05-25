@@ -21,7 +21,7 @@
 class Game
 {
 	Mario mario;
-	Turtle turtle;
+	std::vector<Entity> mobs;
 	TileMap map;
 	GameInfo gameInfo;
 	Menu menu;
@@ -44,5 +44,6 @@ public:
 	void run();
 	void Menu(int center);
 	void cameraMovement();
+	void repairSFMLTextures();
 };
 

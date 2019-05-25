@@ -3,6 +3,7 @@
 #pragma once
 #include<SFML/Graphics.hpp>
 #include<SFML/Window.hpp>
+#include<iostream>
 #include"entity.h"
 
 #define WINDOW_WIDTH 1024
@@ -14,8 +15,11 @@ class Turtle : public Entity
 private:
 
 public:
-	Turtle();
+	Turtle() {};
+	Turtle(sf::Vector2f startingPosition);
 	~Turtle();
+
+	void repair();
 
 //	void update();
 };
