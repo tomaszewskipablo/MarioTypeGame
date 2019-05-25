@@ -32,7 +32,7 @@ void Game::intersection(Mario& mario, Entity& entity)
 			if (entity.getIsFrendly())
 			{
 				entity.dead();
-				// bonus dla mario, wiekszy czy cos
+				mario.setBigMario(true);
 			}
 			else
 			{
@@ -48,8 +48,15 @@ void Game::intersection(Mario& mario, Entity& entity)
 				{
 					if (entity.getIsAlive())
 					{
-						mario.dead();
 						menu.setIsON(true);
+						mario.killingMove();
+						mario.killingMove();
+						mario.dead();
+						if (mario.getIsAlive()) {
+							menu.setIsON(false);
+							view.setCenter(WINDOW_WIDTH/2,WINDOW_HIGHT/2);
+						}
+						
 					}
 				}
 			}
@@ -159,6 +166,7 @@ void Game::Menu(int center)
 				if (menu.GetPressedItem() == 1)
 				{
 					mario.reset();
+					mario.setBigMario(false);
 					addMobs();
 
 					view.reset(sf::FloatRect(0.f, 0.f, WINDOW_WIDTH, WINDOW_HIGHT));

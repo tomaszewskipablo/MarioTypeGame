@@ -2,7 +2,8 @@
 
 Mario::Mario()
 {
-	if (!texture.loadFromFile("../assets/mario.png", sf::IntRect(0, 0, 64, 64)))
+	file = "mario.png";
+	if (!texture.loadFromFile("../assets/"+ file, sf::IntRect(0, 0, 64, 64)))
 	{
 		// error...
 	}
