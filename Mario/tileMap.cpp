@@ -65,7 +65,7 @@ int TileMap::collison(Entity & Entity, GameInfo & gameInfo)
 	for (unsigned int i = 0; i < height; ++i)
 		for (unsigned int j = 0; j < width; ++j)
 		{
-			if (tiles[i * width + j] == 1 || tiles[i * width + j] == 2)
+			if (tiles[i * width + j] == 1 || tiles[i * width + j] == 2 || tiles[i * width + j] == 3)
 			{
 				bottom = i * tileSize.y + tileSize.y;
 				top = i * tileSize.y;
@@ -75,13 +75,18 @@ int TileMap::collison(Entity & Entity, GameInfo & gameInfo)
 				if ((Entity.top() > bottom || Entity.bottom() < top) || (Entity.left() > right || Entity.right() < left)) // Entity doesn't intersect
 					;
 				else {
-					if (tiles[i * width + j] == 1) { // if BRICK
+					if (tiles[i * width + j] == 1|| tiles[i * width + j] == 3) { // if BRICK OR BONUS
 						float tab[4] = { abs(Entity.top() - bottom) , abs(Entity.bottom() - top),  abs(Entity.right() - left),abs(Entity.left() - right) };
 
 						int minumum = min4(tab);
 						switch (minumum)
 						{
 						case BOTTOM:
+							if (tiles[i * width + j] == 3) {	// BONUS
+								tiles[i * width + j] = 0;
+								load("../assets/map1.png", sf::Vector2u(64, 64));
+							}
+								
 							if (Entity.getDestroyMode())
 							{
 								tiles[i * width + j] = 0;
@@ -100,14 +105,13 @@ int TileMap::collison(Entity & Entity, GameInfo & gameInfo)
 							return 3;
 						}
 					}
-					else if (tiles[i * width + j] == 2)		// if COIN
+					else if (tiles[i * width + j] == COIN)		// if COIN
 					{
 						tiles[i * width + j] = 0;	// change coin to heaven
 						std::cout << "COINS" << std::endl;
 						load("../assets/map1.png", sf::Vector2u(64, 64));
 						gameInfo.increseCoins();
 					}
-
 				}
 			}
 		}
@@ -125,6 +129,8 @@ float TileMap::min4(float tab[])
 	return min;
 }
 void TileMap::loadArrayFromArray(std::string fileName){
+	tiles.clear();		
+
 	std::fstream input;
 	std::string line;
 	int counter = 0;
