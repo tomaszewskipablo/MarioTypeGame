@@ -40,7 +40,10 @@ void Mario::update(int mapWidth)
 		velocity.y = -Velocity * (1 - jumpCurrentPossition / jumpHight);
 	}
 	else
+	{
 		velocity.y = 0.3;
+		canJump = false;
+	}
 	//
 	if (this->bottom() > WINDOW_HIGHT)
 	{

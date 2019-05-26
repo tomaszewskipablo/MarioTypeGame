@@ -33,6 +33,7 @@ void Game::intersection(Mario& mario, Entity& entity)
 			{
 				entity.dead();
 				mario.setBigMario(true);
+				gameInfo.increaseScoreBonus();
 			}
 			else
 			{
@@ -42,6 +43,7 @@ void Game::intersection(Mario& mario, Entity& entity)
 					{
 						mario.killingMove();
 						entity.dead();
+						gameInfo.increaseScoreBonus();
 					}
 				}
 				else
@@ -122,7 +124,12 @@ void Game::render()
 {
 	this->window->clear();
 	// render items
+
 	window->draw(map);
+
+
+	this->gameInfo.followMario(view.getCenter().x);
+	this->gameInfo.draw(*window, view.getCenter().x);
 
 	if (mario.getIsAlive())
 		window->draw(mario);
@@ -175,6 +182,7 @@ void Game::Menu(int center)
 					addMobs();
 
 					view.reset(sf::FloatRect(0.f, 0.f, WINDOW_WIDTH, WINDOW_HIGHT));
+					gameInfo.reset();
 					map.loadArrayFromArray("../assets/array.txt");
 					map.load("../assets/map1.png", sf::Vector2u(64, 64));
 					menu.setIsON(false);
@@ -200,12 +208,15 @@ void Game::run()
 
 	while (this->window->isOpen())
 	{
+		
 		if (menu.isON())
 			Menu(view.getCenter().x);
 		else {
 			this->update();
 			this->render();
 		}
+
+		
 	}
 }
 void Game::cameraMovement() {

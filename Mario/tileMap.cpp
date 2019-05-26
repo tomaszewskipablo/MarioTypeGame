@@ -86,7 +86,6 @@ int TileMap::collison(Entity & Entity, GameInfo & gameInfo)
 								tiles[i * width + j] = 0;
 								load("../assets/map1.png", sf::Vector2u(64, 64));
 								bonus = true;
-
 							}
 								
 							if (Entity.getDestroyMode())
@@ -94,6 +93,7 @@ int TileMap::collison(Entity & Entity, GameInfo & gameInfo)
 								tiles[i * width + j] = 0;
 								load("../assets/map1.png", sf::Vector2u(64, 64));
 							}
+
 							Entity.moveBottom();
 							return 0;
 						case TOP:
@@ -112,7 +112,7 @@ int TileMap::collison(Entity & Entity, GameInfo & gameInfo)
 						tiles[i * width + j] = 0;	// change coin to heaven
 						std::cout << "COINS" << std::endl;
 						load("../assets/map1.png", sf::Vector2u(64, 64));
-						gameInfo.increseCoins();
+						gameInfo.increaseCoins();
 					}
 				}
 			}
