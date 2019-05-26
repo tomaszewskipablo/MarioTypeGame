@@ -16,7 +16,7 @@ Turtle::Turtle(sf::Vector2f startingPosition)
 
 	Height = 46;
 	Width = 32;
-	Velocity = 0.2;
+	Velocity = 0.4;
 	velocity = { Velocity ,Velocity };
 	sprite.setOrigin(Width / 2.f, Height / 2.f);
 

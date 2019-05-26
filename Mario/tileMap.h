@@ -1,5 +1,7 @@
 #pragma once
 #define COIN 2
+#define PLANT 5
+#define PLANT2 6
 
 #include<SFML/Graphics.hpp>
 #include<SFML/Window.hpp>

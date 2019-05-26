@@ -65,7 +65,7 @@ int TileMap::collison(Entity & Entity, GameInfo & gameInfo)
 	for (unsigned int i = 0; i < height; ++i)
 		for (unsigned int j = 0; j < width; ++j)
 		{
-			if (tiles[i * width + j] == 1 || tiles[i * width + j] == 2 || tiles[i * width + j] == 3)
+			if (tiles[i * width + j] == 1 || tiles[i * width + j] == 2 || tiles[i * width + j] == 3 || tiles[i * width + j] == 5 || tiles[i * width + j] == 6)
 			{
 				bottom = i * tileSize.y + tileSize.y;
 				top = i * tileSize.y;
@@ -84,14 +84,14 @@ int TileMap::collison(Entity & Entity, GameInfo & gameInfo)
 						case BOTTOM:
 							if (tiles[i * width + j] == 3) {	// BONUS
 								tiles[i * width + j] = 0;
-								load("../assets/map1.png", sf::Vector2u(64, 64));
+								load("../assets/map.png", sf::Vector2u(64, 64));
 								bonus = true;
 							}
 								
 							if (Entity.getDestroyMode())
 							{
 								tiles[i * width + j] = 0;
-								load("../assets/map1.png", sf::Vector2u(64, 64));
+								load("../assets/map.png", sf::Vector2u(64, 64));
 							}
 
 							Entity.moveBottom();
@@ -111,8 +111,13 @@ int TileMap::collison(Entity & Entity, GameInfo & gameInfo)
 					{
 						tiles[i * width + j] = 0;	// change coin to heaven
 						std::cout << "COINS" << std::endl;
-						load("../assets/map1.png", sf::Vector2u(64, 64));
+						load("../assets/map.png", sf::Vector2u(64, 64));
 						gameInfo.increaseCoins();
+					}
+					if (tiles[i * width + j] == PLANT || tiles[i * width + j] == PLANT2)		// if PLANT
+					{
+						std::cout << "COINS" << std::endl;
+						Entity.dead();
 					}
 				}
 			}

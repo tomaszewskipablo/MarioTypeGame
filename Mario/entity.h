@@ -23,6 +23,7 @@ protected:
 
 	bool distroyMode = 0;
 	bool isFrendly=0;
+	bool killable = true;
 	
 
 	sf::VertexArray m_vertices;
@@ -63,6 +64,7 @@ public:
 	bool getIsFrendly() { return isFrendly; }
 
 	void repair();
+	bool isKillable() { return killable; }
 };
 
 

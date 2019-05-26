@@ -7,7 +7,7 @@ Game::Game()
 	// window initialization
 	this->window = new sf::RenderWindow(sf::VideoMode(WINDOW_WIDTH, WINDOW_HIGHT), "SUPER Entity");
 
-	map.load("../assets/map1.png", sf::Vector2u(64, 64));
+	map.load("../assets/map.png", sf::Vector2u(64, 64));
 
 	view.reset(sf::FloatRect(0.f, 0.f, WINDOW_WIDTH, WINDOW_HIGHT));
 
@@ -37,7 +37,7 @@ void Game::intersection(Mario& mario, Entity& entity)
 			}
 			else
 			{
-				if (abs(mario.bottom() - entity.top()) < 10 && abs(mario.left() - entity.left()) < 54)	// mario jumped on the entity
+				if (abs(mario.bottom() - entity.top()) < 10 && abs(mario.left() - entity.left()) < 54 && entity.isKillable())	// mario jumped on the entity
 				{
 					if (mario.getIsAlive())
 					{
@@ -46,7 +46,7 @@ void Game::intersection(Mario& mario, Entity& entity)
 						gameInfo.increaseScoreBonus();
 					}
 				}
-				else
+				else // mario was hit by the entity 
 				{
 					if (entity.getIsAlive())
 					{
@@ -56,9 +56,8 @@ void Game::intersection(Mario& mario, Entity& entity)
 						mario.dead();
 						if (mario.getIsAlive()) {
 							menu.setIsON(false);
-							view.setCenter(WINDOW_WIDTH/2,WINDOW_HIGHT/2);
+							view.setCenter(WINDOW_WIDTH / 2, WINDOW_HIGHT / 2);
 						}
-						
 					}
 				}
 			}
@@ -92,28 +91,31 @@ void Game::update()
 
 	for (int i = 0; i < mobs.size(); i++)
 	{
-		intersection(mario, mobs.at(i));
-
-		if (mobs.at(i).getIsAlive())
+		if (abs((mario.getPosition().x - mobs.at(i).getPosition().x)) < WINDOW_WIDTH / 1.6) // OPTIMALIZATION (only mobs in WINDOW_WIDTH / 1.6 distance are moved)
 		{
-			int movingSide = map.collison(mobs.at(i), gameInfo);
+			intersection(mario, mobs.at(i));
 
-			if (movingSide == LEFT)
-				mobs.at(i).MovingDirectiongLeft();
-			else if (movingSide == RIGHT)
-				mobs.at(i).MovingDirectiongRight();
+			if (mobs.at(i).getIsAlive())
+			{
+				int movingSide = map.collison(mobs.at(i), gameInfo);
 
-			mobs.at(i).update();
+				if (movingSide == LEFT)
+					mobs.at(i).MovingDirectiongLeft();
+				else if (movingSide == RIGHT)
+					mobs.at(i).MovingDirectiongRight();
+
+				mobs.at(i).update();
+			}
 		}
 	}
 
 	menu.followMario(mario.getPosition().x);
-	
-		if (map.collison(mario, gameInfo) == BOTTOM)	// if mario on the ground he can jump
-			mario.setCanJump(true);
-		mario.update(map.getMapWidth());
 
-		
+	if (map.collison(mario, gameInfo) == BOTTOM)	// if mario on the ground he can jump
+		mario.setCanJump(true);
+	mario.update(map.getMapWidth());
+
+
 	if (!mario.getIsAlive())
 		menu.setIsON(true);
 
@@ -123,7 +125,6 @@ void Game::update()
 void Game::render()
 {
 	this->window->clear();
-	// render items
 
 	window->draw(map);
 
@@ -184,7 +185,7 @@ void Game::Menu(int center)
 					view.reset(sf::FloatRect(0.f, 0.f, WINDOW_WIDTH, WINDOW_HIGHT));
 					gameInfo.reset();
 					map.loadArrayFromArray("../assets/array.txt");
-					map.load("../assets/map1.png", sf::Vector2u(64, 64));
+					map.load("../assets/map.png", sf::Vector2u(64, 64));
 					menu.setIsON(false);
 				}
 				if (menu.GetPressedItem() == 2)
@@ -208,7 +209,7 @@ void Game::run()
 
 	while (this->window->isOpen())
 	{
-		
+
 		if (menu.isON())
 			Menu(view.getCenter().x);
 		else {
@@ -217,7 +218,7 @@ void Game::run()
 			gameInfo.countTime();
 		}
 
-		
+
 	}
 }
 void Game::cameraMovement() {
@@ -256,10 +257,18 @@ void Game::addMobs()
 	// ------------------- ADD MOBS HERE ----------------------
 	Turtle turtle1({ 400,400 });
 	Turtle turtle2({ 1400,100 });
+	Turtle turtle3({ 2432,100 });
+
+	Spikey spikey1({ 1800,200 });
+	//Spikey spikey2({ 2460,200 });
 
 
 	mobs.push_back(turtle1);
 	mobs.push_back(turtle2);
+	mobs.push_back(turtle3);
+
+	mobs.push_back(spikey1);
+	//mobs.push_back(spikey2);
 
 
 	repairSFMLTextures();

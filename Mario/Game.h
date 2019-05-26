@@ -8,6 +8,7 @@
 #include "Menu.h"
 #include"Screenshot.h"
 #include"Bonus.h"
+#include"Spikey.h"
 
 
 #include<typeinfo>
