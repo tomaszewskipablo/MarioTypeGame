@@ -214,6 +214,7 @@ void Game::run()
 		else {
 			this->update();
 			this->render();
+			gameInfo.countTime();
 		}
 
 		

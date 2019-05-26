@@ -48,3 +48,15 @@ void GameInfo::draw(sf::RenderWindow & window, int center)
 	}
 
 }
+void GameInfo::countTime()
+{
+	finish = std::chrono::high_resolution_clock::now();
+	difference = (int)((finish - start).count() / 1000000000);
+	if (switcher != difference)
+	{
+		time++;
+		start = std::chrono::high_resolution_clock::now();
+	}
+
+	info[2].setString("Time: " + std::to_string(time));
+}
