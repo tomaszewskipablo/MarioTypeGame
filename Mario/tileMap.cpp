@@ -65,59 +65,62 @@ int TileMap::collison(Entity & Entity, GameInfo & gameInfo)
 	for (unsigned int i = 0; i < height; ++i)
 		for (unsigned int j = 0; j < width; ++j)
 		{
-			if (tiles[i * width + j] == 1 || tiles[i * width + j] == 2 || tiles[i * width + j] == 3 || tiles[i * width + j] == 5 || tiles[i * width + j] == 6)
+			if (abs(Entity.getPosition().x - (j * tileSize.x)) <2*tileSize.x&& abs(Entity.getPosition().y - (i * tileSize.y)) < 2*tileSize.y)	// check only fields tileSize
 			{
-				bottom = i * tileSize.y + tileSize.y;
-				top = i * tileSize.y;
-				left = j * tileSize.x;
-				right = j * tileSize.x + tileSize.x;
+				if (tiles[i * width + j] == 1 || tiles[i * width + j] == 2 || tiles[i * width + j] == 3 || tiles[i * width + j] == 5 || tiles[i * width + j] == 6)
+				{
+					bottom = i * tileSize.y + tileSize.y;
+					top = i * tileSize.y;
+					left = j * tileSize.x;
+					right = j * tileSize.x + tileSize.x;
 
-				if ((Entity.top() > bottom || Entity.bottom() < top) || (Entity.left() > right || Entity.right() < left)) // Entity doesn't intersect
-					;
-				else {
-					if (tiles[i * width + j] == 1|| tiles[i * width + j] == 3) { // if BRICK OR BONUS
-						float tab[4] = { abs(Entity.top() - bottom) , abs(Entity.bottom() - top),  abs(Entity.right() - left),abs(Entity.left() - right) };
+					if ((Entity.top() > bottom || Entity.bottom() < top) || (Entity.left() > right || Entity.right() < left)) // Entity doesn't intersect
+						;
+					else {
+						if (tiles[i * width + j] == 1 || tiles[i * width + j] == 3) { // if BRICK OR BONUS
+							float tab[4] = { abs(Entity.top() - bottom) , abs(Entity.bottom() - top),  abs(Entity.right() - left),abs(Entity.left() - right) };
 
-						int minumum = min4(tab);
-						switch (minumum)
-						{
-						case BOTTOM:
-							if (tiles[i * width + j] == 3) {	// BONUS
-								tiles[i * width + j] = 0;
-								load("../assets/map.png", sf::Vector2u(64, 64));
-								bonus = true;
-							}
-								
-							if (Entity.getDestroyMode())
+							int minumum = min4(tab);
+							switch (minumum)
 							{
-								tiles[i * width + j] = 0;
-								load("../assets/map.png", sf::Vector2u(64, 64));
-							}
+							case BOTTOM:
+								if (tiles[i * width + j] == 3) {	// BONUS
+									tiles[i * width + j] = 0;
+									load("../assets/map.png", sf::Vector2u(64, 64));
+									bonus = true;
+								}
 
-							Entity.moveBottom();
-							return 0;
-						case TOP:
-							Entity.moveTop();
-							return 1; // Entity touched the ground
-						case LEFT:
-							Entity.moveLeft();
-							return 2;
-						case RIGHT:
-							Entity.moveRight();
-							return 3;
+								if (Entity.getDestroyMode())
+								{
+									tiles[i * width + j] = 0;
+									load("../assets/map.png", sf::Vector2u(64, 64));
+								}
+
+								Entity.moveBottom();
+								return 0;
+							case TOP:
+								Entity.moveTop();
+								return 1; // Entity touched the ground
+							case LEFT:
+								Entity.moveLeft();
+								return 2;
+							case RIGHT:
+								Entity.moveRight();
+								return 3;
+							}
 						}
-					}
-					else if (tiles[i * width + j] == COIN)		// if COIN
-					{
-						tiles[i * width + j] = 0;	// change coin to heaven
-						std::cout << "COINS" << std::endl;
-						load("../assets/map.png", sf::Vector2u(64, 64));
-						gameInfo.increaseCoins();
-					}
-					if (tiles[i * width + j] == PLANT || tiles[i * width + j] == PLANT2)		// if PLANT
-					{
-						std::cout << "COINS" << std::endl;
-						Entity.dead();
+						else if (tiles[i * width + j] == COIN)		// if COIN
+						{
+							tiles[i * width + j] = 0;	// change coin to heaven
+							std::cout << "COINS" << std::endl;
+							load("../assets/map.png", sf::Vector2u(64, 64));
+							gameInfo.increaseCoins();
+						}
+						if (tiles[i * width + j] == PLANT || tiles[i * width + j] == PLANT2)		// if PLANT
+						{
+							std::cout << "COINS" << std::endl;
+							Entity.dead();
+						}
 					}
 				}
 			}
