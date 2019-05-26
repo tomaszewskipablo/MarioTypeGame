@@ -42,6 +42,11 @@ void Mario::update(int mapWidth)
 	else
 		velocity.y = 0.3;
 	//
+	if (this->bottom() > WINDOW_HIGHT)
+	{
+		this->dead();
+		this->dead();
+	}
 }
 
 void Mario::killingMove() {

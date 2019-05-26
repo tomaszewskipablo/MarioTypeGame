@@ -104,11 +104,16 @@ void Game::update()
 			mobs.at(i).update();
 		}
 	}
-	if (mario.getIsAlive()) {
+
+	menu.followMario(mario.getPosition().x);
+	
 		if (map.collison(mario, gameInfo) == BOTTOM)	// if mario on the ground he can jump
 			mario.setCanJump(true);
 		mario.update(map.getMapWidth());
-	}
+
+		
+	if (!mario.getIsAlive())
+		menu.setIsON(true);
 
 	Bonuses();
 }
@@ -196,7 +201,7 @@ void Game::run()
 	while (this->window->isOpen())
 	{
 		if (menu.isON())
-			Menu(mario.getPosition().x);
+			Menu(view.getCenter().x);
 		else {
 			this->update();
 			this->render();
