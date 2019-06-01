@@ -194,6 +194,7 @@ void Game::Menu(int center)
 				if (menu.GetPressedItem() == 2)
 				{
 					std::cout << "BEST restult smlksadnlsan102" << std::endl;
+
 				}
 				if (menu.GetPressedItem() == 3)
 				{

@@ -13,3 +13,21 @@ Coins: 000 Score: 0000 Time: 001
 Sat Jun  1 14:14:59 2019
 Coins: 018 Score: 0000 Time: 016
 
+Sat Jun  1 14:20:01 2019
+Coins: 026 Score: 0100 Time: 012
+
+Sat Jun  1 14:20:44 2019
+Coins: 045 Score: 0200 Time: 030
+
+Sat Jun  1 14:21:53 2019
+Coins: 009 Score: 0000 Time: 008
+
+Sat Jun  1 14:23:12 2019
+Coins: 030 Score: 0135 Time: 023
+
+Sat Jun  1 14:24:28 2019
+Coins: 000 Score: 0000 Time: 002
+
+Sat Jun  1 15:24:15 2019
+Coins: 021 Score: 0000 Time: 018
+

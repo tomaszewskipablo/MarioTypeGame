@@ -21,6 +21,7 @@ Menu::Menu()
 	menu[2].setFillColor(sf::Color::Black);
 	menu[2].setString("Options");
 	readResultsFromFile();
+	loadReslutsToArray();
 
 
 	menu[3].setFont(font);
@@ -34,6 +35,10 @@ void Menu::followMario(int center) {
 	menu[1].setPosition(sf::Vector2f(center - 45, WINDOW_HIGHT / (MAX_NUMBER_OF_ITEMS + 1) * 1.6 + 45));
 	menu[2].setPosition(sf::Vector2f(center - 45, WINDOW_HIGHT / (MAX_NUMBER_OF_ITEMS + 1) * 2 + 45));
 	menu[3].setPosition(sf::Vector2f(center - 20, WINDOW_HIGHT / (MAX_NUMBER_OF_ITEMS + 1) * 2.4 + 45));
+
+	resultsToDisplay[0].setPosition(sf::Vector2f(center - 343, 40));
+	resultsToDisplay[1].setPosition(sf::Vector2f(center - 342, 65));
+	resultsToDisplay[2].setPosition(sf::Vector2f(center - 341, 90));
 }
 
 
@@ -61,7 +66,18 @@ void Menu::draw(sf::RenderWindow & window, int center)
 }
 void Menu::drawBestResults(sf::RenderWindow & window, int center)
 {
-	sf::Texture texture;
+	drawBestResultsBackground(window, center);
+	drawResults(window, center);
+}
+void Menu::drawResults(sf::RenderWindow& window, int center)
+{
+	for (int i = 0; i < NUMBER_OF_RESULTS; i++)
+	{
+		window.draw(resultsToDisplay[i]);
+	}
+}
+void Menu::drawBestResultsBackground(sf::RenderWindow& window, int center) {
+		sf::Texture texture;
 	texture.loadFromFile("../assets/bestResultsWindow.png");
 
 	sf::Sprite sprite;
@@ -70,7 +86,6 @@ void Menu::drawBestResults(sf::RenderWindow & window, int center)
 	sprite.setPosition({ (float)center,WINDOW_HIGHT / 6 });
 	window.draw(sprite);
 }
-
 void Menu::MoveUp()
 {
 	if (selectedItemIndex - 1 >= 0)
@@ -126,4 +141,16 @@ void Menu::readResultsFromFile()
 	}
 
 	infile.close();
+}
+void Menu::loadReslutsToArray()
+{
+	for (int i = 0; i < NUMBER_OF_RESULTS; i++)
+	{
+		std::string toDisplay = std::to_string(i + 1) + ". Score: " + loadedResults.at(i).score + " coins: " + loadedResults.at(i).coins + " time " + loadedResults.at(i).time + "   " + loadedResults.at(i).date;
+		resultsToDisplay[i].setString(toDisplay);
+
+		resultsToDisplay[i].setFont(font);
+		resultsToDisplay[i].setFillColor(sf::Color::Black);
+		resultsToDisplay[i].setCharacterSize(25);
+	}
 }

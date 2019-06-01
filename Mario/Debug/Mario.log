@@ -1,15 +1,10 @@
 ﻿  Menu.cpp
-P:\_study\pk4\project\Mario\Mario_4semProject\Mario\Menu.cpp(33): warning C4244: 'argument': conversion from 'int' to 'T', possible loss of data
-          with
-          [
-              T=float
-          ]
-P:\_study\pk4\project\Mario\Mario_4semProject\Mario\Menu.cpp(34): warning C4305: 'argument': truncation from 'double' to 'T'
-          with
-          [
-              T=float
-          ]
 P:\_study\pk4\project\Mario\Mario_4semProject\Mario\Menu.cpp(34): warning C4244: 'argument': conversion from 'int' to 'T', possible loss of data
+          with
+          [
+              T=float
+          ]
+P:\_study\pk4\project\Mario\Mario_4semProject\Mario\Menu.cpp(35): warning C4305: 'argument': truncation from 'double' to 'T'
           with
           [
               T=float
@@ -19,12 +14,32 @@ P:\_study\pk4\project\Mario\Mario_4semProject\Mario\Menu.cpp(35): warning C4244:
           [
               T=float
           ]
-P:\_study\pk4\project\Mario\Mario_4semProject\Mario\Menu.cpp(36): warning C4305: 'argument': truncation from 'double' to 'T'
+P:\_study\pk4\project\Mario\Mario_4semProject\Mario\Menu.cpp(36): warning C4244: 'argument': conversion from 'int' to 'T', possible loss of data
           with
           [
               T=float
           ]
-P:\_study\pk4\project\Mario\Mario_4semProject\Mario\Menu.cpp(36): warning C4244: 'argument': conversion from 'int' to 'T', possible loss of data
+P:\_study\pk4\project\Mario\Mario_4semProject\Mario\Menu.cpp(37): warning C4305: 'argument': truncation from 'double' to 'T'
+          with
+          [
+              T=float
+          ]
+P:\_study\pk4\project\Mario\Mario_4semProject\Mario\Menu.cpp(37): warning C4244: 'argument': conversion from 'int' to 'T', possible loss of data
+          with
+          [
+              T=float
+          ]
+P:\_study\pk4\project\Mario\Mario_4semProject\Mario\Menu.cpp(39): warning C4244: 'argument': conversion from 'int' to 'T', possible loss of data
+          with
+          [
+              T=float
+          ]
+P:\_study\pk4\project\Mario\Mario_4semProject\Mario\Menu.cpp(40): warning C4244: 'argument': conversion from 'int' to 'T', possible loss of data
+          with
+          [
+              T=float
+          ]
+P:\_study\pk4\project\Mario\Mario_4semProject\Mario\Menu.cpp(41): warning C4244: 'argument': conversion from 'int' to 'T', possible loss of data
           with
           [
               T=float

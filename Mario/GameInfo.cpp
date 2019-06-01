@@ -62,7 +62,7 @@ void GameInfo::countTime()
 }
 void GameInfo::saveResultToFile()
 {
-	score = score - (time * 5 + 200);
+	score = score - (time * 5 + 300);
 	if (score < 0)
 		score = 0;
 	std::time(&czas);

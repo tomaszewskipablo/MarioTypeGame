@@ -4,6 +4,7 @@
 #include<fstream>
 
 #define MAX_NUMBER_OF_ITEMS 4
+#define NUMBER_OF_RESULTS 3
 #define WINDOW_WIDTH 1024
 #define WINDOW_HIGHT 512
 
@@ -26,7 +27,7 @@ private:
 	sf::Text menu[MAX_NUMBER_OF_ITEMS];
 
 	std::vector<result> loadedResults;
-
+	sf::Text resultsToDisplay[NUMBER_OF_RESULTS];
 
 public:
 	Menu();
@@ -35,6 +36,8 @@ public:
 	void followMario(int center);
 	void draw(sf::RenderWindow& window, int center);
 	void drawBestResults(sf::RenderWindow& window, int center);
+	void drawResults(sf::RenderWindow& window, int center);
+	void drawBestResultsBackground(sf::RenderWindow& window, int center);
 	void MoveUp();
 	void MoveDown();
 	int GetPressedItem() { return selectedItemIndex; }
@@ -43,4 +46,5 @@ public:
 	selectedItemIndex = 0;
 	}
 	void readResultsFromFile();
+	void loadReslutsToArray();
 };
