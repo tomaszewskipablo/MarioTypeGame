@@ -10,22 +10,23 @@ Menu::Menu()
 	menu[0].setFont(font);
 	menu[0].setFillColor(sf::Color::Red);
 	menu[0].setString("Play");
-	
+
 
 	menu[1].setFont(font);
 	menu[1].setFillColor(sf::Color::Black);
 	menu[1].setString("Restart");
-	
+
 
 	menu[2].setFont(font);
 	menu[2].setFillColor(sf::Color::Black);
 	menu[2].setString("Options");
-	
+	readResultsFromFile();
+
 
 	menu[3].setFont(font);
 	menu[3].setFillColor(sf::Color::Black);
 	menu[3].setString("Exit");
-	
+
 	selectedItemIndex = 0;
 }
 void Menu::followMario(int center) {
@@ -56,17 +57,17 @@ void Menu::draw(sf::RenderWindow & window, int center)
 	{
 		window.draw(menu[i]);
 	}
-	
+
 }
-void Menu::drawBestResults(sf::RenderWindow& window, int center)
+void Menu::drawBestResults(sf::RenderWindow & window, int center)
 {
 	sf::Texture texture;
 	texture.loadFromFile("../assets/bestResultsWindow.png");
-	
+
 	sf::Sprite sprite;
 	sprite.setTexture(texture);
-	sprite.setOrigin(747/2, 103/2);
-	sprite.setPosition({ (float)center,WINDOW_HIGHT /6});
+	sprite.setOrigin(747 / 2, 103 / 2);
+	sprite.setPosition({ (float)center,WINDOW_HIGHT / 6 });
 	window.draw(sprite);
 }
 
@@ -88,4 +89,41 @@ void Menu::MoveDown()
 		selectedItemIndex++;
 		menu[selectedItemIndex].setFillColor(sf::Color::Red);
 	}
+}
+
+void Menu::readResultsFromFile()
+{
+	std::string line, line2;
+	std::string coinsTemp;;
+	std::string scoreTemp;
+	std::string timeTemp;
+	std::ifstream infile;
+
+	infile.open("../results/results.txt");
+	if (!infile) {
+		std::cout << "can not open file to read results from";
+	}
+	int counter = 0;
+
+	while (getline(infile, line)) {
+
+		
+		getline(infile, line2);
+
+		
+		coinsTemp = (std::to_string(line2[7]-48) + std::to_string(line2[8] - 48) + std::to_string(line2[9] - 48));
+		scoreTemp = (std::to_string(line2[18] - 48) + std::to_string(line2[19] - 48) + std::to_string(line2[20] - 48) + std::to_string(line2[21] - 48));
+		timeTemp = (std::to_string(line2[29] - 48) + std::to_string(line2[30] - 48) + std::to_string(line2[31] - 48));
+		
+		loadedResults.push_back(result(line, coinsTemp, scoreTemp, timeTemp));
+
+		coinsTemp.clear();
+		scoreTemp.clear();
+		timeTemp.clear();
+
+		counter++;
+		getline(infile, line2);
+	}
+
+	infile.close();
 }

@@ -15,7 +15,6 @@ public:
 	std::string time;
 	std::string coins;
 	result(std::string date, std::string score,std::string time,std::string coins) :date(date), score(score),time(time),coins(coins){};
-	result(std::string date) :date(date) {};
 };
 
 class Menu
@@ -43,5 +42,5 @@ public:
 	void setIsON(bool status) { isOn = status;
 	selectedItemIndex = 0;
 	}
-	//
+	void readResultsFromFile();
 };
