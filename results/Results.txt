@@ -1,0 +1,39 @@
+Mon May 27 13:28:36 2019
+Coins: 22 Score: 370 Time: 17
+
+Mon May 27 13:29:45 2019
+Coins: 41 Score: 460 Time: 31
+
+Mon May 27 13:57:38 2019
+Coins: 3 Score: 130 Time: 11
+
+Mon May 27 13:58:59 2019
+Coins: 25 Score: 250 Time: 16
+
+Thu May 30 13:34:22 2019
+Coins: 39 Score: 440 Time: 39
+
+Thu May 30 13:41:27 2019
+Coins: 14 Score: 0 Time: 8
+
+Thu May 30 13:42:44 2019
+Coins: 26 Score: 60 Time: 20
+
+Thu May 30 16:34:34 2019
+Coins: 28 Score: 0 Time: 37
+
+Thu May 30 18:59:52 2019
+Coins: 27 Score: 70 Time: 20
+
+Thu May 30 19:01:27 2019
+Coins: 8 Score: 0 Time: 11
+
+Sat Jun  1 13:17:26 2019
+Coins: 000 Score: 0000 Time: 001
+
+Sat Jun  1 13:18:45 2019
+Coins: 024 Score: 0000 Time: 015
+
+Sat Jun  1 13:21:30 2019
+Coins: 007 Score: 0000 Time: 008
+

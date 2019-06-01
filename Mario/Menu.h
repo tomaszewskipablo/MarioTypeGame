@@ -1,12 +1,34 @@
 #pragma once
 #include "SFML/Graphics.hpp"
+#include<iostream>
+#include<fstream>
 
 #define MAX_NUMBER_OF_ITEMS 4
 #define WINDOW_WIDTH 1024
 #define WINDOW_HIGHT 512
 
+
+class result {
+public:
+	std::string date;
+	std::string score;
+	std::string time;
+	std::string coins;
+	result(std::string date, std::string score,std::string time,std::string coins) :date(date), score(score),time(time),coins(coins){};
+	result(std::string date) :date(date) {};
+};
+
 class Menu
 {
+private:
+	bool isOn = true;
+	int selectedItemIndex = 0;
+	sf::Font font;
+	sf::Text menu[MAX_NUMBER_OF_ITEMS];
+
+	std::vector<result> loadedResults;
+
+
 public:
 	Menu();
 	~Menu();
@@ -21,12 +43,5 @@ public:
 	void setIsON(bool status) { isOn = status;
 	selectedItemIndex = 0;
 	}
-
-
-private:
-	bool isOn = true;
-	int selectedItemIndex=0;
-	sf::Font font;
-	sf::Text menu[MAX_NUMBER_OF_ITEMS];
-
+	//
 };

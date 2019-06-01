@@ -31,19 +31,23 @@ void Mario::update(int mapWidth)
 
 	if (Keyboard::isKeyPressed(Keyboard::Key::Up) && this->top() > 0 && canJump)
 	{
+		// jump = true;
 		if (jumpCurrentPossition > jumpHight)
 		{
 			jumpCurrentPossition = 0;
 			canJump = false;
 		}
 		jumpCurrentPossition++;
-		velocity.y = -Velocity * (1 - jumpCurrentPossition / jumpHight);
+		velocity.y = -Velocity * (1 - (jumpCurrentPossition*1.5) / jumpHight);
 	}
 	else
 	{
-		velocity.y = 0.3;
+		velocity.y = 0.4;
 		canJump = false;
+		//startTime = std::chrono::high_resolution_clock::now();	// start counting time in the air for gravity 
+		//velocity.y += - start
 	}
+	 
 	//
 	if (this->bottom() > WINDOW_HIGHT)
 	{

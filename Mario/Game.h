@@ -11,7 +11,7 @@
 #include"Spikey.h"
 
 
-#include<typeinfo>
+#include<Windows.h>
 #include<SFML/Graphics.hpp>
 #include<SFML/Window.hpp>
 
@@ -34,6 +34,9 @@ class Game
 
 	sf::RenderWindow * window;
 	sf::Event sfEvent;
+
+	DWORD currentTickCount;
+	DWORD lastDrawTickCount;
 
 public:
 	// constructors/destructors

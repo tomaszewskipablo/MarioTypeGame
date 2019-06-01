@@ -60,3 +60,16 @@ void GameInfo::countTime()
 
 	info[2].setString("Time: " + std::to_string(time));
 }
+void GameInfo::saveResultToFile()
+{
+	score = score - (time * 5 + 200);
+	if (score < 0)
+		score = 0;
+	std::time(&czas);
+	localData = ctime(&czas);
+
+	std::ofstream myfile;
+	myfile.open("../results/Results.txt", std::ios::app);
+	myfile << localData << "Coins: " << properFormat3(coins) << " Score: " << properFormat4(score) << " Time: " << properFormat3(time) << std::endl << std::endl;
+	myfile.close();
+}
