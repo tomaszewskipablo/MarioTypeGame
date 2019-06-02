@@ -2,11 +2,19 @@
 
 Mario::Mario()
 {
+
 	file = "mario.png";
-	if (!texture.loadFromFile("../assets/"+ file, sf::IntRect(0, 0, 64, 64)))
-	{
-		// error...
+	try {
+		if (!texture.loadFromFile("../assets/" + file, sf::IntRect(0, 0, 64, 64)))
+		{
+			throw - 1;
+		}
 	}
+	catch (int)
+	{
+		std::cout << "can not load mario texture";
+	}
+
 	sprite.setTexture(texture);
 	startingPosition = { 62,128 };
 	sprite.setPosition(startingPosition);
@@ -29,7 +37,7 @@ void Mario::update(int mapWidth)
 	else
 		velocity.x = 0;
 
-	if (Keyboard::isKeyPressed(Keyboard::Key::Up))
+	if (Keyboard::isKeyPressed(Keyboard::Key::Up)&& canJump)
 		keyRel = true;
 
 	if (keyRel && this->top() > 0 && canJump)
@@ -45,6 +53,7 @@ void Mario::update(int mapWidth)
 	}
 	else
 	{
+		jumpCurrentPossition = 0;
 		velocity.y = 0.4;
 		canJump = false;
 		keyRel = false;

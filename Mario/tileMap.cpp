@@ -125,6 +125,7 @@ int TileMap::collison(Entity & Entity, GameInfo & gameInfo)
 				}
 			}
 		}
+	return 5;
 }
 
 float TileMap::min4(float tab[])

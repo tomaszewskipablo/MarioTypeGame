@@ -111,11 +111,17 @@ void Game::update()
 
 	menu.followMario(mario.getPosition().x);
 
-	if (map.collison(mario, gameInfo) == BOTTOM)	// if mario on the ground he can jump
+	int marioHit = map.collison(mario, gameInfo);
+	if (marioHit == BOTTOM)	// if mario on the ground he can jump
 	{
 		mario.setCanJump(true);
-		// count time from start jumping
 	}
+	if (marioHit == TOP)
+	{
+		mario.fallDown();
+		mario.setCanJump(false);
+	}
+
 	mario.update(map.getMapWidth());
 
 
@@ -217,13 +223,13 @@ void Game::run()
 		//currentTickCount  = GetTickCount(); //tickcount in ms 
 		//if (currentTickCount - lastDrawTickCount  > 10) // 50 frames per second 
 		//{
-			if (menu.isON())
-				Menu(view.getCenter().x);
-			else {
-				this->update();
-				this->render();
-				gameInfo.countTime();
-			}
+		if (menu.isON())
+			Menu(view.getCenter().x);
+		else {
+			this->update();
+			this->render();
+			gameInfo.countTime();
+		}
 
 		/*	lastDrawTickCount = GetTickCount();
 		}*/

@@ -3,10 +3,17 @@
 
 Menu::Menu()
 {
-	if (!font.loadFromFile("../assets/arial.ttf"))
-	{
-		// handle error
+	try {
+		if (!font.loadFromFile("../assets/arial.ttf"))
+		{
+			throw - 1;
+		}
 	}
+	catch (int)
+	{
+		std::cout << "can not load menu font";
+	}
+
 	menu[0].setFont(font);
 	menu[0].setFillColor(sf::Color::Red);
 	menu[0].setString("Play");
@@ -49,7 +56,16 @@ Menu::~Menu()
 void Menu::draw(sf::RenderWindow & window, int center)
 {
 	sf::Texture texture;
-	texture.loadFromFile("../assets/menuBack.png");
+	try {
+		if (!texture.loadFromFile("../assets/menuBack.png"))
+		{
+			throw - 1;
+		}
+	}
+	catch (int)
+	{
+		std::cout << "can not load menu background texture texture";
+	}
 	//display background
 	sf::Sprite sprite;
 	sprite.setTexture(texture);

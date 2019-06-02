@@ -17,6 +17,7 @@
 
 #define WINDOW_WIDTH 1024
 #define WINDOW_HIGHT 512
+#define TOP 0
 #define BOTTOM 1
 #define LEFT 2
 #define RIGHT 3

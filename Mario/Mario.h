@@ -62,4 +62,8 @@ private:
 	{
 		return clock.getElapsedTime().asMilliseconds();
 	}
+	void fallDown()
+	{
+		this->keyRel = false;
+	}
 };
