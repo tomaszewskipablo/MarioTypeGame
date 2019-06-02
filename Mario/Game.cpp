@@ -211,7 +211,7 @@ void Game::Menu(int center)
 
 void Game::run()
 {
-
+	//this->window->setFramerateLimit(60);
 	while (this->window->isOpen())
 	{
 		//currentTickCount  = GetTickCount(); //tickcount in ms 

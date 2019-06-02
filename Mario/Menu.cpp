@@ -130,7 +130,7 @@ void Menu::readResultsFromFile()
 		scoreTemp = (std::to_string(line2[18] - 48) + std::to_string(line2[19] - 48) + std::to_string(line2[20] - 48) + std::to_string(line2[21] - 48));
 		timeTemp = (std::to_string(line2[29] - 48) + std::to_string(line2[30] - 48) + std::to_string(line2[31] - 48));
 		
-		loadedResults.push_back(result(line, coinsTemp, scoreTemp, timeTemp));
+		loadedResults.push_back(result(line, scoreTemp, timeTemp, coinsTemp));
 
 		coinsTemp.clear();
 		scoreTemp.clear();
@@ -141,6 +141,9 @@ void Menu::readResultsFromFile()
 	}
 
 	infile.close();
+
+	//sort
+
 }
 void Menu::loadReslutsToArray()
 {
@@ -154,3 +157,11 @@ void Menu::loadReslutsToArray()
 		resultsToDisplay[i].setCharacterSize(25);
 	}
 }
+//bool Menu::comparator(result  i1, result  i2)
+//{
+//	return (i1.score < i2.score);
+//}
+//void Menu::sortResults()
+//{
+//	std::sort(loadedResults.begin(), loadedResults.end(), comparator);
+//}

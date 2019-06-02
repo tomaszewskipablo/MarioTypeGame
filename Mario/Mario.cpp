@@ -29,28 +29,29 @@ void Mario::update(int mapWidth)
 	else
 		velocity.x = 0;
 
-	if (Keyboard::isKeyPressed(Keyboard::Key::Up) && this->top() > 0 && canJump)
+	if (Keyboard::isKeyPressed(Keyboard::Key::Up))
+		keyRel = true;
+
+	if (keyRel && this->top() > 0 && canJump)
 	{
-		// jump = true;
 		if (jumpCurrentPossition > jumpHight)
 		{
 			jumpCurrentPossition = 0;
 			canJump = false;
+			keyRel = false;
 		}
 		jumpCurrentPossition++;
-		velocity.y = -Velocity * (1 - (jumpCurrentPossition*1.5) / jumpHight);
+		velocity.y = -Velocity * (1 - (jumpCurrentPossition * 1.5) / jumpHight);
 	}
 	else
 	{
 		velocity.y = 0.4;
 		canJump = false;
-		//startTime = std::chrono::high_resolution_clock::now();	// start counting time in the air for gravity 
-		//velocity.y += - start
+		keyRel = false;
 	}
-	 
-	//
 	if (this->bottom() > WINDOW_HIGHT)
 	{
+		//twice, Mario can be in 2 lives mode, but this should kill him anyway
 		this->dead();
 		this->dead();
 	}

@@ -23,8 +23,13 @@ private:
 	bool bigMario = false;
 	std::string fileBigMario = "bigMario.png";
 
-	
-public:
+	sf::Clock clock;
+	float flPreviousTime = 0;
+	float flCurrentTime = 0;
+	float dt;
+
+	bool keyRel = false;
+	public:
 	Mario();
 
 	void update(int mapWidth);
@@ -52,5 +57,9 @@ public:
 		}
 		else
 			isAlive = false;
+	}
+	float getCurrentTime()
+	{
+		return clock.getElapsedTime().asMilliseconds();
 	}
 };

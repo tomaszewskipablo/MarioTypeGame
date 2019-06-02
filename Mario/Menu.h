@@ -2,6 +2,8 @@
 #include "SFML/Graphics.hpp"
 #include<iostream>
 #include<fstream>
+#include <algorithm>    
+#include <vector>       
 
 #define MAX_NUMBER_OF_ITEMS 4
 #define NUMBER_OF_RESULTS 3
@@ -47,4 +49,7 @@ public:
 	}
 	void readResultsFromFile();
 	void loadReslutsToArray();
+	bool comparator(result i1, result i2);
+	void sortResults();
+
 };

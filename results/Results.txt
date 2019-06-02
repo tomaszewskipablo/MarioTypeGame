@@ -1,3 +1,6 @@
+Sat Jun  1 14:23:12 2019
+Coins: 030 Score: 0135 Time: 023
+
 Sat Jun  1 13:17:26 2019
 Coins: 000 Score: 0000 Time: 001
 
@@ -22,12 +25,33 @@ Coins: 045 Score: 0200 Time: 030
 Sat Jun  1 14:21:53 2019
 Coins: 009 Score: 0000 Time: 008
 
-Sat Jun  1 14:23:12 2019
-Coins: 030 Score: 0135 Time: 023
+Sat Jun  1 15:51:35 2019
+Coins: 000 Score: 0000 Time: 000
 
-Sat Jun  1 14:24:28 2019
-Coins: 000 Score: 0000 Time: 002
+Sat Jun  1 16:35:13 2019
+Coins: 008 Score: 0000 Time: 007
 
-Sat Jun  1 15:24:15 2019
-Coins: 021 Score: 0000 Time: 018
+Sat Jun  1 16:51:43 2019
+Coins: 000 Score: 0000 Time: 003
+
+Sun Jun  2 10:40:34 2019
+Coins: 014 Score: 0000 Time: 011
+
+Sun Jun  2 10:52:39 2019
+Coins: 006 Score: 0000 Time: 035
+
+Sun Jun  2 11:21:54 2019
+Coins: 000 Score: 0000 Time: 010
+
+Sun Jun  2 11:26:27 2019
+Coins: 016 Score: 0000 Time: 012
+
+Sun Jun  2 11:31:39 2019
+Coins: 030 Score: 0000 Time: 028
+
+Sun Jun  2 11:35:12 2019
+Coins: 002 Score: 0000 Time: 007
+
+Sun Jun  2 11:36:39 2019
+Coins: 028 Score: 0000 Time: 025
 
