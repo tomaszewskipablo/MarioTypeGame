@@ -21,6 +21,7 @@
 #define BOTTOM 1
 #define LEFT 2
 #define RIGHT 3
+#define END_GAME 9
 
 class Game
 {
@@ -39,6 +40,8 @@ class Game
 	DWORD currentTickCount;
 	DWORD lastDrawTickCount;
 
+	bool won = false;
+
 public:
 	// constructors/destructors
 	Game();
@@ -56,5 +59,6 @@ public:
 	void drawMobs();
 	void Bonuses();
 	void addMobs();
+	
 };
 

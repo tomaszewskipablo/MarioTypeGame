@@ -1,93 +1,36 @@
-Sat Jun  1 14:23:12 2019
-Coins: 030 Score: 0135 Time: 023
+Mon Jun  3 18:40:28 2019
+Coins: 043 Score: 0000 Time: 030
 
-Sat Jun  1 13:17:26 2019
-Coins: 000 Score: 0000 Time: 001
+Mon Jun  3 18:43:56 2019
+Coins: 053 Score: 0195 Time: 037
 
-Sat Jun  1 13:18:45 2019
-Coins: 024 Score: 0000 Time: 015
+Mon Jun  3 18:45:06 2019
+Coins: 056 Score: 0215 Time: 039
 
-Sat Jun  1 13:21:30 2019
-Coins: 007 Score: 0000 Time: 008
+Mon Jun  3 18:52:02 2019
+Coins: 053 Score: 0115 Time: 033
 
-Sat Jun  1 13:41:42 2019
-Coins: 000 Score: 0000 Time: 001
+Mon Jun  3 18:52:02 2019
+Coins: 053 Score: 0000 Time: 033
 
-Sat Jun  1 14:14:59 2019
-Coins: 018 Score: 0000 Time: 016
+Mon Jun  3 18:54:07 2019
+Coins: 046 Score: 0030 Time: 026
 
-Sat Jun  1 14:20:01 2019
-Coins: 026 Score: 0100 Time: 012
+Mon Jun  3 18:54:13 2019
+Coins: 046 Score: 0000 Time: 027
 
-Sat Jun  1 14:20:44 2019
-Coins: 045 Score: 0200 Time: 030
+Mon Jun  3 18:56:31 2019
+Coins: 049 Score: 0060 Time: 026
 
-Sat Jun  1 14:21:53 2019
-Coins: 009 Score: 0000 Time: 008
+Mon Jun  3 19:14:29 2019
+Coins: 060 Score: 0075 Time: 055
 
-Sat Jun  1 15:51:35 2019
-Coins: 000 Score: 0000 Time: 000
+Mon Jun  3 19:19:32 2019
+Coins: 047 Score: 0090 Time: 026
 
-Sat Jun  1 16:35:13 2019
-Coins: 008 Score: 0000 Time: 007
+Mon Jun  3 19:21:30 2019
+Coins: 043 Score: 0005 Time: 025
 
-Sat Jun  1 16:51:43 2019
-Coins: 000 Score: 0000 Time: 003
-
-Sun Jun  2 10:40:34 2019
-Coins: 014 Score: 0000 Time: 011
-
-Sun Jun  2 10:52:39 2019
-Coins: 006 Score: 0000 Time: 035
-
-Sun Jun  2 11:21:54 2019
-Coins: 000 Score: 0000 Time: 010
-
-Sun Jun  2 11:26:27 2019
-Coins: 016 Score: 0000 Time: 012
-
-Sun Jun  2 11:31:39 2019
-Coins: 030 Score: 0000 Time: 028
-
-Sun Jun  2 11:35:12 2019
-Coins: 002 Score: 0000 Time: 007
-
-Sun Jun  2 11:36:39 2019
-Coins: 028 Score: 0000 Time: 025
-
-Sun Jun  2 23:04:12 2019
-Coins: 028 Score: 0000 Time: 024
-
-Sun Jun  2 23:10:37 2019
-Coins: 000 Score: 0000 Time: 001
-
-Sun Jun  2 23:21:15 2019
-Coins: 045 Score: 0100 Time: 030
-
-Sun Jun  2 23:37:54 2019
-Coins: 019 Score: 0000 Time: 032
-
-Sun Jun  2 23:41:51 2019
-Coins: 018 Score: 0000 Time: 017
-
-Sun Jun  2 23:42:16 2019
-Coins: 000 Score: 0000 Time: 006
-
-Sun Jun  2 23:44:29 2019
-Coins: 007 Score: 0000 Time: 016
-
-Sun Jun  2 23:46:37 2019
-Coins: 021 Score: 0000 Time: 040
-
-Sun Jun  2 23:49:22 2019
-Coins: 017 Score: 0000 Time: 019
-
-Sun Jun  2 23:53:53 2019
-Coins: 003 Score: 0000 Time: 009
-
-Sun Jun  2 23:55:41 2019
-Coins: 023 Score: 0000 Time: 090
-
-Sun Jun  2 23:58:41 2019
-Coins: 013 Score: 0000 Time: 021
+Mon Jun  3 20:06:29 2019
+Coins: 052 Score: 0045 Time: 035
 

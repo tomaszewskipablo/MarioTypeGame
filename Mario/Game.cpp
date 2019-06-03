@@ -121,12 +121,19 @@ void Game::update()
 		mario.fallDown();
 		mario.setCanJump(false);
 	}
-
-	mario.update(map.getMapWidth());
-
-
 	if (!mario.getIsAlive())
 		menu.setIsON(true);
+
+	if (marioHit == END_GAME&& !won)
+	{
+		menu.isON();
+		gameInfo.saveResultToFile();
+		mario.dead();
+		mario.dead();
+		won = true;
+	}
+
+	mario.update(map.getMapWidth());
 
 	Bonuses();
 }
@@ -158,6 +165,13 @@ void Game::Menu(int center)
 
 	menu.followMario(center);
 	menu.draw(*window, center);
+
+	if (won)
+	{
+		menu.gameWon(center, *window);
+		menu.isON();
+	}
+
 	if (menu.GetPressedItem() == 2)
 	{
 		menu.drawBestResults(*window, center);
@@ -173,23 +187,31 @@ void Game::Menu(int center)
 			if (sfEvent.key.code == Keyboard::Up)
 			{
 				menu.MoveUp();
-				std::cout << "MoveUp()" << std::endl;
 			}
 			if (sfEvent.key.code == Keyboard::Down)
 			{
 				menu.MoveDown();
-				std::cout << "MoveDown()" << std::endl;
 			}
 			if (sfEvent.key.code == Keyboard::Enter)
 			{
-				std::cout << "Enter()" << std::endl;
 				if (menu.GetPressedItem() == 0)
-					menu.setIsON(false);
+				{
+					if (won == true)
+					{
+						menu.setPressedItem(1);
+						menu.loadReslutsToArray();
+					}
+					else
+						menu.setIsON(false);
+				}
 				if (menu.GetPressedItem() == 1)
 				{
 					mario.reset();
+					menu.reset();
+					won == false;
 					mario.setBigMario(false);
 					addMobs();
+
 
 					view.reset(sf::FloatRect(0.f, 0.f, WINDOW_WIDTH, WINDOW_HIGHT));
 					gameInfo.reset();
@@ -197,15 +219,9 @@ void Game::Menu(int center)
 					map.load("../assets/map.png", sf::Vector2u(64, 64));
 					menu.setIsON(false);
 				}
-				if (menu.GetPressedItem() == 2)
-				{
-					std::cout << "BEST restult smlksadnlsan102" << std::endl;
-
-				}
 				if (menu.GetPressedItem() == 3)
 				{
 					window->close();
-					gameInfo.saveResultToFile();
 					delete this->window;
 					exit(0);
 				}
@@ -217,12 +233,8 @@ void Game::Menu(int center)
 
 void Game::run()
 {
-	//this->window->setFramerateLimit(60);
 	while (this->window->isOpen())
 	{
-		//currentTickCount  = GetTickCount(); //tickcount in ms 
-		//if (currentTickCount - lastDrawTickCount  > 10) // 50 frames per second 
-		//{
 		if (menu.isON())
 			Menu(view.getCenter().x);
 		else {
@@ -230,9 +242,6 @@ void Game::run()
 			this->render();
 			gameInfo.countTime();
 		}
-
-		/*	lastDrawTickCount = GetTickCount();
-		}*/
 	}
 }
 void Game::cameraMovement() {
@@ -272,17 +281,21 @@ void Game::addMobs()
 	Turtle turtle1({ 400,400 });
 	Turtle turtle2({ 1400,100 });
 	Turtle turtle3({ 2432,100 });
+	Turtle turtle4({ 5700,256 });
 
-	Spikey spikey1({ 1800,200 });
-	//Spikey spikey2({ 2460,200 });
+	//	Spikey spikey1({ 1800,200 });
+	Spikey spikey2({ 6800,400 });
+	Spikey spikey3({ 6600,400 });
 
 
 	mobs.push_back(turtle1);
 	mobs.push_back(turtle2);
 	mobs.push_back(turtle3);
+	mobs.push_back(turtle4);
 
-	mobs.push_back(spikey1);
-	//mobs.push_back(spikey2);
+	//mobs.push_back(spikey1);
+	mobs.push_back(spikey2);
+	mobs.push_back(spikey3);
 
 
 	repairSFMLTextures();

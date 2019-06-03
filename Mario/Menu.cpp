@@ -26,7 +26,7 @@ Menu::Menu()
 
 	menu[2].setFont(font);
 	menu[2].setFillColor(sf::Color::Black);
-	menu[2].setString("Options");
+	menu[2].setString("Best Results");
 	readResultsFromFile();
 	loadReslutsToArray();
 
@@ -40,7 +40,7 @@ Menu::Menu()
 void Menu::followMario(int center) {
 	menu[0].setPosition(sf::Vector2f(center - 26, WINDOW_HIGHT / (MAX_NUMBER_OF_ITEMS + 1) * 1.25 + 45));
 	menu[1].setPosition(sf::Vector2f(center - 45, WINDOW_HIGHT / (MAX_NUMBER_OF_ITEMS + 1) * 1.6 + 45));
-	menu[2].setPosition(sf::Vector2f(center - 45, WINDOW_HIGHT / (MAX_NUMBER_OF_ITEMS + 1) * 2 + 45));
+	menu[2].setPosition(sf::Vector2f(center - 85, WINDOW_HIGHT / (MAX_NUMBER_OF_ITEMS + 1) * 2 + 45));
 	menu[3].setPosition(sf::Vector2f(center - 20, WINDOW_HIGHT / (MAX_NUMBER_OF_ITEMS + 1) * 2.4 + 45));
 
 	resultsToDisplay[0].setPosition(sf::Vector2f(center - 343, 40));
@@ -85,16 +85,26 @@ void Menu::drawBestResults(sf::RenderWindow & window, int center)
 	drawBestResultsBackground(window, center);
 	drawResults(window, center);
 }
-void Menu::drawResults(sf::RenderWindow& window, int center)
+void Menu::drawResults(sf::RenderWindow & window, int center)
 {
 	for (int i = 0; i < NUMBER_OF_RESULTS; i++)
 	{
 		window.draw(resultsToDisplay[i]);
 	}
 }
-void Menu::drawBestResultsBackground(sf::RenderWindow& window, int center) {
-		sf::Texture texture;
-	texture.loadFromFile("../assets/bestResultsWindow.png");
+void Menu::drawBestResultsBackground(sf::RenderWindow & window, int center) {
+	sf::Texture texture;
+	try {
+		if (!texture.loadFromFile("../assets/bestResultsWindow.png"))
+		{
+			throw - 1;
+		}
+	}
+	catch (int)
+	{
+		std::cout << "can not load results background texture";
+	}
+
 
 	sf::Sprite sprite;
 	sprite.setTexture(texture);
@@ -138,14 +148,14 @@ void Menu::readResultsFromFile()
 
 	while (getline(infile, line)) {
 
-		
+
 		getline(infile, line2);
 
-		
-		coinsTemp = (std::to_string(line2[7]-48) + std::to_string(line2[8] - 48) + std::to_string(line2[9] - 48));
+
+		coinsTemp = (std::to_string(line2[7] - 48) + std::to_string(line2[8] - 48) + std::to_string(line2[9] - 48));
 		scoreTemp = (std::to_string(line2[18] - 48) + std::to_string(line2[19] - 48) + std::to_string(line2[20] - 48) + std::to_string(line2[21] - 48));
 		timeTemp = (std::to_string(line2[29] - 48) + std::to_string(line2[30] - 48) + std::to_string(line2[31] - 48));
-		
+
 		loadedResults.push_back(result(line, scoreTemp, timeTemp, coinsTemp));
 
 		coinsTemp.clear();
@@ -163,7 +173,14 @@ void Menu::readResultsFromFile()
 }
 void Menu::loadReslutsToArray()
 {
-	for (int i = 0; i < NUMBER_OF_RESULTS; i++)
+	int numberOFResults = NUMBER_OF_RESULTS;
+	if (loadedResults.size() < NUMBER_OF_RESULTS)
+		numberOFResults = loadedResults.size();
+
+
+	// SORT
+
+	for (int i = 0; i < numberOFResults; i++)
 	{
 		std::string toDisplay = std::to_string(i + 1) + ". Score: " + loadedResults.at(i).score + " coins: " + loadedResults.at(i).coins + " time " + loadedResults.at(i).time + "   " + loadedResults.at(i).date;
 		resultsToDisplay[i].setString(toDisplay);
@@ -181,3 +198,24 @@ void Menu::loadReslutsToArray()
 //{
 //	std::sort(loadedResults.begin(), loadedResults.end(), comparator);
 //}
+
+void Menu::gameWon(int center, sf::RenderWindow & window)
+{
+	sf::Texture texture;
+	try {
+		if (!texture.loadFromFile("../assets/gameWon.png"))
+		{
+			throw - 1;
+		}
+	}
+	catch (int)
+	{
+		std::cout << "can not load winning background texture";
+	}
+	//display background
+	sf::Sprite sprite;
+	sprite.setTexture(texture);
+	sprite.setOrigin({ 190,101 });
+	sprite.setPosition({ (float)center, 450 });
+	window.draw(sprite);
+}
