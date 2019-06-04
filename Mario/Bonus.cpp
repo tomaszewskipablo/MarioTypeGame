@@ -3,9 +3,18 @@
 Bonus::Bonus(sf::Vector2f startingPosition)
 {
 	file = "bonus.png";
-	if (!texture.loadFromFile("../assets/"+file, sf::IntRect(0, 0, Height, Width)))
+	
+	try
 	{
-		std::cout << "Texture did not load " << std::endl;
+		if (!texture.loadFromFile("../assets/" + file, sf::IntRect(0, 0, Height, Width)))
+		{
+			throw - 1;
+		}
+	}
+	catch (int)
+	{
+		std::cout << "can not load bonus texture";
+		exit(1);
 	}
 
 	sprite.setTexture(texture);

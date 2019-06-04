@@ -1,7 +1,5 @@
 #include "Game.h"
 
-
-
 Game::Game()
 {
 	// window initialization
@@ -71,7 +69,6 @@ void Game::updateSFMLEvents()
 		{
 			if (sfEvent.key.code == Keyboard::Escape)
 			{
-				std::cout << "ESCAPE()" << std::endl;
 				menu.setIsON(true);
 			}
 			// screen shots
@@ -196,7 +193,7 @@ void Game::Menu(int center)
 			{
 				if (menu.GetPressedItem() == 0)
 				{
-					if (won == true)
+					if (mario.getIsAlive()==false)
 					{
 						menu.setPressedItem(1);
 						menu.loadReslutsToArray();
@@ -244,7 +241,8 @@ void Game::run()
 	}
 }
 
-void Game::cameraMovement() {
+void Game::cameraMovement() 
+{
 	if (mario.getPosition().x > WINDOW_WIDTH / 2)
 		view.setCenter({ mario.getPosition().x, WINDOW_HIGHT / 2 });
 }

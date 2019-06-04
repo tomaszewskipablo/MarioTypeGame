@@ -18,6 +18,4 @@ public:
 	Spikey();
 	~Spikey();
 
-
-	//	void update();
 };

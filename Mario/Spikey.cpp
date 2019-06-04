@@ -5,9 +5,17 @@
 Spikey::Spikey()
 {
 	file = "Spikey.png";
-	if (!texture.loadFromFile("../assets/" + file, sf::IntRect(0, 0, Height, Width)))
+	try
 	{
-		std::cout << "Texture did not load " << std::endl;
+		if (!texture.loadFromFile("../assets/" + file, sf::IntRect(0, 0, Height, Width)))
+		{
+			throw - 1;
+		}
+	}
+	catch (int)
+	{
+		std::cout << "can not load Spikey texture";
+		exit(1);
 	}
 
 	sprite.setTexture(texture);

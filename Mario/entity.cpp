@@ -1,7 +1,8 @@
 #include "entity.h"
 
 
-void Entity::draw(RenderTarget & target, RenderStates state)const {
+void Entity::draw(RenderTarget & target, RenderStates state)const 
+{
 	target.draw(this->sprite, state);
 }
 
@@ -9,6 +10,7 @@ Vector2f Entity::getPosition()
 {
 	return sprite.getPosition();
 }
+
 void Entity::setPosition(Vector2f position)
 {
 	startingPosition = position;
@@ -19,6 +21,7 @@ void Entity::update()
 {
 	this->sprite.move(this->velocity);
 }
+
 float Entity::left()
 {
 	return this->sprite.getPosition().x - Width / 2.f;
@@ -58,6 +61,7 @@ void Entity::reset()
 	sprite.setPosition(startingPosition);
 	isAlive = true;
 }
+
 void Entity::repair() {
 	if (!texture.loadFromFile("../assets/"+file, sf::IntRect(0, 0, Height, Width)))
 	{

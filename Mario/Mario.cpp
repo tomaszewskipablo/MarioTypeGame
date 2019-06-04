@@ -69,6 +69,48 @@ void Mario::update(int mapWidth)
 	}
 }
 
-void Mario::killingMove() {
+void Mario::killingMove()
+{
 	this->sprite.move({ 0,-40 });
+}
+void Mario::setCanJump(bool canJump) 
+{ 
+	this->canJump = canJump; 
+}
+
+bool Mario::isBig()
+{
+	return bigMario; 
+}
+
+void Mario::setBigMario(bool isBig)
+{
+	if (bigMario = isBig)
+	{
+		sprite.setScale(1.3, 1);
+		Width *= 1.3;
+	}
+	else
+	{
+		sprite.setScale(32 / Width, 1);
+		Width = 32;
+	}
+}
+
+void Mario::dead() {
+
+	if (bigMario) {
+		setBigMario(false);
+		reset();
+	}
+	else
+		isAlive = false;
+}
+float Mario::getCurrentTime()
+{
+	return clock.getElapsedTime().asMilliseconds();
+}
+void Mario::fallDown()
+{
+	this->keyRel = false;
 }

@@ -42,21 +42,15 @@ public:
 	void drawBestResultsBackground(sf::RenderWindow& window, int center);
 	void MoveUp();
 	void MoveDown();
-	int GetPressedItem() { return selectedItemIndex; }
-	void setPressedItem(int item) { selectedItemIndex = item; }
-	bool isON() { return isOn; }
-	void setIsON(bool status) { isOn = status;
-	selectedItemIndex = 0;
-	}
+	int GetPressedItem();
+	void setPressedItem(int item);
+	bool isON();
+	void setIsON(bool status);
 	void readResultsFromFile();
 	void loadReslutsToArray();
 	static bool comparator(result i1, result i2);
 	void sortResults();
 
 	void gameWon(int center, sf::RenderWindow& window);
-	void reset() {
-		selectedItemIndex = 0;
-		menu[selectedItemIndex].setFillColor(sf::Color::Red);
-	menu[selectedItemIndex+1].setFillColor(sf::Color::Black);
-	}
+	void reset();
 };

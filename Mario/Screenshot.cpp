@@ -11,7 +11,6 @@ Screenshot::~Screenshot()
 }
 void Screenshot::create(sf::RenderWindow *window)
 {
-
 	sf::Vector2u windowSize = window->getSize();
 	sf::Texture texture;
 	texture.create(windowSize.x, windowSize.y);

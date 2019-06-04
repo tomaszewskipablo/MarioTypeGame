@@ -34,50 +34,15 @@ public:
 	void followMario(int center);
 	void draw(sf::RenderWindow& window, int center);
 
-	void reset()
-	{
-		coins = 0;
-		time = 0;
-		score = 0;
-		info[0].setString("Coins: " + std::to_string(coins));
-		info[1].setString("Score: " + std::to_string(score));
+	void reset();
 
-		finish = start = std::chrono::high_resolution_clock::now();
-
-	}
-	void increaseCoins() { coins++;
-	increaseScoreCoins();
-	info[0].setString("Coins: " + std::to_string(coins));
-
-		}
-	void increaseScoreBonus() { score += 50;
-	info[1].setString("Score: " + std::to_string(score));
-	}
-	void increaseScoreCoins() { score += 10;
-	info[1].setString("Score: " + std::to_string(score));
-	}
+	void increaseCoins();
+	void increaseScoreBonus();
+	void increaseScoreCoins();
 	void countTime();
 
 	void saveResultToFile();
 
-	std::string properFormat3(int number) // return 3 numbers 3 -> 003, 49 -> 049, 234 -> 234
-	{
-		if (number < 10)
-			return "00" + std::to_string(number);
-		else if (number < 100)
-			return "0" + std::to_string(number);
-		else
-			return std::to_string(number);
-	}
-	std::string properFormat4(int number) // return 4 numbers 3 -> 0003, 49 -> 0049, 234 -> 0234
-	{
-		if (number < 10)
-			return "000" + std::to_string(number);
-		else if (number < 100)
-			return "00" + std::to_string(number);
-		else if (number < 1000)
-			return "0" + std::to_string(number);
-		else
-			return std::to_string(number);
-	}
+	std::string properFormat3(int number); // return 3 numbers 3 -> 003, 49 -> 049, 234 -> 234
+	std::string properFormat4(int number); // return 4 numbers 3 -> 0003, 49 -> 0049, 234 -> 0234
 };

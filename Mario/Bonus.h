@@ -6,9 +6,6 @@
 #include<iostream>
 #include"entity.h"
 
-#define WINDOW_WIDTH 1024
-#define WINDOW_HIGHT 512
-
 using namespace sf;
 class Bonus : public Entity
 {
@@ -19,7 +16,4 @@ public:
 	Bonus(sf::Vector2f startingPosition);
 	~Bonus();
 
-	void repair();
-
-	//	void update();
 };

@@ -38,7 +38,6 @@ public:
 	int collison(Entity &Entity, GameInfo &gameInfo);	// function returns from what side collision comes from and move object to the opposit side
 	float min4(float tab[]);
 	void loadArrayFromArray(std::string fileName);
-	bool onGround(Entity Entity);
 	int getMapWidth() { return mapWidth; }
 	bool getBonus() { return bonus; }
 	void setBonus(bool bonus) { this->bonus = bonus; }

@@ -16,6 +16,5 @@ private:
 
 public:
 	Turtle();
-//	Turtle(sf::Vector2f startingPosition);
 	~Turtle();
 };

@@ -29,41 +29,24 @@ private:
 	float dt;
 
 	bool keyRel = false;
+
 	public:
+
 	Mario();
 
 	void update(int mapWidth);
+
 	void killingMove();
 
-	void setCanJump(bool canJump) { this->canJump = canJump; }
-	bool isBig() { return bigMario; }
-	void setBigMario(bool isBig) { 
-		if (bigMario = isBig)
-		{
-			sprite.setScale(1.3, 1);
-			Width *= 1.3;
-		}
-		else 
-		{
-			sprite.setScale(32/Width, 1);
-			Width = 32;
-		}
-	}
-	void dead() {
-		
-		if (bigMario) {
-			setBigMario(false);
-			reset();
-		}
-		else
-			isAlive = false;
-	}
-	float getCurrentTime()
-	{
-		return clock.getElapsedTime().asMilliseconds();
-	}
-	void fallDown()
-	{
-		this->keyRel = false;
-	}
+	void setCanJump(bool canJump);
+
+	bool isBig();
+
+	void setBigMario(bool isBig);
+
+	void dead();
+
+	float getCurrentTime();
+
+	void fallDown();
 };

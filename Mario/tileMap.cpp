@@ -1,7 +1,8 @@
 ﻿#include "tileMap.h"
-					
+
 TileMap::TileMap()
-{	
+{
+
 	loadArrayFromArray("../assets/array.txt");
 }
 
@@ -65,7 +66,7 @@ int TileMap::collison(Entity & Entity, GameInfo & gameInfo)
 	for (unsigned int i = 0; i < height; ++i)
 		for (unsigned int j = 0; j < width; ++j)
 		{
-			if (abs(Entity.getPosition().x - (j * tileSize.x)) <2*tileSize.x&& abs(Entity.getPosition().y - (i * tileSize.y)) < 2*tileSize.y)	// check only fields tileSize
+			if (abs(Entity.getPosition().x - (j * tileSize.x)) < 1.5 * tileSize.x && abs(Entity.getPosition().y - (i * tileSize.y)) < 1.5 * tileSize.y)	// check only fields tileSize
 			{
 				if (tiles[i * width + j] == 1 || tiles[i * width + j] == 2 || tiles[i * width + j] == 3 || tiles[i * width + j] == 5 || tiles[i * width + j] == 6 || tiles[i * width + j] == 8 || tiles[i * width + j] == 9)
 				{
@@ -90,7 +91,7 @@ int TileMap::collison(Entity & Entity, GameInfo & gameInfo)
 									bonus = true;
 								}
 
-								if (Entity.getDestroyMode())
+								if (Entity.getDestroyMode()) //mario can get in destroy mode and destroy bricks
 								{
 									tiles[i * width + j] = 0;
 									load("../assets/map.png", sf::Vector2u(64, 64));
@@ -103,10 +104,10 @@ int TileMap::collison(Entity & Entity, GameInfo & gameInfo)
 								return 1; // Entity touched the ground
 							case LEFT:
 								Entity.moveLeft();
-								return 2;
+								return 2;	// Entity touched something from his right side
 							case RIGHT:
 								Entity.moveRight();
-								return 3;
+								return 3;	// Entity touched something from his left side
 							}
 						}
 						else if (tiles[i * width + j] == COIN)		// if COIN
@@ -115,22 +116,21 @@ int TileMap::collison(Entity & Entity, GameInfo & gameInfo)
 							load("../assets/map.png", sf::Vector2u(64, 64));
 							gameInfo.increaseCoins();
 						}
-						if (tiles[i * width + j] == 5|| tiles[i * width + j] == 6)		// if END game
+						if (tiles[i * width + j] == 5 || tiles[i * width + j] == 6)		// if Killing flower
 						{
 							Entity.dead();
-							
+
 						}
 						if (tiles[i * width + j] == 9)		// if END game
 						{
 							std::cout << "END" << std::endl;
 							return 9;
 						}
-						
 					}
 				}
 			}
 		}
-	return 5;
+	return 5;	// if tauched nothing
 }
 
 float TileMap::min4(float tab[])
@@ -144,8 +144,10 @@ float TileMap::min4(float tab[])
 
 	return min;
 }
-void TileMap::loadArrayFromArray(std::string fileName){
-	tiles.clear();		
+
+void TileMap::loadArrayFromArray(std::string fileName)
+{
+	tiles.clear();
 
 	std::fstream input;
 	std::string line;
@@ -153,40 +155,34 @@ void TileMap::loadArrayFromArray(std::string fileName){
 	int numberOfLines = 0;
 
 	input.open(fileName, std::ios::in);
-	if (input.good() == true)
+
+
+	try
 	{
-		while (!input.eof())
+		if (!input.good() == true)
 		{
-			numberOfLines++;
-			std::getline(input, line);
-			width = line.length();
-
-			for (int i = 0; i < width; i++) 
-				tiles.push_back(line[i] - '0');
-
+			throw - 1;
 		}
-		input.close();
 	}
-	else
-		std::cout << "can not open file " << fileName << std::endl;
+	catch (int)
+	{
+		std::cout << "can not open file with map .txt";
+		exit(1);
+	}
+
+
+	while (!input.eof())
+	{
+		numberOfLines++;
+		std::getline(input, line);
+		width = line.length();
+
+		for (int i = 0; i < width; i++)
+			tiles.push_back(line[i] - '0');
+
+	}
+	input.close();
 
 	mapWidth = width * 64;
 	height = numberOfLines;
-}
-bool TileMap::onGround(Entity Entity)
-{
-	float top, left, right;
-	for (unsigned int i = 0; i < height; ++i)
-		for (unsigned int j = 0; j < width; ++j)
-		{
-			if (tiles[i * width + j] == 1) {
-				top = i * tileSize.y;
-				left = j * tileSize.x;
-				right = j * tileSize.x + tileSize.x;
-
-				if (abs(Entity.bottom() - top) < 2 && abs(left - Entity.left()) > tileSize.x - 10)	// Entity touch the ground
-					return true;
-			}
-		}
-	return false;
 }

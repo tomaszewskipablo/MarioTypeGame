@@ -38,7 +38,9 @@ Menu::Menu()
 
 	selectedItemIndex = 0;
 }
-void Menu::followMario(int center) {
+
+void Menu::followMario(int center)
+{
 	menu[0].setPosition(sf::Vector2f(center - 26, WINDOW_HIGHT / (MAX_NUMBER_OF_ITEMS + 1) * 1.25 + 45));
 	menu[1].setPosition(sf::Vector2f(center - 45, WINDOW_HIGHT / (MAX_NUMBER_OF_ITEMS + 1) * 1.6 + 45));
 	menu[2].setPosition(sf::Vector2f(center - 85, WINDOW_HIGHT / (MAX_NUMBER_OF_ITEMS + 1) * 2 + 45));
@@ -80,13 +82,14 @@ void Menu::draw(sf::RenderWindow & window, int center)
 	{
 		window.draw(menu[i]);
 	}
-
 }
+
 void Menu::drawBestResults(sf::RenderWindow & window, int center)
 {
 	drawBestResultsBackground(window, center);
 	drawResults(window, center);
 }
+
 void Menu::drawResults(sf::RenderWindow & window, int center)
 {
 	for (int i = 0; i < NUMBER_OF_RESULTS; i++)
@@ -94,6 +97,7 @@ void Menu::drawResults(sf::RenderWindow & window, int center)
 		window.draw(resultsToDisplay[i]);
 	}
 }
+
 void Menu::drawBestResultsBackground(sf::RenderWindow & window, int center) {
 	sf::Texture texture;
 	try {
@@ -108,13 +112,13 @@ void Menu::drawBestResultsBackground(sf::RenderWindow & window, int center) {
 		exit(1);
 	}
 
-
 	sf::Sprite sprite;
 	sprite.setTexture(texture);
 	sprite.setOrigin(747 / 2, 103 / 2);
 	sprite.setPosition({ (float)center,WINDOW_HIGHT / 6 });
 	window.draw(sprite);
 }
+
 void Menu::MoveUp()
 {
 	if (selectedItemIndex - 1 >= 0)
@@ -135,6 +139,27 @@ void Menu::MoveDown()
 	}
 }
 
+int Menu::GetPressedItem() 
+{ 
+	return selectedItemIndex; 
+}
+
+void Menu::setPressedItem(int item) 
+{ 
+	selectedItemIndex = item;
+}
+
+bool Menu::isON() 
+{
+	return isOn; 
+}
+
+void Menu::setIsON(bool status) 
+{
+	isOn = status;
+	selectedItemIndex = 0;
+}
+
 void Menu::readResultsFromFile()
 {
 	std::string line, line2;
@@ -143,10 +168,22 @@ void Menu::readResultsFromFile()
 	std::string timeTemp;
 	std::ifstream infile;
 
+
 	infile.open("../results/results.txt");
-	if (!infile) {
-		std::cout << "can not open file to read results from";
+
+	try
+	{
+		if (!infile)
+		{
+			throw - 1;
+		}
 	}
+	catch (int)
+	{
+		std::cout << "can not load results";
+		exit(1);
+	}
+
 	int counter = 0;
 
 	while (getline(infile, line)) {
@@ -171,18 +208,15 @@ void Menu::readResultsFromFile()
 
 	infile.close();
 
-	
 	sortResults();
 }
+
 void Menu::loadReslutsToArray()
 {
 	readResultsFromFile();
 	int numberOFResults = NUMBER_OF_RESULTS;
 	if (loadedResults.size() < NUMBER_OF_RESULTS)
 		numberOFResults = loadedResults.size();
-
-
-	// SORT
 
 	for (int i = 0; i < numberOFResults; i++)
 	{
@@ -194,6 +228,7 @@ void Menu::loadReslutsToArray()
 		resultsToDisplay[i].setCharacterSize(25);
 	}
 }
+
 bool Menu::comparator(result  i1, result  i2)
 {
 	return (i1.score > i2.score);
@@ -201,9 +236,8 @@ bool Menu::comparator(result  i1, result  i2)
 void Menu::sortResults()
 {
 	std::sort(loadedResults.begin(), loadedResults.end(), comparator);
-	
-}
 
+}
 
 void Menu::gameWon(int center, sf::RenderWindow & window)
 {
@@ -225,4 +259,9 @@ void Menu::gameWon(int center, sf::RenderWindow & window)
 	sprite.setOrigin({ 190,101 });
 	sprite.setPosition({ (float)center, 450 });
 	window.draw(sprite);
+}
+void Menu::reset() { 
+	selectedItemIndex = 0;
+	menu[selectedItemIndex].setFillColor(sf::Color::Red);
+	menu[selectedItemIndex + 1].setFillColor(sf::Color::Black);
 }

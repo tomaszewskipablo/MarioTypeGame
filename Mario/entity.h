@@ -3,8 +3,6 @@
 #include<SFML/Window.hpp>
 #include<iostream>
 
-#define WINDOW_WIDTH 1024
-#define WINDOW_HIGHT 512
 using namespace sf;
 class Entity : public Drawable // Drawable makes possible to use window.draw(Ball)
 {
