@@ -6,29 +6,29 @@ P:\_study\pk4\project\Mario\Mario_4semProject\Mario\Game.h(23): warning C4005: '
   P:\_study\pk4\project\Mario\Mario_4semProject\Mario\tileMap.h(18): note: see previous definition of 'TOP'
 P:\_study\pk4\project\Mario\Mario_4semProject\Mario\Game.h(24): warning C4005: 'BOTTOM': macro redefinition
   P:\_study\pk4\project\Mario\Mario_4semProject\Mario\tileMap.h(17): note: see previous definition of 'BOTTOM'
-P:\_study\pk4\project\Mario\Mario_4semProject\Mario\Game.cpp(92): warning C4018: '<': signed/unsigned mismatch
-P:\_study\pk4\project\Mario\Mario_4semProject\Mario\Game.cpp(112): warning C4244: 'argument': conversion from 'T' to 'int', possible loss of data
+P:\_study\pk4\project\Mario\Mario_4semProject\Mario\Game.cpp(90): warning C4018: '<': signed/unsigned mismatch
+P:\_study\pk4\project\Mario\Mario_4semProject\Mario\Game.cpp(145): warning C4244: 'argument': conversion from 'const T' to 'int', possible loss of data
           with
           [
               T=float
           ]
-P:\_study\pk4\project\Mario\Mario_4semProject\Mario\Game.cpp(149): warning C4244: 'argument': conversion from 'const T' to 'int', possible loss of data
+P:\_study\pk4\project\Mario\Mario_4semProject\Mario\Game.cpp(146): warning C4244: 'argument': conversion from 'T' to 'int', possible loss of data
           with
           [
               T=float
           ]
-P:\_study\pk4\project\Mario\Mario_4semProject\Mario\Game.cpp(150): warning C4244: 'argument': conversion from 'const T' to 'int', possible loss of data
+P:\_study\pk4\project\Mario\Mario_4semProject\Mario\Game.cpp(148): warning C4244: 'argument': conversion from 'const T' to 'int', possible loss of data
           with
           [
               T=float
           ]
-P:\_study\pk4\project\Mario\Mario_4semProject\Mario\Game.cpp(240): warning C4244: 'argument': conversion from 'const T' to 'int', possible loss of data
+P:\_study\pk4\project\Mario\Mario_4semProject\Mario\Game.cpp(238): warning C4244: 'argument': conversion from 'const T' to 'int', possible loss of data
           with
           [
               T=float
           ]
-P:\_study\pk4\project\Mario\Mario_4semProject\Mario\Game.cpp(254): warning C4018: '<': signed/unsigned mismatch
-P:\_study\pk4\project\Mario\Mario_4semProject\Mario\Game.cpp(261): warning C4018: '<': signed/unsigned mismatch
-P:\_study\pk4\project\Mario\Mario_4semProject\Mario\Game.cpp(297): warning C4244: '=': conversion from 'double' to 'float', possible loss of data
-P:\_study\pk4\project\Mario\Mario_4semProject\Mario\Game.cpp(298): warning C4244: '=': conversion from 'double' to 'float', possible loss of data
+P:\_study\pk4\project\Mario\Mario_4semProject\Mario\Game.cpp(258): warning C4018: '<': signed/unsigned mismatch
+P:\_study\pk4\project\Mario\Mario_4semProject\Mario\Game.cpp(266): warning C4018: '<': signed/unsigned mismatch
+P:\_study\pk4\project\Mario\Mario_4semProject\Mario\Game.cpp(311): warning C4244: '=': conversion from 'double' to 'float', possible loss of data
+P:\_study\pk4\project\Mario\Mario_4semProject\Mario\Game.cpp(312): warning C4244: '=': conversion from 'double' to 'float', possible loss of data
   Mario.vcxproj -> P:\_study\pk4\project\Mario\Mario_4semProject\Debug\Mario.exe

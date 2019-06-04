@@ -12,6 +12,7 @@ Menu::Menu()
 	catch (int)
 	{
 		std::cout << "can not load menu font";
+		exit(1);
 	}
 
 	menu[0].setFont(font);
@@ -65,6 +66,7 @@ void Menu::draw(sf::RenderWindow & window, int center)
 	catch (int)
 	{
 		std::cout << "can not load menu background texture texture";
+		exit(1);
 	}
 	//display background
 	sf::Sprite sprite;
@@ -103,6 +105,7 @@ void Menu::drawBestResultsBackground(sf::RenderWindow & window, int center) {
 	catch (int)
 	{
 		std::cout << "can not load results background texture";
+		exit(1);
 	}
 
 
@@ -214,6 +217,7 @@ void Menu::gameWon(int center, sf::RenderWindow & window)
 	catch (int)
 	{
 		std::cout << "can not load winning background texture";
+		exit(1);
 	}
 	//display background
 	sf::Sprite sprite;

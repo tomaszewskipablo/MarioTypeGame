@@ -4,7 +4,9 @@ Mario::Mario()
 {
 
 	file = "mario.png";
-	try {
+	
+	try
+	{
 		if (!texture.loadFromFile("../assets/" + file, sf::IntRect(0, 0, 64, 64)))
 		{
 			throw - 1;
@@ -13,6 +15,7 @@ Mario::Mario()
 	catch (int)
 	{
 		std::cout << "can not load mario texture";
+		exit(1);
 	}
 
 	sprite.setTexture(texture);

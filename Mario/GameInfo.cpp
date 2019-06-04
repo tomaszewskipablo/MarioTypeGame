@@ -6,10 +6,19 @@
 
 GameInfo::GameInfo()
 {
-	if (!font.loadFromFile("../assets/arial.ttf"))
+	try
 	{
-		// handle error
+		if (!font.loadFromFile("../assets/arial.ttf"))
+		{
+			throw - 1;
+		}
 	}
+	catch (int)
+	{
+		std::cout << "can not load mario texture";
+		exit(1);
+	}
+	
 	info[0].setFont(font);
 	info[0].setFillColor(sf::Color::White);
 	info[0].setCharacterSize(36);
@@ -32,7 +41,9 @@ GameInfo::GameInfo()
 GameInfo::~GameInfo()
 {
 }
-void GameInfo::followMario(int center) {
+
+void GameInfo::followMario(int center) 
+{
 	info[0].setPosition(sf::Vector2f(center - 430, WINDOW_HIGHT / 20));
 	info[1].setPosition(sf::Vector2f(center, WINDOW_HIGHT / 20));
 	info[2].setPosition(sf::Vector2f(center + 300, WINDOW_HIGHT / 20));
@@ -46,7 +57,6 @@ void GameInfo::draw(sf::RenderWindow & window, int center)
 	{
 		window.draw(info[i]);
 	}
-
 }
 void GameInfo::countTime()
 {
@@ -62,7 +72,7 @@ void GameInfo::countTime()
 }
 void GameInfo::saveResultToFile()
 {
-	score = score - (time * 5 + 300);
+	score = score - (time * 5);
 	if (score < 0)
 		score = 0;
 	std::time(&czas);

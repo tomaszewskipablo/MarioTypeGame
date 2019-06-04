@@ -14,22 +14,19 @@ Game::Game()
 	gameInfo.reset();
 
 	addMobs();
-
 }
-
 
 Game::~Game()
 {
 	delete this->window;
 }
 
-
 void Game::intersection(Mario& mario, Entity& entity)
 {
 	Bonus b;
 	if (entity.getIsAlive()) {
 		if (mario.getSprite().getGlobalBounds().intersects(entity.getSprite().getGlobalBounds()))
-			if (entity.getIsFrendly())
+			if (entity.getIsFrendly())	// if entity is friendly mario collect it
 			{
 				entity.dead();
 				mario.setBigMario(true);
@@ -63,6 +60,7 @@ void Game::intersection(Mario& mario, Entity& entity)
 			}
 	}
 }
+
 void Game::updateSFMLEvents()
 {
 	while (this->window->pollEvent(this->sfEvent))
@@ -107,9 +105,7 @@ void Game::update()
 				mobs.at(i).update();
 			}
 		}
-	}
-
-	menu.followMario(mario.getPosition().x);
+	}//
 
 	int marioHit = map.collison(mario, gameInfo);
 	map.collison(mario, gameInfo);
@@ -129,14 +125,14 @@ void Game::update()
 	{
 		menu.isON();
 		gameInfo.saveResultToFile();
-		mario.dead();
+		mario.dead();	// die twice, cause mario may have additional life
 		mario.dead();
 		won = true;
 	}
 
 	mario.update(map.getMapWidth());
 
-	Bonuses();
+	Bonuses();	// update bonuses
 }
 
 void Game::render()
@@ -145,9 +141,11 @@ void Game::render()
 
 	window->draw(map);
 
-
-	this->gameInfo.followMario(view.getCenter().x);
-	this->gameInfo.draw(*window, view.getCenter().x);
+	// follow mario to display in right place when called
+	gameInfo.followMario(view.getCenter().x);
+	menu.followMario(mario.getPosition().x); 
+	
+	gameInfo.draw(*window, view.getCenter().x);
 
 	if (mario.getIsAlive())
 		window->draw(mario);
@@ -159,6 +157,7 @@ void Game::render()
 	window->setView(view);
 	this->window->display();
 }
+
 void Game::Menu(int center)
 {
 	if (center < WINDOW_WIDTH / 2)
@@ -231,7 +230,6 @@ void Game::Menu(int center)
 	}
 }
 
-
 void Game::run()
 {
 	while (this->window->isOpen())
@@ -245,17 +243,24 @@ void Game::run()
 		}
 	}
 }
+
 void Game::cameraMovement() {
 	if (mario.getPosition().x > WINDOW_WIDTH / 2)
 		view.setCenter({ mario.getPosition().x, WINDOW_HIGHT / 2 });
 }
+
 void Game::repairSFMLTextures()
 {
+	//SFML
+	//SFML error:
+	//Object has its texture after adding it to some container, texture gets lost and replaced with white texture.
+	//To solve this repairSFMLTexture() function was added to reload textures when our object are yet in container.
 	for (int i = 0; i < mobs.size(); i++)
 	{
 		mobs.at(i).repair();
 	}
 }
+
 void Game::drawMobs()
 {
 	for (int i = 0; i < mobs.size(); i++)
@@ -264,6 +269,7 @@ void Game::drawMobs()
 			window->draw(mobs.at(i));
 	}
 }
+
 void Game::Bonuses()
 {
 	if (map.getBonus() == true)
@@ -275,8 +281,16 @@ void Game::Bonuses()
 		map.setBonus(false);
 	}
 }
+
 void Game::addMobs()
 {
+	// Mobs are read from file and add to the vector
+	// file structure
+	// mobName Posiion.x,Position.y
+	// example
+	// Turtle 0200,130
+	// Spikey 3600,400
+
 	std::string line;
 	float x, y;
 	std::fstream infile;
@@ -303,7 +317,7 @@ void Game::addMobs()
 			else if (mobName.compare("Spikey") == 0)
 				wsk = new Spikey;
 			else
-				wsk = new FlyTur;
+				wsk = new FlyTur; // if no mobName read from exist take FlyTur  
 
 			wsk->setPosition({ x, y });
 			mobs.push_back(*wsk);
