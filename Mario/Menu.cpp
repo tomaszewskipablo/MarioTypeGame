@@ -173,6 +173,7 @@ void Menu::readResultsFromFile()
 }
 void Menu::loadReslutsToArray()
 {
+	readResultsFromFile();
 	int numberOFResults = NUMBER_OF_RESULTS;
 	if (loadedResults.size() < NUMBER_OF_RESULTS)
 		numberOFResults = loadedResults.size();

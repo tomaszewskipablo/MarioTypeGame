@@ -37,6 +37,8 @@ public:
 
 	Vector2f getPosition();
 
+	void setPosition(Vector2f position);
+
 
 	void update();
 

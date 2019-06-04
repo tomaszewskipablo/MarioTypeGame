@@ -15,8 +15,7 @@ class Spikey : public Entity
 private:
 
 public:
-	Spikey() {};
-	Spikey(sf::Vector2f startingPosition);
+	Spikey();
 	~Spikey();
 
 

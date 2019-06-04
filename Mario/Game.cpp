@@ -1,5 +1,5 @@
 #include "Game.h"
-#include<iostream>
+
 
 
 Game::Game()
@@ -112,6 +112,7 @@ void Game::update()
 	menu.followMario(mario.getPosition().x);
 
 	int marioHit = map.collison(mario, gameInfo);
+	map.collison(mario, gameInfo);
 	if (marioHit == BOTTOM)	// if mario on the ground he can jump
 	{
 		mario.setCanJump(true);
@@ -124,7 +125,7 @@ void Game::update()
 	if (!mario.getIsAlive())
 		menu.setIsON(true);
 
-	if (marioHit == END_GAME&& !won)
+	if (marioHit == END_GAME && !won)
 	{
 		menu.isON();
 		gameInfo.saveResultToFile();
@@ -208,7 +209,7 @@ void Game::Menu(int center)
 				{
 					mario.reset();
 					menu.reset();
-					won == false;
+					won = false;
 					mario.setBigMario(false);
 					addMobs();
 
@@ -276,28 +277,40 @@ void Game::Bonuses()
 }
 void Game::addMobs()
 {
+	std::string line;
+	float x, y;
+	std::fstream infile;
+	std::string mobName;
+	Entity* wsk;
+
 	mobs.clear();
-	// ------------------- ADD MOBS HERE ----------------------
-	Turtle turtle1({ 400,400 });
-	Turtle turtle2({ 1400,100 });
-	Turtle turtle3({ 2432,100 });
-	Turtle turtle4({ 5700,256 });
 
-	Spikey spikey1({ 1800,200 });
-	Spikey spikey2({ 6800,400 });
-	Spikey spikey3({ 6600,400 });
+	infile.open("../assets/mobs.txt");
+	if (!infile) {
+		std::cout << "can not open file to read results from";
+	}
 
+	while (getline(infile, line)) {
+		{
+			mobName = line.substr(0, 6);
 
-	mobs.push_back(turtle1);
-	mobs.push_back(turtle2);
-	mobs.push_back(turtle3);
-	mobs.push_back(turtle4);
+			x = atof(line.substr(7, 4).c_str());
+			y = atof(line.substr(12, 3).c_str());
 
-	mobs.push_back(spikey1);
-	mobs.push_back(spikey2);
-	mobs.push_back(spikey3);
+			if (mobName.compare("Turtle") == 0)
+				wsk = new Turtle;
 
+			else if (mobName.compare("Spikey") == 0)
+				wsk = new Spikey;
+			else
+				wsk = new FlyTur;
 
-	repairSFMLTextures();
-	// ---------------------------------------------------------
+			wsk->setPosition({ x, y });
+			mobs.push_back(*wsk);
+		}
+	}
+
+		infile.close();
+
+		repairSFMLTextures();
 }

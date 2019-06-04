@@ -9,9 +9,12 @@
 #include"Screenshot.h"
 #include"Bonus.h"
 #include"Spikey.h"
+#include"flyTur.h"
 
 
 #include<Windows.h>
+#include<iostream>
+#include<fstream>
 #include<SFML/Graphics.hpp>
 #include<SFML/Window.hpp>
 

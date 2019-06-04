@@ -2,7 +2,7 @@
 
 
 
-Spikey::Spikey(sf::Vector2f startingPosition)
+Spikey::Spikey()
 {
 	file = "Spikey.png";
 	if (!texture.loadFromFile("../assets/" + file, sf::IntRect(0, 0, Height, Width)))
@@ -11,8 +11,6 @@ Spikey::Spikey(sf::Vector2f startingPosition)
 	}
 
 	sprite.setTexture(texture);
-	this->startingPosition = startingPosition;
-	sprite.setPosition(startingPosition);
 
 	Height = 32;
 	Width = 32;

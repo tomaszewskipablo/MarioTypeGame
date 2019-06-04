@@ -2,7 +2,7 @@
 
 
 
-Turtle::Turtle(sf::Vector2f startingPosition)
+Turtle::Turtle()
 {
 	file = "turtle.png";
 	if (!texture.loadFromFile("../assets/"+file, sf::IntRect(0, 0, Height, Width)))
@@ -11,8 +11,6 @@ Turtle::Turtle(sf::Vector2f startingPosition)
 	}
 	
 	sprite.setTexture(texture);
-	this->startingPosition = startingPosition;
-	sprite.setPosition(startingPosition);
 
 	Height = 46;
 	Width = 32;

@@ -1,47 +1,34 @@
-﻿  Menu.cpp
-P:\_study\pk4\project\Mario\Mario_4semProject\Mario\Menu.cpp(41): warning C4244: 'argument': conversion from 'int' to 'T', possible loss of data
+﻿  Game.cpp
+P:\_study\pk4\project\Mario\Mario_4semProject\Mario\Mario.h(43): warning C4305: 'argument': truncation from 'double' to 'float'
+P:\_study\pk4\project\Mario\Mario_4semProject\Mario\Mario.h(44): warning C4305: '*=': truncation from 'double' to 'float'
+P:\_study\pk4\project\Mario\Mario_4semProject\Mario\Mario.h(63): warning C4244: 'return': conversion from 'sf::Int32' to 'float', possible loss of data
+P:\_study\pk4\project\Mario\Mario_4semProject\Mario\Game.h(23): warning C4005: 'TOP': macro redefinition
+  P:\_study\pk4\project\Mario\Mario_4semProject\Mario\tileMap.h(18): note: see previous definition of 'TOP'
+P:\_study\pk4\project\Mario\Mario_4semProject\Mario\Game.h(24): warning C4005: 'BOTTOM': macro redefinition
+  P:\_study\pk4\project\Mario\Mario_4semProject\Mario\tileMap.h(17): note: see previous definition of 'BOTTOM'
+P:\_study\pk4\project\Mario\Mario_4semProject\Mario\Game.cpp(92): warning C4018: '<': signed/unsigned mismatch
+P:\_study\pk4\project\Mario\Mario_4semProject\Mario\Game.cpp(112): warning C4244: 'argument': conversion from 'T' to 'int', possible loss of data
           with
           [
               T=float
           ]
-P:\_study\pk4\project\Mario\Mario_4semProject\Mario\Menu.cpp(42): warning C4305: 'argument': truncation from 'double' to 'T'
+P:\_study\pk4\project\Mario\Mario_4semProject\Mario\Game.cpp(149): warning C4244: 'argument': conversion from 'const T' to 'int', possible loss of data
           with
           [
               T=float
           ]
-P:\_study\pk4\project\Mario\Mario_4semProject\Mario\Menu.cpp(42): warning C4244: 'argument': conversion from 'int' to 'T', possible loss of data
+P:\_study\pk4\project\Mario\Mario_4semProject\Mario\Game.cpp(150): warning C4244: 'argument': conversion from 'const T' to 'int', possible loss of data
           with
           [
               T=float
           ]
-P:\_study\pk4\project\Mario\Mario_4semProject\Mario\Menu.cpp(43): warning C4244: 'argument': conversion from 'int' to 'T', possible loss of data
+P:\_study\pk4\project\Mario\Mario_4semProject\Mario\Game.cpp(240): warning C4244: 'argument': conversion from 'const T' to 'int', possible loss of data
           with
           [
               T=float
           ]
-P:\_study\pk4\project\Mario\Mario_4semProject\Mario\Menu.cpp(44): warning C4305: 'argument': truncation from 'double' to 'T'
-          with
-          [
-              T=float
-          ]
-P:\_study\pk4\project\Mario\Mario_4semProject\Mario\Menu.cpp(44): warning C4244: 'argument': conversion from 'int' to 'T', possible loss of data
-          with
-          [
-              T=float
-          ]
-P:\_study\pk4\project\Mario\Mario_4semProject\Mario\Menu.cpp(46): warning C4244: 'argument': conversion from 'int' to 'T', possible loss of data
-          with
-          [
-              T=float
-          ]
-P:\_study\pk4\project\Mario\Mario_4semProject\Mario\Menu.cpp(47): warning C4244: 'argument': conversion from 'int' to 'T', possible loss of data
-          with
-          [
-              T=float
-          ]
-P:\_study\pk4\project\Mario\Mario_4semProject\Mario\Menu.cpp(48): warning C4244: 'argument': conversion from 'int' to 'T', possible loss of data
-          with
-          [
-              T=float
-          ]
+P:\_study\pk4\project\Mario\Mario_4semProject\Mario\Game.cpp(254): warning C4018: '<': signed/unsigned mismatch
+P:\_study\pk4\project\Mario\Mario_4semProject\Mario\Game.cpp(261): warning C4018: '<': signed/unsigned mismatch
+P:\_study\pk4\project\Mario\Mario_4semProject\Mario\Game.cpp(297): warning C4244: '=': conversion from 'double' to 'float', possible loss of data
+P:\_study\pk4\project\Mario\Mario_4semProject\Mario\Game.cpp(298): warning C4244: '=': conversion from 'double' to 'float', possible loss of data
   Mario.vcxproj -> P:\_study\pk4\project\Mario\Mario_4semProject\Debug\Mario.exe

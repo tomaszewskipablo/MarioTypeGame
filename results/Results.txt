@@ -37,3 +37,36 @@ Coins: 052 Score: 0045 Time: 035
 Tue Jun  4 09:26:38 2019
 Coins: 055 Score: 0140 Time: 062
 
+Tue Jun  4 18:47:12 2019
+Coins: 055 Score: 0130 Time: 044
+
+Tue Jun  4 18:49:47 2019
+Coins: 057 Score: 0215 Time: 041
+
+Tue Jun  4 18:50:55 2019
+Coins: 060 Score: 0285 Time: 043
+
+Tue Jun  4 18:53:48 2019
+Coins: 060 Score: 0300 Time: 040
+
+Tue Jun  4 18:57:26 2019
+Coins: 060 Score: 0285 Time: 043
+
+Tue Jun  4 19:45:53 2019
+Coins: 060 Score: 0230 Time: 034
+
+Tue Jun  4 19:51:46 2019
+Coins: 059 Score: 0210 Time: 036
+
+Tue Jun  4 20:36:23 2019
+Coins: 060 Score: 0395 Time: 041
+
+Tue Jun  4 20:47:43 2019
+Coins: 042 Score: 0025 Time: 039
+
+Tue Jun  4 21:27:09 2019
+Coins: 043 Score: 0020 Time: 062
+
+Tue Jun  4 21:36:07 2019
+Coins: 044 Score: 0150 Time: 038
+

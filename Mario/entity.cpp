@@ -9,7 +9,11 @@ Vector2f Entity::getPosition()
 {
 	return sprite.getPosition();
 }
-
+void Entity::setPosition(Vector2f position)
+{
+	startingPosition = position;
+	sprite.setPosition(position);
+}
 
 void Entity::update()
 {

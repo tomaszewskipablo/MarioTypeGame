@@ -15,7 +15,7 @@ class Turtle : public Entity
 private:
 
 public:
-	Turtle() {};
-	Turtle(sf::Vector2f startingPosition);
+	Turtle();
+//	Turtle(sf::Vector2f startingPosition);
 	~Turtle();
 };
