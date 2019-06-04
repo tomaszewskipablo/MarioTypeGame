@@ -1,0 +1,8 @@
+Turtle 0400,400
+Turtle 1400,100
+Turtle 2432,100
+Turtle 5700,256
+
+Spikey 1800,200
+Spikey 6800,400
+Spikey 6600,400

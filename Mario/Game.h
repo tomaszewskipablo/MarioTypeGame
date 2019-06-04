@@ -27,7 +27,6 @@ class Game
 {
 	Mario mario;
 	std::vector<Entity> mobs;
-	//Bonus bonus;
 	TileMap map;
 	GameInfo gameInfo;
 	Menu menu;
@@ -59,6 +58,5 @@ public:
 	void drawMobs();
 	void Bonuses();
 	void addMobs();
-	
 };
 

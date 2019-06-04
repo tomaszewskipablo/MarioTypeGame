@@ -168,8 +168,8 @@ void Menu::readResultsFromFile()
 
 	infile.close();
 
-	//sort
-
+	
+	sortResults();
 }
 void Menu::loadReslutsToArray()
 {
@@ -190,14 +190,16 @@ void Menu::loadReslutsToArray()
 		resultsToDisplay[i].setCharacterSize(25);
 	}
 }
-//bool Menu::comparator(result  i1, result  i2)
-//{
-//	return (i1.score < i2.score);
-//}
-//void Menu::sortResults()
-//{
-//	std::sort(loadedResults.begin(), loadedResults.end(), comparator);
-//}
+bool Menu::comparator(result  i1, result  i2)
+{
+	return (i1.score > i2.score);
+}
+void Menu::sortResults()
+{
+	std::sort(loadedResults.begin(), loadedResults.end(), comparator);
+	
+}
+
 
 void Menu::gameWon(int center, sf::RenderWindow & window)
 {

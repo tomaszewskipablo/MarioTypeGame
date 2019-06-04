@@ -112,7 +112,6 @@ int TileMap::collison(Entity & Entity, GameInfo & gameInfo)
 						else if (tiles[i * width + j] == COIN)		// if COIN
 						{
 							tiles[i * width + j] = 0;	// change coin to heaven
-							std::cout << "COINS" << std::endl;
 							load("../assets/map.png", sf::Vector2u(64, 64));
 							gameInfo.increaseCoins();
 						}

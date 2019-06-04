@@ -50,7 +50,7 @@ public:
 	}
 	void readResultsFromFile();
 	void loadReslutsToArray();
-	bool comparator(result i1, result i2);
+	static bool comparator(result i1, result i2);
 	void sortResults();
 
 	void gameWon(int center, sf::RenderWindow& window);

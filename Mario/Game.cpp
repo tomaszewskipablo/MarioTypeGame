@@ -283,7 +283,7 @@ void Game::addMobs()
 	Turtle turtle3({ 2432,100 });
 	Turtle turtle4({ 5700,256 });
 
-	//	Spikey spikey1({ 1800,200 });
+	Spikey spikey1({ 1800,200 });
 	Spikey spikey2({ 6800,400 });
 	Spikey spikey3({ 6600,400 });
 
@@ -293,7 +293,7 @@ void Game::addMobs()
 	mobs.push_back(turtle3);
 	mobs.push_back(turtle4);
 
-	//mobs.push_back(spikey1);
+	mobs.push_back(spikey1);
 	mobs.push_back(spikey2);
 	mobs.push_back(spikey3);
 
