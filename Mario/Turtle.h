@@ -9,7 +9,7 @@
 #define WINDOW_WIDTH 1024
 #define WINDOW_HIGHT 512
 
-	using namespace sf;
+	
 class Turtle : public Entity
 {
 private:

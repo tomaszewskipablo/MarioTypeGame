@@ -46,9 +46,9 @@ void Menu::followMario(int center)
 	menu[2].setPosition(sf::Vector2f(center - 85, WINDOW_HIGHT / (MAX_NUMBER_OF_ITEMS + 1) * 2 + 45));
 	menu[3].setPosition(sf::Vector2f(center - 20, WINDOW_HIGHT / (MAX_NUMBER_OF_ITEMS + 1) * 2.4 + 45));
 
-	resultsToDisplay[0].setPosition(sf::Vector2f(center - 343, 40));
-	resultsToDisplay[1].setPosition(sf::Vector2f(center - 342, 65));
-	resultsToDisplay[2].setPosition(sf::Vector2f(center - 341, 90));
+	resultsToDisplay[0].setPosition(sf::Vector2f(center - 343, 45));
+	resultsToDisplay[1].setPosition(sf::Vector2f(center - 342, 70));
+	resultsToDisplay[2].setPosition(sf::Vector2f(center - 341, 95));
 }
 
 
@@ -167,7 +167,9 @@ void Menu::readResultsFromFile()
 	std::string scoreTemp;
 	std::string timeTemp;
 	std::ifstream infile;
-
+	std::string userName;
+	
+	loadedResults.clear();
 
 	infile.open("../results/results.txt");
 
@@ -196,7 +198,13 @@ void Menu::readResultsFromFile()
 		scoreTemp = (std::to_string(line2[18] - 48) + std::to_string(line2[19] - 48) + std::to_string(line2[20] - 48) + std::to_string(line2[21] - 48));
 		timeTemp = (std::to_string(line2[29] - 48) + std::to_string(line2[30] - 48) + std::to_string(line2[31] - 48));
 
-		loadedResults.push_back(result(line, scoreTemp, timeTemp, coinsTemp));
+		userName.clear();
+		for (int i = 33; i < line2.length(); i++)
+		{
+			userName = userName+line2[i];
+		}
+
+		loadedResults.push_back(result(line, scoreTemp, timeTemp, coinsTemp, userName));
 
 		coinsTemp.clear();
 		scoreTemp.clear();
@@ -220,12 +228,12 @@ void Menu::loadReslutsToArray()
 
 	for (int i = 0; i < numberOFResults; i++)
 	{
-		std::string toDisplay = std::to_string(i + 1) + ". Score: " + loadedResults.at(i).score + " coins: " + loadedResults.at(i).coins + " time " + loadedResults.at(i).time + "   " + loadedResults.at(i).date;
+		std::string toDisplay = std::to_string(i + 1) + ". Score: " + loadedResults.at(i).score + " coins: " + loadedResults.at(i).coins + " time " + loadedResults.at(i).time + "   " + loadedResults.at(i).date + " " + loadedResults.at(i).userName;
 		resultsToDisplay[i].setString(toDisplay);
 
 		resultsToDisplay[i].setFont(font);
 		resultsToDisplay[i].setFillColor(sf::Color::Black);
-		resultsToDisplay[i].setCharacterSize(25);
+		resultsToDisplay[i].setCharacterSize(20);
 	}
 }
 

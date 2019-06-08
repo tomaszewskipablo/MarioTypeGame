@@ -17,7 +17,8 @@ public:
 	std::string score;
 	std::string time;
 	std::string coins;
-	result(std::string date, std::string score,std::string time,std::string coins) :date(date), score(score),time(time),coins(coins){};
+	std::string userName;
+	result(std::string date, std::string score,std::string time,std::string coins, std::string userName) :date(date), score(score),time(time),coins(coins),userName(userName){};
 };
 
 class Menu

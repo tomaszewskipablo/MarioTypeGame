@@ -123,7 +123,6 @@ int TileMap::collison(Entity & Entity, GameInfo & gameInfo)
 						}
 						if (tiles[i * width + j] == 9)		// if END game
 						{
-							std::cout << "END" << std::endl;
 							return 9;
 						}
 					}

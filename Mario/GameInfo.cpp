@@ -103,6 +103,7 @@ void GameInfo::countTime()
 
 void GameInfo::saveResultToFile()
 {
+	typeUserName();
 	score = score - (time * 5);
 	if (score < 0)
 		score = 0;
@@ -111,7 +112,7 @@ void GameInfo::saveResultToFile()
 
 	std::ofstream myfile;
 	myfile.open("../results/Results.txt", std::ios::app);
-	myfile << localData << "Coins: " << properFormat3(coins) << " Score: " << properFormat4(score) << " Time: " << properFormat3(time) << std::endl << std::endl;
+	myfile << localData << "Coins: " << properFormat3(coins) << " Score: " << properFormat4(score) << " Time: " << properFormat3(time) << " " << userName << std::endl << std::endl;
 	myfile.close();
 }
 
@@ -134,4 +135,29 @@ std::string GameInfo::properFormat4(int number) // return 4 numbers 3 -> 0003, 4
 		return "0" + std::to_string(number);
 	else
 		return std::to_string(number);
+}
+void GameInfo::typeUserName()
+{
+	bool correctName = false;
+	std::string userName;
+	std::regex nameTemplate("^[a-zA-Z]+(([',. -][a-zA-Z ])?[a-zA-Z]*)*$");
+	system("CLS");
+	std::cout << "Enter your name " << std::endl;
+
+	while (!correctName)
+	{
+		std::cin.clear();
+		std::cin >> userName;
+		if (std::regex_match(userName, nameTemplate))
+		{
+			correctName = true;
+		}
+		else
+		{
+			std::cout.clear();
+			system("CLS");
+			std::cout << "Type name again, only letters are ok" << std::endl;
+		}
+	}
+	this->userName = userName;
 }

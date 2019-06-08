@@ -3,7 +3,7 @@
 Game::Game()
 {
 	// window initialization
-	this->window = new sf::RenderWindow(sf::VideoMode(WINDOW_WIDTH, WINDOW_HIGHT), "SUPER Entity");
+	this->window = new sf::RenderWindow(sf::VideoMode(WINDOW_WIDTH, WINDOW_HIGHT), "Mario");
 
 	map.load("../assets/map.png", sf::Vector2u(64, 64));
 
@@ -120,8 +120,10 @@ void Game::update()
 
 	if (marioHit == END_GAME && !won)
 	{
+		window->setVisible(false);
 		menu.isON();
 		gameInfo.saveResultToFile();
+		window->setVisible(true);
 		mario.dead();	// die twice, cause mario may have additional life
 		mario.dead();
 		won = true;
@@ -326,3 +328,4 @@ void Game::addMobs()
 
 		repairSFMLTextures();
 }
+

@@ -6,6 +6,7 @@
 #include<fstream>
 #include<ctime>
 #include<algorithm>
+#include<regex>
 
 #define NUMBER_OF_ITEMS 3
 class GameInfo
@@ -27,6 +28,8 @@ class GameInfo
 	time_t czas;	// time in seconds count from 1970 year
 	std::string localData;	// time in standard format example "Thu Jan 01 01:00:00 1970"
 	std::string fileExtension = ".png";
+
+	std::string userName;
 public:
 	GameInfo();
 	~GameInfo();
@@ -45,4 +48,6 @@ public:
 
 	std::string properFormat3(int number); // return 3 numbers 3 -> 003, 49 -> 049, 234 -> 234
 	std::string properFormat4(int number); // return 4 numbers 3 -> 0003, 49 -> 0049, 234 -> 0234
+
+	void typeUserName();
 };
